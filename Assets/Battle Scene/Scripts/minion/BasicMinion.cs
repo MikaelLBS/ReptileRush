@@ -12,7 +12,7 @@ public class BasicMinion : MonoBehaviour
     [SerializeField] protected float HP;
     [SerializeField] protected float Speed;
     [SerializeField] protected float Range;
-    public Sprite image;
+    public Sprite icon;
     public int Cost;
     public float Cooldown;
     protected string enamyTag;

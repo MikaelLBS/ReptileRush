@@ -34,7 +34,7 @@ public class BattlePartySummonUI : MonoBehaviour
             GameObject button = Instantiate(buttonPrefab, new Vector2(distance, buttonHolder.position.y), Quaternion.identity);
             button.transform.SetParent(transform);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
-            button.GetComponent<Image>().sprite = minData.image;
+            button.GetComponent<Image>().sprite = minData.icon;
             button.GetComponent<BattleSummonButton>().minion = minion;
             button.GetComponent<BattleSummonButton>().spawnPos = spawnPos;
         }

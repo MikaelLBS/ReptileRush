@@ -19,11 +19,13 @@ public class MinionBattleSpecial : BasicMinion
         switch (specal)
         {
             case spacials.example:
-                Debug.Log("ATTCK");
                 base.Attack();
                 break;
             case spacials.exampleTwo:
 
+                break;
+            default:
+                base.Attack();
                 break;
         }
     }
@@ -32,9 +34,12 @@ public class MinionBattleSpecial : BasicMinion
         switch (specal)
         {
             case spacials.example:
+                base.Move();
                 break;
             case spacials.exampleTwo:
-                Debug.Log("MOVE");
+                base.Move();
+                break;
+            default:
                 base.Move();
                 break;
         }

@@ -55,7 +55,7 @@ public class BasicMinion : MonoBehaviour
             attackCoolDown -= Time.deltaTime;
         }
     }
-    public virtual void Move()
+    protected virtual void Move()
     {
         if (!attacked && Mathf.Abs(body.velocity.x) < Mathf.Abs(Speed))
         {

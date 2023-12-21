@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3150535478467487112}
   - component: {fileID: 3924613085238809393}
   - component: {fileID: 6218359863944208317}
-  - component: {fileID: 1819448733403461942}
   - component: {fileID: -7540532378477818478}
   m_Layer: 8
   m_Name: Enemy Cat (test minion)
@@ -160,27 +159,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1819448733403461942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71222608602138419}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5aac0e0f246d944b8b2c52c63085095, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnemy: 0
-  ATK: 5
-  AttackSpeed: 1
-  HP: 25
-  Speed: 1
-  Range: 2
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  Cost: 5
-  Cooldown: 5
 --- !u!114 &-7540532378477818478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +177,9 @@ MonoBehaviour:
   HP: 25
   Speed: 1
   Range: 5
-  image: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  AmountOfKnockbacks: 2
+  KnockbackRange: 2.04
+  icon: {fileID: 0}
   Cost: 5
   Cooldown: 5
   specal: 0

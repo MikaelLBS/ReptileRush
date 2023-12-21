@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -12,16 +14,27 @@ public class MinionBattleBasic : MonoBehaviour
     [SerializeField] protected float HP;
     [SerializeField] protected float Speed;
     [SerializeField] protected float Range;
+    [SerializeField] protected uint AmountOfKnockbacks;
+    [SerializeField] protected float KnockbackRange;
     public Sprite icon;
     public int Cost;
     public float Cooldown;
     protected string enamyTag;
     protected LayerMask teamLayerMask;
 
+    float knockbackAt;
+    uint knockbacksLeft;
+    bool isInKnockbackAnimation;
+
     public void DamgeTaken(float damge)
     {
         HP -= damge;
         if (HP <= 0) { Object.Destroy(gameObject); }
+        else if (HP <= knockbackAt * knockbacksLeft && !isInKnockbackAnimation)
+        {
+            IsKnockbacked();
+            knockbacksLeft--;
+        }
     }
     protected float attackCoolDown;
     protected bool attacked;
@@ -57,19 +70,50 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual void Move()
     {
-        if (!attacked && Mathf.Abs(body.velocity.x) < Mathf.Abs(Speed))
+        if (!attacked && Mathf.Abs(body.velocity.x) < Mathf.Abs(Speed) && !isInKnockbackAnimation)
         {
             body.velocity += new Vector2(Speed, 0);
         }
     }
+    protected virtual void IsKnockbacked()
+    {
+        body.velocity = new Vector2(-KnockbackRange, 4);
+        StartCoroutine(StartKnockBackAnimation());
+    }
+    protected virtual IEnumerator StartKnockBackAnimation()
+    {
+        LayerMask rayMask = ~(LayerMask.GetMask("PlayerTeam") + LayerMask.GetMask("EnemyTeam"));
+        float length = Physics2D.Raycast(transform.position, Vector2.down, 10, rayMask).distance+0.01f;
+
+        isInKnockbackAnimation = true;
+        yield return new WaitForSeconds(0.1f);
+        if (isEnemy)
+            transform.rotation = Quaternion.Euler(0, 0, -25);
+        else
+            transform.rotation = Quaternion.Euler(0, 0, 25);
+
+        while (true)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, length, rayMask);
+            Debug.DrawRay(transform.position, Vector2.down*length, Color.red);
+            if (hit.collider == null) {
+                yield return null;
+            }
+            else { break; }
+        }
+        isInKnockbackAnimation = false;
+    }
     private void Awake()
     {
+        knockbackAt = HP / (AmountOfKnockbacks+1);
+        knockbacksLeft = AmountOfKnockbacks;
         body = GetComponent<Rigidbody2D>();
         teamLayerMask = 0;
         if (isEnemy)
         {
             Speed *= -1;
             Range *= -1;
+            KnockbackRange *= -1;
 
             transform.tag = "EnemyMinion";
             enamyTag = "PlayerMinion";

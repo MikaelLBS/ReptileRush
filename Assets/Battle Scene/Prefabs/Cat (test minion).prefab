@@ -175,10 +175,12 @@ MonoBehaviour:
   isEnemy: 0
   ATK: 5
   AttackSpeed: 1
-  HP: 25
+  HP: 80
   Speed: 1
   Range: 2
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  AmountOfKnockbacks: 5
+  KnockbackRange: 1.75
+  icon: {fileID: 0}
   Cost: 5
   Cooldown: 5
 --- !u!114 &-7540532378477818478
@@ -199,7 +201,9 @@ MonoBehaviour:
   HP: 25
   Speed: 1
   Range: 5
-  image: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  AmountOfKnockbacks: 0
+  KnockbackRange: 0
+  icon: {fileID: 0}
   Cost: 5
   Cooldown: 5
   specal: 0

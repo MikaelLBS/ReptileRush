@@ -4,7 +4,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 [System.Serializable]
-public class BasicMinion : MonoBehaviour
+public class MinionBattleBasic : MonoBehaviour
 {
     [SerializeField] protected bool isEnemy;
     [SerializeField] protected float ATK;
@@ -36,7 +36,7 @@ public class BasicMinion : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == enamyTag)
                 {
-                    hit.collider.gameObject.GetComponent<BasicMinion>().DamgeTaken(ATK);
+                    hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
                     attacked = true;
                     attackCoolDown += AttackSpeed;
                 }

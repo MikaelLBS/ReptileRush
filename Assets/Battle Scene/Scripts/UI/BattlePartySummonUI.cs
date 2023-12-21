@@ -28,7 +28,7 @@ public class BattlePartySummonUI : MonoBehaviour
         // creates buttons
         foreach (GameObject minion in minions)
         {
-            BasicMinion minData = minion.GetComponent<BasicMinion>();
+            MinionBattleBasic minData = minion.GetComponent<MinionBattleBasic>();
 
             distance += distanceBetweenPic;
             GameObject button = Instantiate(buttonPrefab, new Vector2(distance, buttonHolder.position.y), Quaternion.identity);

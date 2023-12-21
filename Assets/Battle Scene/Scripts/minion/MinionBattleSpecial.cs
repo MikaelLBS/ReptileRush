@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
-public class MinionBattleSpecial : BasicMinion
+public class MinionBattleSpecial : MinionBattleBasic
 {
     enum spacials
     {

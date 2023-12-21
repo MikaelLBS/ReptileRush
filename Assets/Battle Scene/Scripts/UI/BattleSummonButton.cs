@@ -12,13 +12,13 @@ public class BattleSummonButton : MonoBehaviour
 
     void Start()
     {
-        coolDownSlider.maxValue = minion.GetComponent<BasicMinion>().Cooldown;
+        coolDownSlider.maxValue = minion.GetComponent<MinionBattleBasic>().Cooldown;
     }
 
     public void ButtonDown()
     {
         transform.GetComponent<Button>().interactable = false;
-        StartCoroutine(StartCooldown(minion.GetComponent<BasicMinion>().Cooldown));
+        StartCoroutine(StartCooldown(minion.GetComponent<MinionBattleBasic>().Cooldown));
 
         Instantiate(minion, spawnPos.position, Quaternion.identity);
 

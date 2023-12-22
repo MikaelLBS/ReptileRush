@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class BattleSummonButton : MonoBehaviour
 {
     [NonSerialized] public GameObject minion;
-    int cost;
+    [NonSerialized] public int cost;
+    [NonSerialized] public int index;
     [NonReorderable] public Transform spawnPos;
-    [SerializeField] Slider coolDownSlider;
+    [SerializeField] public Slider coolDownSlider;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class BattleSummonButton : MonoBehaviour
         if (cost <= GetComponentInParent<BattleCanvas>().mana)
         {
             GetComponentInParent<BattleCanvas>().ChangeMana(-cost);
+            GetComponentInParent<BattleCanvas>().disableCheckCost(index);
             transform.GetComponent<Button>().interactable = false;
             StartCoroutine(StartCooldown(minion.GetComponent<MinionBattleBasic>().Cooldown));
 
@@ -38,6 +40,8 @@ public class BattleSummonButton : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         coolDownSlider.value = 0;
-        transform.GetComponent<Button>().interactable = true;
+        GetComponentInParent<BattleCanvas>().enableCheckCost(index);
+        if (GetComponentInParent<BattleCanvas>().mana >= cost)
+            transform.GetComponent<Button>().interactable = true;
     }
 }

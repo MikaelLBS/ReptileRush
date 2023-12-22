@@ -1,12 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+class VectorInt2
+{
+    public VectorInt2(int cost)
+    {
+        x = cost;
+        y = 1;
+    }
+
+    public int x;
+    public int y;
+}
+
 public class BattleCanvas : MonoBehaviour
 {
+    [Header("Summon Buttons")]
     [SerializeField] GameObject[] minions; // minions in the player party
+    Button[] summonButtons;
+    VectorInt2[]minionsCost;
 
     [SerializeField] float pictureSize; // button size
     [SerializeField] RectTransform buttonHolder; // where the button are placed
@@ -26,23 +42,33 @@ public class BattleCanvas : MonoBehaviour
 
         float distance = startEndPosX.x + pictureSize / 2 - distanceBetweenPic + (sizeBetweenStartAndEndPoints - pictureSize * minions.Length) / minions.Length / 2;
 
+        minionsCost = new VectorInt2[minions.Length];
+        summonButtons = new Button[minions.Length];
         // creates buttons
-        foreach (GameObject minion in minions)
+        for (int i = 0; i < minions.Length;i++)
         {
-            MinionBattleBasic minData = minion.GetComponent<MinionBattleBasic>();
+            MinionBattleBasic minData = minions[i].GetComponent<MinionBattleBasic>();
 
             distance += distanceBetweenPic;
             GameObject button = Instantiate(buttonPrefab, new Vector2(distance, buttonHolder.position.y), Quaternion.identity);
             button.transform.SetParent(transform);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
             button.GetComponent<Image>().sprite = minData.icon;
-            button.GetComponent<BattleSummonButton>().minion = minion;
+            button.GetComponent<BattleSummonButton>().minion = minions[i];
             button.GetComponent<BattleSummonButton>().spawnPos = spawnPos;
+            button.GetComponent<BattleSummonButton>().index = i;
+
+            minionsCost[i] = new VectorInt2(minData.Cost);
+            summonButtons[i] = button.GetComponent<Button>();
+        }
+        foreach (GameObject minion in minions)
+        {
+
         }
     }
 
 
-
+    [Header("Mana Regen")]
     [SerializeField] Slider manaFillBar;
     [SerializeField] TMPro.TextMeshProUGUI manaText;
     [SerializeField] float sekPerMana;
@@ -57,6 +83,27 @@ public class BattleCanvas : MonoBehaviour
         manaFillBar.interactable = true;
         manaFillBar.value = mana;
         manaFillBar.interactable = false;
+
+        CheckCosts();
+    }
+    public void disableCheckCost(int index)
+    { minionsCost[index].y -= 2; }
+    public void enableCheckCost(int index)
+    { minionsCost[index].y += 2; }
+    void CheckCosts()
+    {
+        for (int i = 0; i < minions.Length; i++)
+        {
+            if (minionsCost[i].x <= mana && minionsCost[i].y == 0)
+            {
+                minionsCost[i].y++;
+                summonButtons[i].interactable = true;
+            } else if (minionsCost[i].x > mana && minionsCost[i].y == 1)
+            {
+                minionsCost[i].y--;
+                summonButtons[i].interactable = false;
+            }
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -64,6 +111,8 @@ public class BattleCanvas : MonoBehaviour
         CreateButtons();
         timer = sekPerMana;
         manaFillBar.maxValue = maxMana;
+
+        CheckCosts();
     }
 
     // Update is called once per frame
@@ -75,6 +124,7 @@ public class BattleCanvas : MonoBehaviour
             {
                 timer += sekPerMana;
                 ChangeMana(1);
+                CheckCosts();
             }
             else
                 timer -= Time.deltaTime;

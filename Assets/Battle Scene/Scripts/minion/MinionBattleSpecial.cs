@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
 public class MinionBattleSpecial : MinionBattleBasic
 {
-    enum spacials
+    enum spacials // option of spacials attack/Abilitis
     {
         example,
         exampleTwo

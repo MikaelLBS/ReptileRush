@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +7,8 @@ public class BattleSummonButton : MonoBehaviour
 {
     [NonSerialized] public GameObject minion;
     [NonSerialized] public int cost;
-    [NonSerialized] public int index;
-    [NonReorderable] public Transform spawnPos;
+    [NonSerialized] public int index; // index in minions array in Battle Canvas for this button
+    [NonReorderable] public Transform spawnPos; // minion spawn position
     [SerializeField] public Slider coolDownSlider;
 
     void Start()

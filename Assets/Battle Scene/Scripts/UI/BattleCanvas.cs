@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +19,7 @@ public class BattleCanvas : MonoBehaviour
     [Header("Summon Buttons")]
     [SerializeField] GameObject[] minions; // minions in the player party
     Button[] summonButtons;
-    VectorInt2[]minionsCost;
+    VectorInt2[]minionsCost; // Variable used to check minion cost
 
     [SerializeField] float pictureSize; // button size
     [SerializeField] RectTransform buttonHolder; // where the button are placed
@@ -42,9 +39,10 @@ public class BattleCanvas : MonoBehaviour
 
         float distance = startEndPosX.x + pictureSize / 2 - distanceBetweenPic + (sizeBetweenStartAndEndPoints - pictureSize * minions.Length) / minions.Length / 2;
 
+        // creates buttons
+
         minionsCost = new VectorInt2[minions.Length];
         summonButtons = new Button[minions.Length];
-        // creates buttons
         for (int i = 0; i < minions.Length;i++)
         {
             MinionBattleBasic minData = minions[i].GetComponent<MinionBattleBasic>();
@@ -86,9 +84,9 @@ public class BattleCanvas : MonoBehaviour
 
         CheckCosts();
     }
-    public void disableCheckCost(int index)
+    public void disableCheckCost(int index) // disables checkin cost for a specific summon button
     { minionsCost[index].y -= 2; }
-    public void enableCheckCost(int index)
+    public void enableCheckCost(int index) // enabeles checkin cost for a specific summon button. OBS only works if have been disabeld firt
     { minionsCost[index].y += 2; }
     void CheckCosts()
     {

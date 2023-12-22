@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -16,15 +13,15 @@ public class MinionBattleBasic : MonoBehaviour
     [SerializeField] protected float Range;
     [SerializeField] protected uint AmountOfKnockbacks;
     [SerializeField] protected float KnockbackRange;
-    public Sprite icon;
+    public Sprite icon; // the display icon in the UI
     public int Cost;
     public float Cooldown;
-    protected string enamyTag;
-    protected LayerMask teamLayerMask;
+    protected string enamyTag; // the tag for enemy minions
+    protected LayerMask teamLayerMask; // the Layermask for allays
 
-    float knockbackAt;
+    float knockbackAt; // the amount of HP needed to reach the next knockback stage
     uint knockbacksLeft;
-    bool isInKnockbackAnimation;
+    bool isInKnockbackAnimation; // is true when minion is in knockback Animation
 
     public void DamgeTaken(float damge)
     {
@@ -38,7 +35,7 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected float attackCoolDown;
     protected bool attacked;
-    protected Rigidbody2D body;
+    protected Rigidbody2D body; // this minions body
     protected virtual void Attack()
     {
         if (attackCoolDown <= 0)
@@ -53,7 +50,7 @@ public class MinionBattleBasic : MonoBehaviour
                     attacked = true;
                     attackCoolDown += AttackSpeed;
                 }
-                else if (hit.collider.gameObject.tag == "enamyBase")
+                else if (hit.collider.gameObject.tag == "enamyBase") // INPLEMENT WHEN HAVE TOWERS
                 {
                     attacked = true;
                 }

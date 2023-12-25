@@ -10,11 +10,14 @@ public class BattleSummonButton : MonoBehaviour
     [NonSerialized] public int index; // index in minions array in Battle Canvas for this button
     [NonReorderable] public Transform spawnPos; // minion spawn position
     [SerializeField] public Slider coolDownSlider;
+    [SerializeField] TMPro.TextMeshProUGUI costText;
 
     void Start()
     {
         cost = minion.GetComponent<MinionBattleBasic>().Cost;
         coolDownSlider.maxValue = minion.GetComponent<MinionBattleBasic>().Cooldown;
+
+        costText.text = cost.ToString();
     }
 
     public void ButtonDown()

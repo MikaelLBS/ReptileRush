@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3924613085238809393}
   - component: {fileID: 6218359863944208317}
   - component: {fileID: -7540532378477818478}
+  - component: {fileID: 6808270643860748353}
   m_Layer: 8
   m_Name: Enemy Cat (test minion)
   m_TagString: PlayerMinion
@@ -175,7 +176,7 @@ MonoBehaviour:
   ATK: 5
   AttackSpeed: 1
   HP: 25
-  Speed: 1
+  Speed: 0
   Range: 5
   AmountOfKnockbacks: 2
   KnockbackRange: 2.04
@@ -185,3 +186,24 @@ MonoBehaviour:
   specal: 0
   areaOfATK: 0
   areaSize: 0
+--- !u!95 &6808270643860748353
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71222608602138419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7615aeb765897bb48a2fd08a6838ac70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

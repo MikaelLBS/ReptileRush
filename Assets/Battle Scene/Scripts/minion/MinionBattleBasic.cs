@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -18,6 +19,9 @@ public class MinionBattleBasic : MonoBehaviour
     public float Cooldown;
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
+    
+    Animator animator;
+    float attackAnimeTime;
 
     float knockbackAt; // the amount of HP needed to reach the next knockback stage
     uint knockbacksLeft;
@@ -102,6 +106,10 @@ public class MinionBattleBasic : MonoBehaviour
     }
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+        attackAnimeTime = animator.runtimeAnimatorController.animationClips[0].length;
+        //Debug.Log(animator.runtimeAnimatorController.animationClips[0].name);
+
         knockbackAt = HP / (AmountOfKnockbacks+1);
         knockbacksLeft = AmountOfKnockbacks;
         body = GetComponent<Rigidbody2D>();

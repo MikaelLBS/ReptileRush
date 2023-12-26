@@ -176,7 +176,7 @@ MonoBehaviour:
   ATK: 5
   AttackSpeed: 1
   HP: 25
-  Speed: 0
+  Speed: 5
   Range: 5
   AmountOfKnockbacks: 2
   KnockbackRange: 2.04

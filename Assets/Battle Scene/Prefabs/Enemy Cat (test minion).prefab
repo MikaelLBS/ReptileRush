@@ -103,7 +103,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -175,10 +175,10 @@ MonoBehaviour:
   isEnemy: 1
   ATK: 5
   AttackSpeed: 1
-  HP: 25
-  Speed: 5
+  HP: 1000
+  Speed: 0.93
   Range: 5
-  AmountOfKnockbacks: 2
+  AmountOfKnockbacks: 1000
   KnockbackRange: 2.04
   icon: {fileID: 0}
   Cost: 5

@@ -103,7 +103,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -174,14 +174,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   ATK: 5
-  AttackSpeed: 1.02
-  HP: 30
+  AttackSpeed: 0.5
+  HP: 1000
   Speed: 0.64
   Range: 7.46
   AmountOfKnockbacks: 3
   KnockbackRange: 0.63
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  Cost: 50
+  Cost: 10
   Cooldown: 1.67
 --- !u!95 &-8808385816199063977
 Animator:

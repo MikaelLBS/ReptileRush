@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -38,39 +39,74 @@ public class MinionBattleBasic : MonoBehaviour
             knockbacksLeft--;
         }
     }
+
+    // --ATTACK--
     protected float attackCoolDown;
     protected bool attacked;
     protected Rigidbody2D body; // this minions body
+    protected bool startedAttackAnime;
+    protected float attackAnimeSpeed;
+    protected RaycastHit2D hit;
     protected virtual void Attack()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Range, teamLayerMask);
+        hit = Physics2D.Raycast(transform.position, transform.right, Range, teamLayerMask);
         Debug.DrawRay(transform.position, transform.right * Range, Color.green);
         if (hit.collider != null)
         {
-            body.velocity *= Vector2.up;// Need to change. Mabe apply only firt hit.
+            if (!attacked)
+            { body.velocity *= Vector2.up;
+                attacked = true;
+                animator.SetBool("IsAttacking",true);
+            }
+
             if (attackCoolDown <= 0)
             {
+                startedAttackAnime = false;
                 attackCoolDown += AttackSpeed;
+                animator.speed = 1;
 
                 if (hit.collider.gameObject.tag == enamyTag)
                 {
-                    hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
-                    attacked = true;
-                    attackCoolDown += AttackSpeed;
+                    AttackMinion();
                 }
                 else if (hit.collider.gameObject.tag == "enamyBase") // INPLEMENT WHEN HAVE TOWERS
                 {
-                    attacked = true;
+                    AttackTower();
                 }
                 else
+                {
                     attacked = false;
+                    animator.SetBool("IsAttacking", false);
+                }
             }
             else
+            {
+                if (attackAnimeTime >= attackCoolDown && !startedAttackAnime)
+                {
+                    animator.speed = attackAnimeSpeed;
+                    animator.SetTrigger("Attack");
+                    startedAttackAnime = true;
+                }
+
                 attackCoolDown -= Time.deltaTime;
+            }
         }
         else
+        {
             attacked = false;
+            animator.SetBool("IsAttacking", false);
+        }
     }
+    protected virtual void AttackMinion()
+    {
+        hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
+        attackCoolDown += AttackSpeed;
+    }
+    protected virtual void AttackTower()
+    {
+
+    }
+    // --MOVE--
     protected virtual void Move()
     {
         if (!attacked && Mathf.Abs(body.velocity.x) < Mathf.Abs(Speed) && !isInKnockbackAnimation)
@@ -80,7 +116,8 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual void IsKnockbacked()
     {
-                body.velocity = new Vector2(-KnockbackRange, 4);
+        animator.SetTrigger("Damaged");
+        body.velocity = new Vector2(-KnockbackRange, 4);
         StartCoroutine(StartKnockBackAnimation());
     }
     protected virtual IEnumerator StartKnockBackAnimation()
@@ -105,12 +142,22 @@ public class MinionBattleBasic : MonoBehaviour
             else { break; }
         }
         isInKnockbackAnimation = false;
+        animator.SetTrigger("Grounded");
     }
     private void Awake()
     {
         animator = GetComponent<Animator>();
         attackAnimeTime = animator.runtimeAnimatorController.animationClips[0].length;
         //Debug.Log(animator.runtimeAnimatorController.animationClips[0].name);
+
+        attackCoolDown = AttackSpeed;
+
+        if (AttackSpeed < attackAnimeTime)
+        {
+            attackAnimeSpeed = attackAnimeTime/ attackCoolDown;
+            AttackSpeed /= attackAnimeSpeed;
+        }
+        else attackAnimeSpeed = 1;
 
         knockbackAt = HP / (AmountOfKnockbacks+1);
         knockbacksLeft = AmountOfKnockbacks;

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -42,12 +43,15 @@ public class MinionBattleBasic : MonoBehaviour
     protected Rigidbody2D body; // this minions body
     protected virtual void Attack()
     {
-        if (attackCoolDown <= 0)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Range, teamLayerMask);
+        Debug.DrawRay(transform.position, transform.right * Range, Color.green);
+        if (hit.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, Range, teamLayerMask);
-            Debug.DrawRay(transform.position, transform.right * Range, Color.green);
-            if (hit.collider != null)
+            body.velocity *= Vector2.up;// Need to change. Mabe apply only firt hit.
+            if (attackCoolDown <= 0)
             {
+                attackCoolDown += AttackSpeed;
+
                 if (hit.collider.gameObject.tag == enamyTag)
                 {
                     hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
@@ -62,12 +66,10 @@ public class MinionBattleBasic : MonoBehaviour
                     attacked = false;
             }
             else
-                attacked = false;
+                attackCoolDown -= Time.deltaTime;
         }
         else
-        {
-            attackCoolDown -= Time.deltaTime;
-        }
+            attacked = false;
     }
     protected virtual void Move()
     {
@@ -78,7 +80,7 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual void IsKnockbacked()
     {
-        body.velocity = new Vector2(-KnockbackRange, 4);
+                body.velocity = new Vector2(-KnockbackRange, 4);
         StartCoroutine(StartKnockBackAnimation());
     }
     protected virtual IEnumerator StartKnockBackAnimation()

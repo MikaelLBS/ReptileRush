@@ -475,7 +475,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.42
+  m_GravityScale: 0.7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -486,7 +486,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &759820973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +817,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 759820970}
-  - {fileID: 1550680300}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550680299
@@ -845,11 +844,11 @@ Transform:
   m_GameObject: {fileID: 1550680299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.022, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.10220406, y: -0.4994523, z: -10}
+  m_LocalScale: {x: 0.44436544, y: 0.21905805, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1534618046}
+  m_Father: {fileID: 759820970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009947702
 GameObject:
@@ -902,7 +901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519523846699451718, guid: a1495dc7bbb5ac946966befba356e9a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.31
+      value: -1.58
       objectReference: {fileID: 0}
     - target: {fileID: 4519523846699451718, guid: a1495dc7bbb5ac946966befba356e9a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -938,7 +937,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4519523846699451718, guid: a1495dc7bbb5ac946966befba356e9a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1550680300}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4401832817028786100, guid: a1495dc7bbb5ac946966befba356e9a4, type: 3}
       insertIndex: -1

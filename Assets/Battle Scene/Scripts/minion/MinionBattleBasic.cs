@@ -9,11 +9,11 @@ using Object = UnityEngine.Object;
 public class MinionBattleBasic : MonoBehaviour
 {
     [SerializeField] protected bool isEnemy;
-    [SerializeField] protected float ATK;
-    [SerializeField] protected float AttackSpeed;
-    [SerializeField] protected float HP;
-    [SerializeField] protected float Speed;
-    [SerializeField] protected float Range;
+    public float ATK;
+    public float AttackSpeed;
+    public float HP;
+    public float Speed;
+    public float Range;
     [SerializeField] protected uint AmountOfKnockbacks;
     [SerializeField] protected float KnockbackRange;
     public Sprite icon; // the display icon in the UI

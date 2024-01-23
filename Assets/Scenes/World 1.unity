@@ -1032,8 +1032,35 @@ MonoBehaviour:
   minions:
   - minion: {fileID: 71222608602138419, guid: 45260f9ea221b914a9c4bd52b4636fd6, type: 3}
     spawnPosition: {fileID: 2013054756}
-  - minion: {fileID: 5874458532590759048, guid: 9ff5bcd9d0715004aabaddb37890d0aa, type: 3}
+    minionStats:
+      ATK: 0
+      AttackSpeed: 0
+      HP: 0
+      Speed: 0
+      Range: 0
+    radomizeBattleSatats: 1
+    minionsRndStats:
+      ATK: 10
+      AttackSpeed: 0
+      HP: 0
+      Speed: 0
+      Range: 0
+  - minion: {fileID: 71222608602138419, guid: 45260f9ea221b914a9c4bd52b4636fd6, type: 3}
     spawnPosition: {fileID: 1285392957}
+    minionStats:
+      ATK: 0
+      AttackSpeed: 0
+      HP: 0
+      Speed: 0
+      Range: 0
+    radomizeBattleSatats: 0
+    minionsRndStats:
+      ATK: 10
+      AttackSpeed: 0
+      HP: 0
+      Speed: 0
+      Range: 0
+  minionID: 0
 --- !u!4 &1646615908
 Transform:
   m_ObjectHideFlags: 0

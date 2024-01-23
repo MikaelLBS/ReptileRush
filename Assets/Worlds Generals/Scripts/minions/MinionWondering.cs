@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class MinionWondering : MonoBehaviour
 {
+
     Rigidbody2D rbody;
     //[SerializeField] GameObject wallCheck;
     [SerializeField] float speed;
     [SerializeField] Vector2 randomTimer;
+    public GameObject[] battleMinions;
     float timer;
     //Random rnd;
     // Start is called before the first frame update

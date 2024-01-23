@@ -2,22 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.Burst.CompilerServices;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class MinionWondering : MonoBehaviour
 {
+    [System.Serializable]
+    public class MinionStats// : MonoBehaviour
+    {
+        public MinionStats()
+        {
+            ATK = -1;
+            AttackSpeed = -1;
+            HP = -1;
+            Speed = -1;
+            Range = -1;
+        }
+        public float ATK;
+        public float AttackSpeed;
+        public float HP;
+        public float Speed;
+        public float Range;
+    }
+    [System.Serializable]
+    public class BattleMinion
+    {
+        public GameObject minion;
+        public AnimatorController animator;
+        public MinionStats stats;
 
+    }
     Rigidbody2D rbody;
-    //[SerializeField] GameObject wallCheck;
     [SerializeField] float speed;
     [SerializeField] Vector2 randomTimer;
-    public GameObject[] battleMinions;
+    [SerializeField] GameObject BasicBattleMinion;
+    public BattleMinion[] battleMinions;
     float timer;
-    //Random rnd;
     // Start is called before the first frame update
     void Start()
     {
+
         timer = Random.Range(0, 3);
 
         rbody = GetComponent<Rigidbody2D>();
@@ -70,10 +96,18 @@ public class MinionWondering : MonoBehaviour
             rbody.velocity = new Vector2(rbody.velocity.x + speed, rbody.velocity.y);
         }
     }
+    void AddMinionDeck()
+    {
+        foreach (BattleMinion minion in battleMinions)
+        {
+            
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.name == "Player")
         {
+            AddMinionDeck();
             SceneManager.LoadScene("Battle");
         }
         Flip();

@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public class MinionSpawning : MonoBehaviour
 {
     [System.Serializable]
@@ -34,20 +35,20 @@ public class MinionSpawning : MonoBehaviour
 
         if (spawnMinion.radomizeBattleSatats)
         {
-            GameObject[] b = a.GetComponent<MinionWondering>().battleMinions;
-            MinionBattleBasic minionsBattleScrip;
 
-            for (int i = 0; i < b.Length; i++)
+            for (int i = 0; i < spawnMinion.minion.GetComponent<MinionWondering>().battleMinions.Length; i++)
             {
-                minionsBattleScrip = b[i].GetComponent<MinionBattleBasic>();
-
-                spawnMinion.minionStats.ATK = minionsBattleScrip.ATK + Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK);
-                spawnMinion.minionStats.ATK  = minionsBattleScrip.AttackSpeed + Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed);
-                spawnMinion.minionStats.ATK = minionsBattleScrip.HP + spawnMinion.minionsRndStats.HP;
-                spawnMinion.minionStats.ATK = minionsBattleScrip.Speed + spawnMinion.minionsRndStats.Speed;
-                spawnMinion.minionStats.ATK = minionsBattleScrip.Range + spawnMinion.minionsRndStats.Range;
-
-                //a.GetComponent<MinionWondering>().battleMinions[i].GetComponent<MinionBattleBasic>() = minionsBattleScrip;
+                var minionStats = spawnMinion.minion.GetComponent<MinionWondering>().battleMinions[i].stats;
+                if (minionStats.ATK < 0)
+                    minionStats.ATK += Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK);
+                if (minionStats.AttackSpeed < 0)
+                    minionStats.AttackSpeed += Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed);
+                if (minionStats.HP < 0)
+                    minionStats.HP += Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP);
+                if (minionStats.Speed < 0)
+                    minionStats.Speed += Random.Range(-spawnMinion.minionsRndStats.Speed, spawnMinion.minionsRndStats.Speed);
+                if (minionStats.Range < 0)
+                    minionStats.Range += Random.Range(-spawnMinion.minionsRndStats.Range, spawnMinion.minionsRndStats.Range);
             }
 
         }
@@ -57,22 +58,31 @@ public class MinionSpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(MinionPreciseSpawn a in minions)
+        string[] prefabsPlath = new string[1];
+        prefabsPlath[0] = "Assets/Prefabs";
+        string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);
+
+        foreach (string guid in guids)
         {
-            /*
+            //Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
+            //GameObject t = (GameObject)AssetDatabase.LoadAssetAtPath(guid, typeof(GameObject));
+            //GameObject.Instantiate((UnityEngine.Object)Resources.Load(guid), Vector3.zero, Quaternion.identity);
+            AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(guid));
+        }
+
+        foreach (MinionPreciseSpawn a in minions)
+        {
+
             GameObject b = Instantiate(a.minion, a.spawnPosition);
             b.name = a.minion.name;
 
             string localPath = "Assets/Prefabs/" + b.name + minionID + ".prefab";
-            // Make sure the file name is unique, in case an existing Prefab has the same name.
             localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+
             PrefabUtility.SaveAsPrefabAssetAndConnect(b, localPath, InteractionMode.AutomatedAction);
             minionID++;
-
+            
             Destroy(b);
-            */
-
-            // LOOK IN TO "SetActiveRecursively"
 
             MinonSpawn(a);
         }

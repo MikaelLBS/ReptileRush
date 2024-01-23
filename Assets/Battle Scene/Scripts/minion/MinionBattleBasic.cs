@@ -69,7 +69,7 @@ public class MinionBattleBasic : MonoBehaviour
                 {
                     AttackMinion();
                 }
-                else if (hit.collider.gameObject.tag == "enamyBase") // INPLEMENT WHEN HAVE TOWERS
+                else if (hit.collider.gameObject.tag == "Base") // INPLEMENT WHEN HAVE TOWERS
                 {
                     AttackTower();
                 }
@@ -104,7 +104,8 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual void AttackTower()
     {
-
+        hit.collider.gameObject.GetComponent<BaseBasic>().DamgeTaken(ATK);
+        attackCoolDown += AttackSpeed;
     }
     // --MOVE--
     protected virtual void Move()

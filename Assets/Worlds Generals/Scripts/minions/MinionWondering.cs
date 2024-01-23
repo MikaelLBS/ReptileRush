@@ -34,7 +34,7 @@ public class MinionWondering : MonoBehaviour
     void Update()
     {
         // --Checks--
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, LayerMask.NameToLayer("EnemyTeam"));
+        /*RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, LayerMask.NameToLayer("EnemyTeam"));
         Debug.DrawRay(transform.position, transform.right * 1, Color.red);
         if (hit.collider != null)
         {
@@ -43,7 +43,7 @@ public class MinionWondering : MonoBehaviour
             {
                 SceneManager.LoadScene("Battle");
             }
-        }
+        }*/
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right+Vector3.down*0.5f, 5, LayerMask.NameToLayer("EnemyTeam"));
         Debug.DrawRay(transform.position, (transform.right + Vector3.down * 0.5f) * 5, Color.green);
         if (hit2.collider == null)

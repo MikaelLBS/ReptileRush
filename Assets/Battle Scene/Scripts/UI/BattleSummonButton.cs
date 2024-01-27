@@ -14,7 +14,7 @@ public class BattleSummonButton : MonoBehaviour
 
     void Start()
     {
-        cost = minion.GetComponent<MinionBattleBasic>().Cost;
+        cost = minion.GetComponent<MinionBattleBasic>().stats.Cost;
         coolDownSlider.maxValue = minion.GetComponent<MinionBattleBasic>().Cooldown;
 
         costText.text = cost.ToString();

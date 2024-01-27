@@ -1029,38 +1029,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0d146ad7ee32a45b18e44990284741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minionDeck: {fileID: 11400000, guid: de36103fb82e95842b22a6b8dc9438fb, type: 2}
   minions:
   - minion: {fileID: 71222608602138419, guid: 45260f9ea221b914a9c4bd52b4636fd6, type: 3}
     spawnPosition: {fileID: 2013054756}
-    minionStats:
-      ATK: 0
-      AttackSpeed: 0
-      HP: 0
-      Speed: 0
-      Range: 0
-    radomizeBattleSatats: 1
-    minionsRndStats:
-      ATK: 10
-      AttackSpeed: 0
-      HP: 0
-      Speed: 0
-      Range: 0
-  - minion: {fileID: 71222608602138419, guid: 45260f9ea221b914a9c4bd52b4636fd6, type: 3}
-    spawnPosition: {fileID: 1285392957}
-    minionStats:
-      ATK: 0
-      AttackSpeed: 0
-      HP: 0
-      Speed: 0
-      Range: 0
     radomizeBattleSatats: 0
     minionsRndStats:
       ATK: 10
+      AttackSpeed: 2
+      HP: 50
+      Speed: 3
+      Range: 10
+      Cost: 80
+  - minion: {fileID: 71222608602138419, guid: 45260f9ea221b914a9c4bd52b4636fd6, type: 3}
+    spawnPosition: {fileID: 1285392957}
+    radomizeBattleSatats: 0
+    minionsRndStats:
+      ATK: 0
       AttackSpeed: 0
-      HP: 0
+      HP: 1000
       Speed: 0
       Range: 0
-  minionID: 0
+      Cost: 0
 --- !u!4 &1646615908
 Transform:
   m_ObjectHideFlags: 0

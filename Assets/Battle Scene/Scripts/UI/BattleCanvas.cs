@@ -56,7 +56,7 @@ public class BattleCanvas : MonoBehaviour
             button.GetComponent<BattleSummonButton>().spawnPos = spawnPos;
             button.GetComponent<BattleSummonButton>().index = i;
 
-            minionsCost[i] = new VectorInt2(minData.Cost);
+            minionsCost[i] = new VectorInt2(minData.stats.Cost);
             summonButtons[i] = button.GetComponent<Button>();
         }
         foreach (GameObject minion in minions)

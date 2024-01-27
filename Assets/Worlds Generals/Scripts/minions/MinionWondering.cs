@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.Burst.CompilerServices;
+using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,36 +10,12 @@ using UnityEngine.SceneManagement;
 
 public class MinionWondering : MonoBehaviour
 {
-    [System.Serializable]
-    public class MinionStats// : MonoBehaviour
-    {
-        public MinionStats()
-        {
-            ATK = -1;
-            AttackSpeed = -1;
-            HP = -1;
-            Speed = -1;
-            Range = -1;
-        }
-        public float ATK;
-        public float AttackSpeed;
-        public float HP;
-        public float Speed;
-        public float Range;
-    }
-    [System.Serializable]
-    public class BattleMinion
-    {
-        public GameObject minion;
-        public AnimatorController animator;
-        public MinionStats stats;
 
-    }
     Rigidbody2D rbody;
     [SerializeField] float speed;
     [SerializeField] Vector2 randomTimer;
     [SerializeField] GameObject BasicBattleMinion;
-    public BattleMinion[] battleMinions;
+    public MinionClass.BattleMinion[] battleMinions;
     float timer;
     // Start is called before the first frame update
     void Start()
@@ -98,10 +75,8 @@ public class MinionWondering : MonoBehaviour
     }
     void AddMinionDeck()
     {
-        foreach (BattleMinion minion in battleMinions)
-        {
-            
-        }
+        MinionDeck.Instance.basicBattleMinion = BasicBattleMinion;
+        MinionDeck.Instance.minions = battleMinions;    
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -111,5 +86,16 @@ public class MinionWondering : MonoBehaviour
             SceneManager.LoadScene("Battle");
         }
         Flip();
+    }
+    private void OnValidate()
+    {
+        foreach (MinionClass.BattleMinion minion in battleMinions)
+        {
+            if (minion.resetStats)
+            {
+                minion.resetStats = false;
+                minion.stats = BasicBattleMinion.GetComponent<MinionBattleBasic>().stats;
+            }
+        }
     }
 }

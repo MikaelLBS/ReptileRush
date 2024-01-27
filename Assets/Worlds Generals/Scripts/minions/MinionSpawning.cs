@@ -6,27 +6,16 @@ using Random = UnityEngine.Random;
 public class MinionSpawning : MonoBehaviour
 {
     [System.Serializable]
-    class MinionsRndStats// : MonoBehaviour
-    {
-        public float ATK;
-        public float AttackSpeed;
-        public float HP;
-        public float Speed;
-        public float Range;
-    }
-    [System.Serializable]
-    class MinionPreciseSpawn// : MonoBehaviour
+    class MinionPreciseSpawn
     {
         public GameObject minion;
         public Transform spawnPosition;
-        public MinionsRndStats minionStats;
         public bool radomizeBattleSatats;
-        public MinionsRndStats minionsRndStats;
+        public MinionClass.MinionStats minionsRndStats;
 
     }
-
+    [SerializeField] MinionDeck minionDeck;
     [SerializeField] MinionPreciseSpawn[] minions;
-    public uint minionID = 0;
 
     void MinonSpawn(MinionPreciseSpawn spawnMinion)
     {
@@ -35,20 +24,21 @@ public class MinionSpawning : MonoBehaviour
 
         if (spawnMinion.radomizeBattleSatats)
         {
-
-            for (int i = 0; i < spawnMinion.minion.GetComponent<MinionWondering>().battleMinions.Length; i++)
+            for (int i = 0; i < a.GetComponent<MinionWondering>().battleMinions.Length; i++)
             {
-                var minionStats = spawnMinion.minion.GetComponent<MinionWondering>().battleMinions[i].stats;
-                if (minionStats.ATK < 0)
-                    minionStats.ATK += Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK);
-                if (minionStats.AttackSpeed < 0)
-                    minionStats.AttackSpeed += Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed);
-                if (minionStats.HP < 0)
-                    minionStats.HP += Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP);
-                if (minionStats.Speed < 0)
-                    minionStats.Speed += Random.Range(-spawnMinion.minionsRndStats.Speed, spawnMinion.minionsRndStats.Speed);
-                if (minionStats.Range < 0)
-                    minionStats.Range += Random.Range(-spawnMinion.minionsRndStats.Range, spawnMinion.minionsRndStats.Range);
+                MinionClass.MinionStats minionStats = a.GetComponent<MinionWondering>().battleMinions[i].stats;
+                if (spawnMinion.minionsRndStats.ATK > 0)
+                    minionStats.ATK = Math.Abs(minionStats.ATK + Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK));
+                if (spawnMinion.minionsRndStats.AttackSpeed > 0)
+                    minionStats.AttackSpeed = Math.Abs(minionStats.AttackSpeed + Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed));
+                if (spawnMinion.minionsRndStats.HP > 0)
+                    minionStats.HP = Math.Abs(minionStats.HP + Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP));
+                if (spawnMinion.minionsRndStats.Speed > 0)
+                    minionStats.Speed = Math.Abs(minionStats.Speed + Random.Range(-spawnMinion.minionsRndStats.Speed, spawnMinion.minionsRndStats.Speed));
+                if (spawnMinion.minionsRndStats.Range > 0)
+                    minionStats.Range = Math.Abs(minionStats.Range + Random.Range(-spawnMinion.minionsRndStats.Range, spawnMinion.minionsRndStats.Range));
+                if (spawnMinion.minionsRndStats.Cost > 0)
+                    minionStats.Cost = Math.Abs(minionStats.Cost + Random.Range(-spawnMinion.minionsRndStats.Cost, spawnMinion.minionsRndStats.Cost));
             }
 
         }
@@ -56,13 +46,19 @@ public class MinionSpawning : MonoBehaviour
     }
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        minionDeck.SetInstance();
+        minionDeck.PrefabPathsFromRes();
+    }
     void Start()
     {
+        /*
         string[] prefabsPlath = new string[1];
-        prefabsPlath[0] = "Assets/Prefabs";
-        string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);
+        prefabsPlath[0] = "Assets/Prefabs/MinionDeck";
+        string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);*/
 
-        foreach (string guid in guids)
+        foreach (string guid in MinionDeck.Instance.PrefabPaths())
         {
             //Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
             //GameObject t = (GameObject)AssetDatabase.LoadAssetAtPath(guid, typeof(GameObject));
@@ -72,18 +68,6 @@ public class MinionSpawning : MonoBehaviour
 
         foreach (MinionPreciseSpawn a in minions)
         {
-
-            GameObject b = Instantiate(a.minion, a.spawnPosition);
-            b.name = a.minion.name;
-
-            string localPath = "Assets/Prefabs/" + b.name + minionID + ".prefab";
-            localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
-
-            PrefabUtility.SaveAsPrefabAssetAndConnect(b, localPath, InteractionMode.AutomatedAction);
-            minionID++;
-            
-            Destroy(b);
-
             MinonSpawn(a);
         }
     }

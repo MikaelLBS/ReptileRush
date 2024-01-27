@@ -8,16 +8,17 @@ using Object = UnityEngine.Object;
 [System.Serializable]
 public class MinionBattleBasic : MonoBehaviour
 {
-    [SerializeField] protected bool isEnemy;
-    public float ATK;
-    public float AttackSpeed;
-    public float HP;
-    public float Speed;
-    public float Range;
+    public bool isEnemy;
+    public MinionClass.MinionStats stats;
+    //public float ATK;
+    //public float AttackSpeed;
+    //public float HP;
+    //public float Speed;
+    //public float Range;
     [SerializeField] protected uint AmountOfKnockbacks;
     [SerializeField] protected float KnockbackRange;
     public Sprite icon; // the display icon in the UI
-    public int Cost;
+    //public int Cost;
     public float Cooldown;
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
@@ -31,9 +32,9 @@ public class MinionBattleBasic : MonoBehaviour
 
     public void DamgeTaken(float damge)
     {
-        HP -= damge;
-        if (HP <= 0) { Object.Destroy(gameObject); }
-        else if (HP <= knockbackAt * knockbacksLeft && !isInKnockbackAnimation)
+        stats.HP -= damge;
+        if (stats.HP <= 0) { Object.Destroy(gameObject); }
+        else if (stats.HP <= knockbackAt * knockbacksLeft && !isInKnockbackAnimation)
         {
             IsKnockbacked();
             knockbacksLeft--;
@@ -49,8 +50,8 @@ public class MinionBattleBasic : MonoBehaviour
     protected RaycastHit2D hit;
     protected virtual void Attack()
     {
-        hit = Physics2D.Raycast(transform.position, transform.right, Range, teamLayerMask);
-        Debug.DrawRay(transform.position, transform.right * Range, Color.green);
+        hit = Physics2D.Raycast(transform.position, transform.right, stats.Range, teamLayerMask);
+        Debug.DrawRay(transform.position, transform.right * stats.Range, Color.green);
         if (hit.collider != null)
         {
             if (!attacked)
@@ -62,7 +63,7 @@ public class MinionBattleBasic : MonoBehaviour
             if (attackCoolDown <= 0)
             {
                 startedAttackAnime = false;
-                attackCoolDown += AttackSpeed;
+                attackCoolDown += stats.AttackSpeed;
                 animator.speed = 1;
 
                 if (hit.collider.gameObject.tag == enamyTag)
@@ -99,20 +100,20 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual void AttackMinion()
     {
-        hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
-        attackCoolDown += AttackSpeed;
+        hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(stats.ATK);
+        attackCoolDown += stats.AttackSpeed;
     }
     protected virtual void AttackTower()
     {
-        hit.collider.gameObject.GetComponent<BaseBasic>().DamgeTaken(ATK);
-        attackCoolDown += AttackSpeed;
+        hit.collider.gameObject.GetComponent<BaseBasic>().DamgeTaken(stats.ATK);
+        attackCoolDown += stats.AttackSpeed;
     }
     // --MOVE--
     protected virtual void Move()
     {
-        if (!attacked && Mathf.Abs(body.velocity.x) < Mathf.Abs(Speed) && !isInKnockbackAnimation)
+        if (!attacked && Mathf.Abs(body.velocity.x) < Mathf.Abs(stats.Speed) && !isInKnockbackAnimation)
         {
-            body.velocity += new Vector2(Speed, 0);
+            body.velocity += new Vector2(stats.Speed, 0);
         }
     }
     protected virtual void IsKnockbacked()
@@ -151,23 +152,23 @@ public class MinionBattleBasic : MonoBehaviour
         attackAnimeTime = animator.runtimeAnimatorController.animationClips[0].length;
         //Debug.Log(animator.runtimeAnimatorController.animationClips[0].name);
 
-        attackCoolDown = AttackSpeed;
+        attackCoolDown = stats.AttackSpeed;
 
-        if (AttackSpeed < attackAnimeTime)
+        if (stats.AttackSpeed < attackAnimeTime)
         {
             attackAnimeSpeed = attackAnimeTime/ attackCoolDown;
-            AttackSpeed /= attackAnimeSpeed;
+            stats.AttackSpeed /= attackAnimeSpeed;
         }
         else attackAnimeSpeed = 1;
 
-        knockbackAt = HP / (AmountOfKnockbacks+1);
+        knockbackAt = stats.HP / (AmountOfKnockbacks+1);
         knockbacksLeft = AmountOfKnockbacks;
         body = GetComponent<Rigidbody2D>();
         teamLayerMask = 0;
         if (isEnemy)
         {
-            Speed *= -1;
-            Range *= -1;
+            stats.Speed *= -1;
+            stats.Range *= -1;
             KnockbackRange *= -1;
 
             transform.tag = "EnemyMinion";

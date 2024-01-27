@@ -1105,6 +1105,7 @@ MonoBehaviour:
   spawnPos: {fileID: 613608789}
   minions:
   - {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
+  minionDeckSaveData: {fileID: 11400000, guid: de36103fb82e95842b22a6b8dc9438fb, type: 2}
   resetTimer: 1
 --- !u!114 &1871414249
 MonoBehaviour:

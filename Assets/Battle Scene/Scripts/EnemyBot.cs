@@ -1,8 +1,12 @@
+using System;
+using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public class EnemyBot : MonoBehaviour
 {
     [SerializeField] Transform spawnPos;
     [SerializeField] GameObject []minions;
+    [SerializeField] MinionDeck minionDeckSaveData;
 
     int[] costs;
     float timer;
@@ -11,10 +15,20 @@ public class EnemyBot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        minionDeckSaveData.AddMinionDeck();
+        string[] guids = minionDeckSaveData.PrefabPathsFromRes();
+        minions = new GameObject[guids.Length];
+        for (int i = 0; i < guids.Length; i++)
+        {
+            minions[i] = Resources.Load(guids[i]) as GameObject;
+            minions[i].SetActive(true);
+            //Debug.Log(guids[i]);
+        }
+
         costs = new int[minions.Length];
         for (int i = 0; i < minions.Length; i++)
         {
-            costs[i] = minions[i].GetComponent<MinionBattleBasic>().Cost;
+            costs[i] = minions[i].GetComponent<MinionBattleBasic>().stats.Cost;
         }
     }
 

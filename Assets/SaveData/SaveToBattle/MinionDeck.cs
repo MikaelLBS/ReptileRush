@@ -13,10 +13,11 @@ public class MinionDeck : ScriptableObject
         Instance = this;
     }
 
-    public GameObject basicBattleMinion;
+    public GameObject basicBattleMinion; // Minion Used if minion GameObject dont exist
     public MinionClass.BattleMinion[] minions;
 
-    public void AddMinionDeck()
+    // Creats prefabs of minions in Assets/resources/Prefabs/MinionDeck/
+    public void CreateMinionsPrefabs()
     {
         
         foreach (MinionClass.BattleMinion minion in minions)
@@ -53,6 +54,7 @@ public class MinionDeck : ScriptableObject
 
         }
     }
+    // Gets all the paths of the prebabed minions
     public string[] PrefabPaths()
     {
         string[] prefabsPlath = new string[1];
@@ -60,7 +62,8 @@ public class MinionDeck : ScriptableObject
         string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);
         return guids;
     }
-    public string[] PrefabPathsFromRes()
+    // Gets all the paths of the prebabed minions in a form that you can use in the Resources.Load() function
+    public string[] PrefabPathsForLoad()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/MinionDeck";
@@ -76,7 +79,6 @@ public class MinionDeck : ScriptableObject
                     dotPos = j;
             }
             guids[i] = guids[i].Remove(dotPos, 7);
-            //Debug.Log(guids[i]);
         }
 
         return guids;

@@ -16,7 +16,9 @@ class VectorInt2
 
 public class BattleCanvas : MonoBehaviour
 {
+    public bool isScripting; // Can be Removed when game is done. Ativate if you are testing things only in battle scene
     [Header("Summon Buttons")]
+    [SerializeField] PlayerParty playerDeck;
     [SerializeField] GameObject[] minions; // minions in the player party
     Button[] summonButtons;
     VectorInt2[]minionsCost; // Variable used to check minion cost
@@ -103,9 +105,22 @@ public class BattleCanvas : MonoBehaviour
             }
         }
     }
+    void LoadPlayerMinions()
+    {
+        playerDeck.CreateMinionsPrefabs();
+        string[] guids = playerDeck.PrefabPathsForLoad();
+        minions = new GameObject[guids.Length];
+        for (int i = 0; i < guids.Length; i++)
+        {
+            minions[i] = Resources.Load(guids[i]) as GameObject;
+            minions[i].SetActive(true);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        if (!isScripting)
+            LoadPlayerMinions();
         CreateButtons();
         timer = sekPerMana;
         manaFillBar.maxValue = maxMana;

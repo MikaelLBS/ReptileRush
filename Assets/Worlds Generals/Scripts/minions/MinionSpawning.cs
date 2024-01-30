@@ -15,6 +15,7 @@ public class MinionSpawning : MonoBehaviour
 
     }
     [SerializeField] MinionDeck minionDeck;
+    [SerializeField] PlayerParty playerDeck;
     [SerializeField] MinionPreciseSpawn[] minions;
 
     void MinonSpawn(MinionPreciseSpawn spawnMinion)
@@ -49,22 +50,15 @@ public class MinionSpawning : MonoBehaviour
     private void Awake()
     {
         minionDeck.SetInstance();
-        minionDeck.PrefabPathsFromRes();
+        playerDeck.SetInstance();
+        //minionDeck.PrefabPathsFromRes();
     }
     void Start()
     {
-        /*
-        string[] prefabsPlath = new string[1];
-        prefabsPlath[0] = "Assets/Prefabs/MinionDeck";
-        string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);*/
-
         foreach (string guid in MinionDeck.Instance.PrefabPaths())
-        {
-            //Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
-            //GameObject t = (GameObject)AssetDatabase.LoadAssetAtPath(guid, typeof(GameObject));
-            //GameObject.Instantiate((UnityEngine.Object)Resources.Load(guid), Vector3.zero, Quaternion.identity);
             AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(guid));
-        }
+        foreach (string guid in PlayerParty.Instance.PrefabPaths())
+            AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(guid));
 
         foreach (MinionPreciseSpawn a in minions)
         {

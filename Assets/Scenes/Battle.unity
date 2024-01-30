@@ -1119,6 +1119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064fb7f1ff80bac4aafde1351792bb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isScripting: 1
+  playerDeck: {fileID: 11400000, guid: 730276c1eb944e740b026b92b1ff163e, type: 2}
   minions:
   - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
   pictureSize: 150

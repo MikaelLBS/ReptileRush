@@ -8,6 +8,12 @@ public class EnemyBot : MonoBehaviour
     [SerializeField] GameObject []minions;
     [SerializeField] MinionDeck minionDeckSaveData;
 
+    // If Scripting. Can be Removed if Game is done
+    bool IfScripting()
+    {
+        return GetComponent<BattleCanvas>().isScripting;
+    }
+
     int[] costs;
     float timer;
     [SerializeField] float resetTimer;
@@ -15,8 +21,9 @@ public class EnemyBot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minionDeckSaveData.AddMinionDeck();
-        string[] guids = minionDeckSaveData.PrefabPathsFromRes();
+        if (!IfScripting()) // Remove When Game is doen
+            minionDeckSaveData.CreateMinionsPrefabs();
+        string[] guids = minionDeckSaveData.PrefabPathsForLoad();
         minions = new GameObject[guids.Length];
         for (int i = 0; i < guids.Length; i++)
         {

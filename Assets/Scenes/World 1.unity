@@ -711,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1388202627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minionDeck: {fileID: 11400000, guid: de36103fb82e95842b22a6b8dc9438fb, type: 2}
+  playerDeck: {fileID: 11400000, guid: 730276c1eb944e740b026b92b1ff163e, type: 2}
   minions:
   - minion: {fileID: 71222608602138419, guid: 45260f9ea221b914a9c4bd52b4636fd6, type: 3}
     spawnPosition: {fileID: 2013054756}

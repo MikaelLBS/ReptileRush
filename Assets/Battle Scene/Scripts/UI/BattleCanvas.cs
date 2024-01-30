@@ -107,7 +107,8 @@ public class BattleCanvas : MonoBehaviour
     }
     void LoadPlayerMinions()
     {
-        playerDeck.CreateMinionsPrefabs();
+        if (!isScripting) // Remove When Game is Done
+            playerDeck.CreateMinionsPrefabs();
         string[] guids = playerDeck.PrefabPathsForLoad();
         minions = new GameObject[guids.Length];
         for (int i = 0; i < guids.Length; i++)
@@ -119,8 +120,7 @@ public class BattleCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!isScripting)
-            LoadPlayerMinions();
+        LoadPlayerMinions();
         CreateButtons();
         timer = sekPerMana;
         manaFillBar.maxValue = maxMana;

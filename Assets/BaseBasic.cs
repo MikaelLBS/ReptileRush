@@ -12,18 +12,19 @@ public class BaseBasic : MonoBehaviour
     [SerializeField] protected float ATK;
     [SerializeField] protected float AttackSpeed;
     [SerializeField] protected float HP;
-    [SerializeField] protected float Range;    
+    [SerializeField] protected float Range;
+    [SerializeField] protected int Attacks;
     public Sprite icon; // the display icon in the UI        
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
 
     Animator animator;
-    float attackAnimeTime;           
+    float attackAnimeTime;
 
     public void DamgeTaken(float damge)
     {
         HP -= damge;
-        if (HP <= 0) { Object.Destroy(gameObject); }        
+        if (HP <= 0) { Object.Destroy(gameObject); }
     }
 
     // --ATTACK--
@@ -38,8 +39,18 @@ public class BaseBasic : MonoBehaviour
         Debug.DrawRay(transform.position+new Vector3(0, -2, 0), transform.right * Range, Color.green);
         if (hit.collider != null)
         {
-            Debug.Log("ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-            //lägg till så tornet kan skada
+            if (attackCoolDown <= 0)
+            {
+                if (hit.collider.gameObject.tag == enamyTag)
+                {
+                    for (int i = 0; i < Attacks; i++)
+                        AttackMinion();
+                }
+            }
+            else
+            {
+                attackCoolDown -= Time.deltaTime;
+            }
         }
     }
 
@@ -51,7 +62,20 @@ public class BaseBasic : MonoBehaviour
 
     private void Awake()
     {
-
+        if (isEnemy)
+        {
+            transform.tag = "EnemyMinion";
+            enamyTag = "PlayerMinion";
+            gameObject.layer = LayerMask.NameToLayer("EnemyTeam");
+            teamLayerMask = LayerMask.GetMask("PlayerTeam");
+        }
+        else
+        {
+            transform.tag = "PlayerMinion";
+            enamyTag = "EnemyMinion";
+            gameObject.layer = LayerMask.NameToLayer("PlayerTeam");
+            teamLayerMask = LayerMask.GetMask("EnemyTeam");
+        }
     }
     void Update()
     {

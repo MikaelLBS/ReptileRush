@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 1
+  minionName: 
   stats:
     ATK: 5
     AttackSpeed: 1

@@ -19,6 +19,7 @@ public class BattleCanvas : MonoBehaviour
     public bool isScripting; // Can be Removed when game is done. Ativate if you are testing things only in battle scene
     [Header("Summon Buttons")]
     [SerializeField] PlayerParty playerDeck;
+    [SerializeField] MinionDeck minionDeck;
     [SerializeField] GameObject[] minions; // minions in the player party
     Button[] summonButtons;
     VectorInt2[]minionsCost; // Variable used to check minion cost
@@ -51,7 +52,7 @@ public class BattleCanvas : MonoBehaviour
 
             distance += distanceBetweenPic;
             GameObject button = Instantiate(buttonPrefab, new Vector2(distance, buttonHolder.position.y), Quaternion.identity);
-            button.transform.SetParent(transform);
+            button.transform.SetParent(buttonHolder);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
             button.GetComponent<Image>().sprite = minData.icon;
             button.GetComponent<BattleSummonButton>().minion = minions[i];
@@ -107,15 +108,18 @@ public class BattleCanvas : MonoBehaviour
     }
     void LoadPlayerMinions()
     {
-        if (!isScripting) // Remove When Game is Done
-            playerDeck.CreateMinionsPrefabs();
-        string[] guids = playerDeck.PrefabPathsForLoad();
+        string[] guids = playerDeck.GetPrefabPathsForLoad();
         minions = new GameObject[guids.Length];
         for (int i = 0; i < guids.Length; i++)
         {
             minions[i] = Resources.Load(guids[i]) as GameObject;
             minions[i].SetActive(true);
         }
+    }
+    private void Awake()
+    {
+        playerDeck.SetInstance();
+        minionDeck.SetInstance();
     }
     // Start is called before the first frame update
     void Start()

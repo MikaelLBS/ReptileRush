@@ -5,8 +5,7 @@ using Random = UnityEngine.Random;
 public class EnemyBot : MonoBehaviour
 {
     [SerializeField] Transform spawnPos;
-    [SerializeField] GameObject []minions;
-    [SerializeField] MinionDeck minionDeckSaveData;
+    public GameObject []minions;
 
     // If Scripting. Can be Removed if Game is done
     bool IfScripting()
@@ -22,8 +21,8 @@ public class EnemyBot : MonoBehaviour
     void Start()
     {
         if (!IfScripting()) // Remove When Game is doen
-            minionDeckSaveData.CreateMinionsPrefabs();
-        string[] guids = minionDeckSaveData.PrefabPathsForLoad();
+            MinionDeck.Instance.CreateMinionsPrefabs();
+        string[] guids = MinionDeck.Instance.GetPrefabPathsForLoad();
         minions = new GameObject[guids.Length];
         for (int i = 0; i < guids.Length; i++)
         {

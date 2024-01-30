@@ -9,12 +9,8 @@ using Object = UnityEngine.Object;
 public class MinionBattleBasic : MonoBehaviour
 {
     public bool isEnemy;
+    public string minionName;
     public MinionClass.MinionStats stats;
-    //public float ATK;
-    //public float AttackSpeed;
-    //public float HP;
-    //public float Speed;
-    //public float Range;
     [SerializeField] protected uint AmountOfKnockbacks;
     [SerializeField] protected float KnockbackRange;
     public Sprite icon; // the display icon in the UI

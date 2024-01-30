@@ -12,9 +12,11 @@ public class PlayerParty : ScriptableObject
         Instance = this;
     }
     public GameObject[] minions;
+    public short maxMinions;
+    public int sceneIndex;
 
     // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
-    public void AddMinion(GameObject minion)
+    public string AddMinion(GameObject minion)
     {
         minion.SetActive(false);
         GameObject minionGameObject = Instantiate(minion);
@@ -26,6 +28,7 @@ public class PlayerParty : ScriptableObject
         PrefabUtility.SaveAsPrefabAssetAndConnect(minionGameObject, localPath, InteractionMode.AutomatedAction);
         Destroy(minionGameObject);
         minion.SetActive(true);
+        return localPath;
     }
 
     // Creats prefabs of minions in Assets/resources/Prefabs/PlayerDeck/
@@ -38,7 +41,7 @@ public class PlayerParty : ScriptableObject
         }
     }
     // Gets all the paths of the prebabed minions
-    public string[] PrefabPaths()
+    public string[] GetPrefabPaths()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/PlayerDeck";
@@ -46,7 +49,7 @@ public class PlayerParty : ScriptableObject
         return guids;
     }
     // Gets all the paths of the prebabed minions in a form that you can use in the Resources.Load() function
-    public string[] PrefabPathsForLoad()
+    public string[] GetPrefabPathsForLoad()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/PlayerDeck";

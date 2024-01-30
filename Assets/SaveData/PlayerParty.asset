@@ -16,3 +16,5 @@ MonoBehaviour:
   - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
   - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
   - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
+  maxMinions: 3
+  sceneIndex: 1

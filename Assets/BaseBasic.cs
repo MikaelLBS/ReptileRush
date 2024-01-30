@@ -64,6 +64,7 @@ public class BaseBasic : MonoBehaviour
     {
         if (isEnemy)
         {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             transform.tag = "Base";
             enamyTag = "PlayerMinion";
             gameObject.layer = LayerMask.NameToLayer("EnemyTeam");

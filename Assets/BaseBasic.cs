@@ -64,14 +64,14 @@ public class BaseBasic : MonoBehaviour
     {
         if (isEnemy)
         {
-            transform.tag = "EnemyMinion";
+            transform.tag = "Base";
             enamyTag = "PlayerMinion";
             gameObject.layer = LayerMask.NameToLayer("EnemyTeam");
             teamLayerMask = LayerMask.GetMask("PlayerTeam");
         }
         else
         {
-            transform.tag = "PlayerMinion";
+            transform.tag = "Base";
             enamyTag = "EnemyMinion";
             gameObject.layer = LayerMask.NameToLayer("PlayerTeam");
             teamLayerMask = LayerMask.GetMask("EnemyTeam");

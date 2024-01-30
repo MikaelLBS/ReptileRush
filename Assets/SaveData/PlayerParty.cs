@@ -13,23 +13,28 @@ public class PlayerParty : ScriptableObject
     }
     public GameObject[] minions;
 
+    // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
+    public void AddMinion(GameObject minion)
+    {
+        minion.SetActive(false);
+        GameObject minionGameObject = Instantiate(minion);
+
+        minionGameObject.GetComponent<MinionBattleBasic>().isEnemy = false;
+
+        string localPath = "Assets/resources/Prefabs/PlayerDeck/" + minion.name + ".prefab";
+        localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+        PrefabUtility.SaveAsPrefabAssetAndConnect(minionGameObject, localPath, InteractionMode.AutomatedAction);
+        Destroy(minionGameObject);
+        minion.SetActive(true);
+    }
+
     // Creats prefabs of minions in Assets/resources/Prefabs/PlayerDeck/
     public void CreateMinionsPrefabs()
     {
 
         foreach (GameObject minion in minions)
         {
-            minion.SetActive(false);
-            GameObject minionGameObject = Instantiate(minion);
-
-            //MinionBattleBasic basicMinionBattle = minionGameObject.GetComponent<MinionBattleBasic>();
-            minionGameObject.GetComponent<MinionBattleBasic>().isEnemy = false;
-
-            string localPath = "Assets/resources/Prefabs/PlayerDeck/" + minion.name + ".prefab";
-            localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
-            PrefabUtility.SaveAsPrefabAssetAndConnect(minionGameObject, localPath, InteractionMode.AutomatedAction);
-            Destroy(minionGameObject);
-            minion.SetActive(true);
+            AddMinion(minion);
         }
     }
     // Gets all the paths of the prebabed minions

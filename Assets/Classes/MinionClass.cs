@@ -38,6 +38,7 @@ public class MinionClass
     public class BattleMinion
     {
         public GameObject minion;
+        public string minionName;
         public AnimatorController animator;
         public bool resetStats;
         public MinionStats stats;

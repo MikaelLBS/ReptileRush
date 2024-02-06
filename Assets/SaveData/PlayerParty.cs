@@ -12,6 +12,24 @@ public class PlayerParty : ScriptableObject
         Instance = this;
     }
     public GameObject[] minions;
+    public short maxMinions;
+    public int sceneIndex;
+
+    // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
+    public string AddMinion(GameObject minion)
+    {
+        minion.SetActive(false);
+        GameObject minionGameObject = Instantiate(minion);
+
+        minionGameObject.GetComponent<MinionBattleBasic>().isEnemy = false;
+
+        string localPath = "Assets/resources/Prefabs/PlayerDeck/" + minion.name + ".prefab";
+        localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+        PrefabUtility.SaveAsPrefabAssetAndConnect(minionGameObject, localPath, InteractionMode.AutomatedAction);
+        Destroy(minionGameObject);
+        minion.SetActive(true);
+        return localPath;
+    }
 
     // Creats prefabs of minions in Assets/resources/Prefabs/PlayerDeck/
     public void CreateMinionsPrefabs()
@@ -19,21 +37,11 @@ public class PlayerParty : ScriptableObject
 
         foreach (GameObject minion in minions)
         {
-            minion.SetActive(false);
-            GameObject minionGameObject = Instantiate(minion);
-
-            //MinionBattleBasic basicMinionBattle = minionGameObject.GetComponent<MinionBattleBasic>();
-            minionGameObject.GetComponent<MinionBattleBasic>().isEnemy = false;
-
-            string localPath = "Assets/resources/Prefabs/PlayerDeck/" + minion.name + ".prefab";
-            localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
-            PrefabUtility.SaveAsPrefabAssetAndConnect(minionGameObject, localPath, InteractionMode.AutomatedAction);
-            Destroy(minionGameObject);
-            minion.SetActive(true);
+            AddMinion(minion);
         }
     }
     // Gets all the paths of the prebabed minions
-    public string[] PrefabPaths()
+    public string[] GetPrefabPaths()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/PlayerDeck";
@@ -41,7 +49,7 @@ public class PlayerParty : ScriptableObject
         return guids;
     }
     // Gets all the paths of the prebabed minions in a form that you can use in the Resources.Load() function
-    public string[] PrefabPathsForLoad()
+    public string[] GetPrefabPathsForLoad()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/PlayerDeck";

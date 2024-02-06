@@ -55,9 +55,7 @@ public class MinionSpawning : MonoBehaviour
     }
     void Start()
     {
-        foreach (string guid in MinionDeck.Instance.PrefabPaths())
-            AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(guid));
-        foreach (string guid in PlayerParty.Instance.PrefabPaths())
+        foreach (string guid in MinionDeck.Instance.GetPrefabPaths())
             AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(guid));
 
         foreach (MinionPreciseSpawn a in minions)

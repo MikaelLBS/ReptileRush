@@ -22,6 +22,7 @@ public class MinionDeck : ScriptableObject
         
         foreach (MinionClass.BattleMinion minion in minions)
         {
+
             if (minion.minion == null)
                 minion.minion = basicBattleMinion;
             minion.minion.SetActive(false);
@@ -44,6 +45,9 @@ public class MinionDeck : ScriptableObject
             if (minion.stats.Cost >= 0)
                 basicMinionBattle.stats.Cost = minion.stats.Cost;
 
+            //minion.minionName = 
+            basicMinionBattle.minionName = minion.minionName;
+
             basicMinionBattle.isEnemy = true;
 
             string localPath = "Assets/resources/Prefabs/MinionDeck/" + minion.minion.name + ".prefab";
@@ -55,7 +59,7 @@ public class MinionDeck : ScriptableObject
         }
     }
     // Gets all the paths of the prebabed minions
-    public string[] PrefabPaths()
+    public string[] GetPrefabPaths()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/MinionDeck";
@@ -63,7 +67,7 @@ public class MinionDeck : ScriptableObject
         return guids;
     }
     // Gets all the paths of the prebabed minions in a form that you can use in the Resources.Load() function
-    public string[] PrefabPathsForLoad()
+    public string[] GetPrefabPathsForLoad()
     {
         string[] prefabsPlath = new string[1];
         prefabsPlath[0] = "Assets/resources/Prefabs/MinionDeck";

@@ -83,6 +83,7 @@ public class MinionWondering : MonoBehaviour
         if (collision.transform.name == "Player")
         {
             AddMinionDeck();
+            PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene("Battle");
         }
         Flip();

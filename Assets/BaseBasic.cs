@@ -3,6 +3,7 @@ using System.Collections;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 [System.Serializable]
@@ -14,9 +15,11 @@ public class BaseBasic : MonoBehaviour
     [SerializeField] protected float HP;
     [SerializeField] protected float Range;
     [SerializeField] protected int Attacks;
+    [SerializeField] Button attackbutton;
     public Sprite icon; // the display icon in the UI        
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
+    public bool attackReady = false;
 
     Animator animator;
     float attackAnimeTime;
@@ -41,11 +44,9 @@ public class BaseBasic : MonoBehaviour
         {
             if (attackCoolDown <= 0)
             {
-                if (hit.collider.gameObject.tag == enamyTag)
-                {
-                    for (int i = 0; i < Attacks; i++)
-                        AttackMinion();
-                }
+                attackReady = true;
+                if (!isEnemy) ;
+                    attackbutton.interactable = true;
             }
             else
             {
@@ -56,6 +57,7 @@ public class BaseBasic : MonoBehaviour
 
     protected virtual void AttackMinion()
     {
+        Debug.Log("attack");
         hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
         attackCoolDown += AttackSpeed;
     }
@@ -79,13 +81,21 @@ public class BaseBasic : MonoBehaviour
         }
     }
     void Update()
-    {
+    {               
         Attack();
     }
-    void AttackButton()
+    public void AttackButton()
     {
         //player press button
-        AttackMinion();
+        if (attackReady)
+        {
+            attackReady = false;
+            if (hit.collider.gameObject.tag == enamyTag)
+            {
+                for (int i = 0; i < Attacks; i++)
+                    AttackMinion();
+            }
+        }        
     }
     void Win()
     {

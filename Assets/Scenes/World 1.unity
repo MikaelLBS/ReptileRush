@@ -721,7 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b5aaa5c0da9d54e9e30e412a3eb622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minions: []
   pictureSize: 150
   buttonHolder: {fileID: 749134730}
   buttonPrefab: {fileID: 8688731768391718334, guid: cea5117a6bcad334fb64abd4251aebef, type: 3}
@@ -1227,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1388202627
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -51,22 +51,13 @@ public class MinionSpawning : MonoBehaviour
     {
         minionDeck.SetInstance();
         playerDeck.SetInstance();
-        //minionDeck.PrefabPathsFromRes();
     }
     void Start()
     {
-        foreach (string guid in MinionDeck.Instance.GetPrefabPaths())
-            AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(guid));
 
         foreach (MinionPreciseSpawn a in minions)
         {
             MinonSpawn(a);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -12,7 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe97c09259b13642b115b541df698ba, type: 3}
   m_Name: PlayerParty
   m_EditorClassIdentifier: 
-  minions: []
-  Test: {fileID: 0}
+  minions:
+  - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
+    minionName: Tank
+    icon: {fileID: 0}
+    slotIndex: 1
+    animator: {fileID: 0}
+    stats:
+      ATK: 3.493989
+      AttackSpeed: 0.15018201
+      HP: 10.658356
+      Speed: 1.0497804
+      Range: 2.9011078
+      Cost: 67
+  - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
+    minionName: Damge
+    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    slotIndex: 0
+    animator: {fileID: 0}
+    stats:
+      ATK: 10.991465
+      AttackSpeed: 1.2594967
+      HP: 21.877628
+      Speed: 3.462464
+      Range: 5.1203346
+      Cost: 76
+  - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
+    minionName: Damge
+    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    slotIndex: 2
+    animator: {fileID: 0}
+    stats:
+      ATK: 1.2712755
+      AttackSpeed: 0.8013387
+      HP: 35.975986
+      Speed: 1.1525168
+      Range: 11.859519
+      Cost: 51
+  - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
+    minionName: Tank
+    icon: {fileID: 0}
+    slotIndex: 3
+    animator: {fileID: 0}
+    stats:
+      ATK: 4.9742923
+      AttackSpeed: 2.261819
+      HP: 24.422335
+      Speed: 2.105815
+      Range: 6.9217205
+      Cost: 11
+  loadedMinions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   maxMinions: 3
   sceneIndex: 1

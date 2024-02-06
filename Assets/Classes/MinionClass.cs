@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class MinionClass
@@ -10,12 +11,12 @@ public class MinionClass
     {
         public MinionStats()
         {
-            ATK = 0;
-            AttackSpeed = 0;
-            HP = 0;
-            Speed = 0;
-            Range = 0;
-            Cost = 0;
+            ATK = -1;
+            AttackSpeed = -1;
+            HP = -1;
+            Speed = -1;
+            Range = -1;
+            Cost = -1;
         }
         public MinionStats(MinionStats stats)
         {
@@ -41,7 +42,41 @@ public class MinionClass
         public RuntimeAnimatorController animator;
         public bool resetStats;
         public MinionStats stats;
+    }
+    [System.Serializable]
+    public class MinionSave
+    {
+        public GameObject minion;
+        public string minionName;
+        public Sprite icon;
+        public int slotIndex;
+        public RuntimeAnimatorController animator;
+        public MinionStats stats;
+        public MinionSave()
+        {
+            stats = new MinionStats();
 
+            slotIndex = 0;
+        }
+        public MinionSave(BattleMinion battleMinion)
+        {
+            minion = battleMinion.minion;
+            minionName = battleMinion.minionName;
+            animator = battleMinion.animator;
+            stats = battleMinion.stats;
+
+            slotIndex = 0;
+        }
+        public MinionSave(MinionBattleBasic battleMinion, RuntimeAnimatorController animatorController)
+        {
+            minion = battleMinion.basePrefab;
+            minionName = battleMinion.minionName;
+            icon = battleMinion.icon;
+            animator = animatorController;
+            stats = battleMinion.stats;
+
+            slotIndex = 0;
+        }
     }
 
 

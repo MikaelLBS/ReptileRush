@@ -110,16 +110,6 @@ public class BattleCanvas : MonoBehaviour
             }
         }
     }
-    void LoadPlayerMinions()
-    {
-        string[] guids = playerDeck.GetPrefabPathsForLoad();
-        minions = new GameObject[guids.Length];
-        for (int i = 0; i < guids.Length; i++)
-        {
-            minions[i] = Resources.Load(guids[i]) as GameObject;
-            minions[i].SetActive(true);
-        }
-    }
     private void Awake()
     {
         playerDeck.SetInstance();
@@ -128,7 +118,7 @@ public class BattleCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadPlayerMinions();
+        minions = PlayerParty.Instance.LoadMinions();
         CreateButtons();
         timer = sekPerMana;
         manaFillBar.maxValue = maxMana;

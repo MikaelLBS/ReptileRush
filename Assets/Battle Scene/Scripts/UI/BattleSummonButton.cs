@@ -29,7 +29,7 @@ public class BattleSummonButton : MonoBehaviour
             transform.GetComponent<Button>().interactable = false;
             StartCoroutine(StartCooldown(minion.GetComponent<MinionBattleBasic>().Cooldown));
 
-            Instantiate(minion, spawnPos.position, Quaternion.identity);
+            Instantiate(minion, spawnPos.position, Quaternion.identity).gameObject.SetActive(true);
         }
 
     }

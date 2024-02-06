@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class AfterGameMinionButton : MonoBehaviour
 {
     //[NonSerialized]
-    public string path;
+    public int indexInPlayerParty;
     public string minionnName;
     public MinionBattleBasic minionBattleScript;
 
@@ -24,8 +24,10 @@ public class AfterGameMinionButton : MonoBehaviour
     }
     public void ButtonDown()
     {
-        string[] guids = PlayerParty.Instance.GetPrefabPaths();
-        AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(path));
+        PlayerParty.Instance.minions.RemoveAt(indexInPlayerParty);
+        // creating prefabs
+        /*string[] guids = PlayerParty.Instance.GetPrefabPaths();
+        AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(path));*/
         SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
     }
 }

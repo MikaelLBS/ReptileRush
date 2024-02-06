@@ -1,6 +1,8 @@
 //using System;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -14,7 +16,7 @@ public class AfterBattleGame : MonoBehaviour
     [SerializeField] RectTransform buttonHolder;
     [SerializeField] GameObject buttonPrefab;
     [SerializeField] float pictureSize;
-    GameObject[] minions;
+    //GameObject[] minions;
     Button[] summonButtons;
     [Header("RewardMinion")]
     [SerializeField] GameObject rewardMinionButton;
@@ -27,25 +29,24 @@ public class AfterBattleGame : MonoBehaviour
         float sizeBetweenStartAndEndPoints = startEndPosX.y - startEndPosX.x;
 
         // if button is lager then placeHolder make the picture size smaller
-        if (pictureSize * (minions.Length + 1) > sizeBetweenStartAndEndPoints)
-            pictureSize = sizeBetweenStartAndEndPoints / (minions.Length + 2);
+        if (pictureSize * (PlayerParty.Instance.minions.Count + 1) > sizeBetweenStartAndEndPoints)
+            pictureSize = sizeBetweenStartAndEndPoints / (PlayerParty.Instance.minions.Count + 2);
 
-        float distanceBetweenPic = (sizeBetweenStartAndEndPoints) / minions.Length;
+        float distanceBetweenPic = (sizeBetweenStartAndEndPoints) / PlayerParty.Instance.minions.Count;
 
-        float distance = startEndPosX.x + pictureSize / 2 - distanceBetweenPic + (sizeBetweenStartAndEndPoints - pictureSize * minions.Length) / minions.Length / 2;
+        float distance = startEndPosX.x + pictureSize / 2 - distanceBetweenPic + (sizeBetweenStartAndEndPoints - pictureSize * PlayerParty.Instance.loadedMinions.Length ) / PlayerParty.Instance.loadedMinions.Length / 2;
 
-        string[] guids = PlayerParty.Instance.GetPrefabPaths();
         // creates buttons
-        summonButtons = new Button[minions.Length];
-        float[] xCoordsButtons = new float[minions.Length];
-        for (int i = 0; i < minions.Length; i++)
+        summonButtons = new Button[PlayerParty.Instance.minions.Count];
+        float[] xCoordsButtons = new float[PlayerParty.Instance.minions.Count];
+        for (int i = 0; i < PlayerParty.Instance.minions.Count; i++)
         {
             distance += distanceBetweenPic;
             xCoordsButtons[i] = distance;
         }
-        for (int i = 0; i < minions.Length; i++)
+        for (int i = 0; i < PlayerParty.Instance.minions.Count; i++)
         {
-            MinionBattleBasic minData = minions[i].GetComponent<MinionBattleBasic>();
+            MinionBattleBasic minData = PlayerParty.Instance.loadedMinions[i].GetComponent<MinionBattleBasic>();
 
             //distance += distanceBetweenPic;
             GameObject button = Instantiate(buttonPrefab, new Vector2(xCoordsButtons[minData.partyIndex], buttonHolder.position.y), Quaternion.identity);
@@ -54,7 +55,7 @@ public class AfterBattleGame : MonoBehaviour
             button.GetComponent<Image>().sprite = minData.icon;
 
             AfterGameMinionButton afterBattleGame = button.GetComponent<AfterGameMinionButton>();
-            afterBattleGame.path = guids[i];
+            afterBattleGame.indexInPlayerParty = i;
             afterBattleGame.minionnName = minData.minionName;
             afterBattleGame.minionBattleScript = minData;
             //button.GetComponent<AfterGameMinionButton>().index = i;
@@ -64,24 +65,42 @@ public class AfterBattleGame : MonoBehaviour
     }
     void CreateRewardMinion()
     {
+        
         GameObject rewMinion = bot.minions[Random.Range(0,bot.minions.Length)];
         MinionBattleBasic rewMinionData = rewMinion.GetComponent<MinionBattleBasic>();
-        rewardMinionPrefabPath = PlayerParty.Instance.AddMinion(rewMinion);
+        PlayerParty.Instance.AddMinion(rewMinion);
         rewardMinionButton.transform.SetParent(transform);
         rewardMinionButton.GetComponent<Image>().sprite = rewMinionData.icon;
-
+        
         nameText.text = rewMinionData.minionName;
         costText.text = rewMinionData.stats.Cost.ToString();
+        
     }
     public void RewardMinionButtonDown()
     {
-        AssetDatabase.DeleteAsset(rewardMinionPrefabPath);
+        PlayerParty.Instance.minions.RemoveAt(PlayerParty.Instance.minions.Count-1);
         SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
     }
     // Start is called before the first frame update
     void Start()
     {
-        string[] guids = PlayerParty.Instance.GetPrefabPathsForLoad();
+        if (PlayerParty.Instance.minions.Count == PlayerParty.Instance.maxMinions)
+        {
+            CreateButtons();
+            CreateRewardMinion();
+        }
+        else if (PlayerParty.Instance.minions.Count < PlayerParty.Instance.maxMinions)
+        {
+            CreateRewardMinion();
+            SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
+        }
+        else
+        {
+            PlayerParty.Instance.minions.RemoveAt(PlayerParty.Instance.minions.Count - 1);
+            SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
+        }
+        // creating Prefab
+        /*string[] guids = PlayerParty.Instance.GetPrefabPathsForLoad();
         if (guids.Length == PlayerParty.Instance.maxMinions)
         {
             minions = new GameObject[guids.Length];
@@ -110,6 +129,6 @@ public class AfterBattleGame : MonoBehaviour
             rewardMinionPrefabPath = PlayerParty.Instance.AddMinion(rewMinion);
 
             SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
-        }
+        }*/
     }
 }

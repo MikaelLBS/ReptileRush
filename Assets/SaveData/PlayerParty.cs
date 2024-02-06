@@ -11,63 +11,61 @@ public class PlayerParty : ScriptableObject
     {
         Instance = this;
     }
-    public GameObject[] minions;
-    public GameObject Test;
+    public List<MinionClass.MinionSave> minions;
+    public GameObject[] loadedMinions;
     public short maxMinions;
     public int sceneIndex;
 
     // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
-    public string AddMinion(GameObject minion)
+    public void AddMinion(GameObject minion)
     {
         minion.SetActive(false);
         GameObject minionGameObject = Instantiate(minion);
 
         minionGameObject.GetComponent<MinionBattleBasic>().isEnemy = false;
 
-        string localPath = "Assets/resources/Prefabs/PlayerDeck/" + minion.name + ".prefab";
-        localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
-        PrefabUtility.SaveAsPrefabAssetAndConnect(minionGameObject, localPath, InteractionMode.AutomatedAction);
-        Destroy(minionGameObject);
-        minion.SetActive(true);
-        return localPath;
+        MinionClass.MinionSave minionSave = new(minionGameObject.GetComponent<MinionBattleBasic>(), minionGameObject.GetComponent<RuntimeAnimatorController>());
+        minions.Add(minionSave);
     }
 
     // Creats prefabs of minions in Assets/resources/Prefabs/PlayerDeck/
-    public void CreateMinionsPrefabs()
+    public GameObject[] LoadMinions()
     {
-
-        foreach (GameObject minion in minions)
+        int i = 0;
+        loadedMinions = new GameObject[minions.Count];
+        foreach (MinionClass.MinionSave minion in minions)
         {
-            AddMinion(minion);
-        }
-    }
-    // Gets all the paths of the prebabed minions
-    public string[] GetPrefabPaths()
-    {
-        string[] prefabsPlath = new string[1];
-        prefabsPlath[0] = "Assets/resources/Prefabs/PlayerDeck";
-        string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);
-        return guids;
-    }
-    // Gets all the paths of the prebabed minions in a form that you can use in the Resources.Load() function
-    public string[] GetPrefabPathsForLoad()
-    {
-        string[] prefabsPlath = new string[1];
-        prefabsPlath[0] = "Assets/resources/Prefabs/PlayerDeck";
-        string[] guids = AssetDatabase.FindAssets("t:Prefab", prefabsPlath);
-        for (int i = 0; i < guids.Length; i++)
-        {
-            guids[i] = AssetDatabase.GUIDToAssetPath(guids[i]);
-            guids[i] = guids[i].Remove(0, 17);
-            int dotPos = 0;
-            for (int j = 0; j < guids[i].Length; j++)
-            {
-                if (guids[i][j] == '.')
-                    dotPos = j;
-            }
-            guids[i] = guids[i].Remove(dotPos, 7);
-        }
+            minion.minion.SetActive(false);
+            GameObject minionGameObject = Instantiate(minion.minion);
 
-        return guids;
+            if (minion.animator != null)
+                minionGameObject.GetComponent<Animator>().runtimeAnimatorController = minion.animator; // MabeWorks
+
+            MinionBattleBasic basicMinionBattle = minionGameObject.GetComponent<MinionBattleBasic>();
+            basicMinionBattle.basePrefab = minion.minion;
+            basicMinionBattle.partyIndex = minion.slotIndex;
+
+            if (minion.stats.ATK >= 0)
+                basicMinionBattle.stats.ATK = minion.stats.ATK;
+            if (minion.stats.AttackSpeed >= 0)
+                basicMinionBattle.stats.AttackSpeed = minion.stats.AttackSpeed;
+            if (minion.stats.Speed >= 0)
+                basicMinionBattle.stats.Speed = minion.stats.Speed;
+            if (minion.stats.Range >= 0)
+                basicMinionBattle.stats.Range = minion.stats.Range;
+            if (minion.stats.HP >= 0)
+                basicMinionBattle.stats.HP = minion.stats.HP;
+            if (minion.stats.Cost >= 0)
+                basicMinionBattle.stats.Cost = minion.stats.Cost;
+
+            //minion.minionName = 
+            basicMinionBattle.minionName = minion.minionName;
+
+            basicMinionBattle.isEnemy = false;
+
+            loadedMinions[i] = minionGameObject;
+            i++;
+        }
+        return loadedMinions;
     }
 }

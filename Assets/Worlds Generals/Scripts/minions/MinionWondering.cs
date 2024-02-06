@@ -76,7 +76,7 @@ public class MinionWondering : MonoBehaviour
     void AddMinionDeck()
     {
         MinionDeck.Instance.basicBattleMinion = BasicBattleMinion;
-        MinionDeck.Instance.minions = battleMinions;    
+        MinionDeck.Instance.minions = battleMinions;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

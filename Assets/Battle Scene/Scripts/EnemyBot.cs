@@ -20,16 +20,7 @@ public class EnemyBot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!IfScripting()) // Remove When Game is doen
-            MinionDeck.Instance.CreateMinionsPrefabs();
-        string[] guids = MinionDeck.Instance.GetPrefabPathsForLoad();
-        minions = new GameObject[guids.Length];
-        for (int i = 0; i < guids.Length; i++)
-        {
-            minions[i] = Resources.Load(guids[i]) as GameObject;
-            minions[i].SetActive(true);
-            //Debug.Log(guids[i]);
-        }
+        minions = MinionDeck.Instance.LoadMinions();
 
         costs = new int[minions.Length];
         for (int i = 0; i < minions.Length; i++)

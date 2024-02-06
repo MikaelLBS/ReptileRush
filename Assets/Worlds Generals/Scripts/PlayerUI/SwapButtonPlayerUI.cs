@@ -18,11 +18,11 @@ public class SwapButtonPlayerUI : MonoBehaviour
     GameObject copyButton;
     private void Start()
     {
-        startIndex = index;
         image = GetComponent<Image>();
         copyButton = Instantiate(gameObject);
         copyButton.transform.SetParent(transform, false);
         copyButton.GetComponent<Button>().interactable = false;
+        Destroy(copyButton.GetComponent<SwapButtonPlayerUI>());
         copyButton.SetActive(false);
     }
 

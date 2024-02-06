@@ -50,6 +50,7 @@ public class PlayerUI : MonoBehaviour
 
             SwapButtonPlayerUI buttonScriptPlayerUI = button.GetComponent<SwapButtonPlayerUI>();
             buttonScriptPlayerUI.minion = minData.minion;
+            buttonScriptPlayerUI.startIndex = i;
             buttonScriptPlayerUI.index = minData.slotIndex;
             buttonScriptPlayerUI.xSplitLines = xCoordsButtonsSplitLines;
             buttonScriptPlayerUI.playerUI = this;

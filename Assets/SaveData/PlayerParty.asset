@@ -16,7 +16,7 @@ MonoBehaviour:
   - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
     minionName: Attack
     icon: {fileID: -1456648800, guid: 4fc1cced948982c49b47715070ece8c0, type: 3}
-    slotIndex: 0
+    slotIndex: 1
     animator: {fileID: 0}
     stats:
       ATK: 3.493989
@@ -28,7 +28,7 @@ MonoBehaviour:
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
     minionName: "S\xE5r"
     icon: {fileID: 706599432, guid: b3fb6d2bd92558e48a73a94c38984ae1, type: 3}
-    slotIndex: 1
+    slotIndex: 0
     animator: {fileID: 0}
     stats:
       ATK: 10.991465

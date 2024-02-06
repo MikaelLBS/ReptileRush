@@ -16,7 +16,6 @@ class VectorInt2
 
 public class BattleCanvas : MonoBehaviour
 {
-    public bool isScripting; // Can be Removed when game is done. Ativate if you are testing things only in battle scene
     [Header("Summon Buttons")]
     [SerializeField] PlayerParty playerDeck;
     [SerializeField] MinionDeck minionDeck;
@@ -55,8 +54,6 @@ public class BattleCanvas : MonoBehaviour
         for (int i = 0; i < minions.Length;i++)
         {
             MinionBattleBasic minData = minions[i].GetComponent<MinionBattleBasic>();
-            Debug.Log(xCoordsForButtons[minData.partyIndex] +" : "+ xCoordsForButtons[i]);
-
             GameObject button = Instantiate(buttonPrefab, new Vector2(xCoordsForButtons[minData.partyIndex], buttonHolder.position.y), Quaternion.identity);
             button.transform.SetParent(buttonHolder);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;

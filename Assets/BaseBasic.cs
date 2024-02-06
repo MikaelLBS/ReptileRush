@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Net;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,18 +41,15 @@ public class BaseBasic : MonoBehaviour
     {
         hit = Physics2D.Raycast(transform.position+new Vector3(0, -2, 0), transform.right, Range, teamLayerMask);
         Debug.DrawRay(transform.position+new Vector3(0, -2, 0), transform.right * Range, Color.green);
-        if (hit.collider != null)
+        if (attackCoolDown <= 0)
         {
-            if (attackCoolDown <= 0)
-            {
-                attackReady = true;
-                if (!isEnemy) ;
-                    attackbutton.interactable = true;
-            }
-            else
-            {
-                attackCoolDown -= Time.deltaTime;
-            }
+            //attackReady = true;
+            if (!isEnemy)
+                attackbutton.interactable = true;
+        }
+        else
+        {
+            attackCoolDown -= Time.deltaTime;
         }
     }
 
@@ -59,7 +57,6 @@ public class BaseBasic : MonoBehaviour
     {
         Debug.Log("attack");
         hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(ATK);
-        attackCoolDown += AttackSpeed;
     }
 
     private void Awake()
@@ -86,16 +83,18 @@ public class BaseBasic : MonoBehaviour
     }
     public void AttackButton()
     {
-        //player press button
-        if (attackReady)
+        //--player press button--
+
+        //if (attackReady)
+        //{ return; }
+
+        //attackReady = false;
+        attackCoolDown += AttackSpeed;
+        if (hit.collider != null && hit.collider.gameObject.tag == enamyTag)
         {
-            attackReady = false;
-            if (hit.collider.gameObject.tag == enamyTag)
-            {
-                for (int i = 0; i < Attacks; i++)
-                    AttackMinion();
-            }
-        }        
+            for (int i = 0; i < Attacks; i++)
+                AttackMinion();
+        }       
     }
     void Win()
     {

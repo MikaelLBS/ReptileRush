@@ -12,5 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6ce50c76616fd4ea1ad3c7868a2641, type: 3}
   m_Name: MinionDeck
   m_EditorClassIdentifier: 
-  basicBattleMinion: {fileID: 0}
-  minions: []
+  basicBattleMinion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
+  minions:
+  - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
+    minionName: Tank
+    animator: {fileID: 0}
+    resetStats: 0
+    stats:
+      ATK: 2.2234097
+      AttackSpeed: 0.79138947
+      HP: 2.8860474
+      Speed: 0.67218065
+      Range: 2.8696232
+      Cost: 43
+  - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
+    minionName: Damge
+    animator: {fileID: 0}
+    resetStats: 0
+    stats:
+      ATK: 12.7654915
+      AttackSpeed: 0.64390326
+      HP: 68.70399
+      Speed: 1.2908244
+      Range: 0.9562702
+      Cost: 28

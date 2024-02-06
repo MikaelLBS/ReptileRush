@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minions:
   - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
-    minionName: Tank
-    icon: {fileID: 0}
-    slotIndex: 1
+    minionName: Attack
+    icon: {fileID: -1456648800, guid: 4fc1cced948982c49b47715070ece8c0, type: 3}
+    slotIndex: 0
     animator: {fileID: 0}
     stats:
       ATK: 3.493989
@@ -26,9 +26,9 @@ MonoBehaviour:
       Range: 2.9011078
       Cost: 67
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
-    minionName: Damge
-    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    slotIndex: 0
+    minionName: "S\xE5r"
+    icon: {fileID: 706599432, guid: b3fb6d2bd92558e48a73a94c38984ae1, type: 3}
+    slotIndex: 1
     animator: {fileID: 0}
     stats:
       ATK: 10.991465
@@ -38,8 +38,8 @@ MonoBehaviour:
       Range: 5.1203346
       Cost: 76
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
-    minionName: Damge
-    icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    minionName: Idel
+    icon: {fileID: 2083808989, guid: a598a686951308d4093e073706ed489d, type: 3}
     slotIndex: 2
     animator: {fileID: 0}
     stats:
@@ -49,22 +49,9 @@ MonoBehaviour:
       Speed: 1.1525168
       Range: 11.859519
       Cost: 51
-  - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
-    minionName: Tank
-    icon: {fileID: 0}
-    slotIndex: 3
-    animator: {fileID: 0}
-    stats:
-      ATK: 4.9742923
-      AttackSpeed: 2.261819
-      HP: 24.422335
-      Speed: 2.105815
-      Range: 6.9217205
-      Cost: 11
   loadedMinions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   maxMinions: 3
-  sceneIndex: 1
+  sceneIndex: 0

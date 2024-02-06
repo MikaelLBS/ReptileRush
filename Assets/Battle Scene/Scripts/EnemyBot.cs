@@ -7,12 +7,6 @@ public class EnemyBot : MonoBehaviour
     [SerializeField] Transform spawnPos;
     public GameObject []minions;
 
-    // If Scripting. Can be Removed if Game is done
-    bool IfScripting()
-    {
-        return GetComponent<BattleCanvas>().isScripting;
-    }
-
     int[] costs;
     float timer;
     [SerializeField] float resetTimer;
@@ -48,7 +42,7 @@ public class EnemyBot : MonoBehaviour
         if (costs[index] <= mana)
         {
             mana -= costs[index];
-            GameObject minion = Instantiate(minions[Random.Range(0, minions.Length)], spawnPos.position, Quaternion.identity);
+            Instantiate(minions[Random.Range(0, minions.Length)], spawnPos.position, Quaternion.identity).gameObject.SetActive(true);
         }
     }
 }

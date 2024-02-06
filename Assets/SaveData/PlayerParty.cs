@@ -44,6 +44,7 @@ public class PlayerParty : ScriptableObject
             MinionBattleBasic basicMinionBattle = minionGameObject.GetComponent<MinionBattleBasic>();
             basicMinionBattle.basePrefab = minion.minion;
             basicMinionBattle.partyIndex = minion.slotIndex;
+            basicMinionBattle.icon = minion.icon;
 
             if (minion.stats.ATK >= 0)
                 basicMinionBattle.stats.ATK = minion.stats.ATK;

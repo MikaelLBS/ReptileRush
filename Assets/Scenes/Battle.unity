@@ -291,10 +291,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   ATK: 10
-  AttackSpeed: 5
+  AttackSpeed: 3
   HP: 1000
   Range: 8
-  Attacks: 3
+  Attacks: 46
   attackbutton: {fileID: 607102670}
   icon: {fileID: 0}
   attackReady: 0
@@ -2618,7 +2618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064fb7f1ff80bac4aafde1351792bb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isScripting: 1
   playerDeck: {fileID: 11400000, guid: 730276c1eb944e740b026b92b1ff163e, type: 2}
   minionDeck: {fileID: 11400000, guid: de36103fb82e95842b22a6b8dc9438fb, type: 2}
   minions:

@@ -46,25 +46,29 @@ public class BattleCanvas : MonoBehaviour
 
         minionsCost = new VectorInt2[minions.Length];
         summonButtons = new Button[minions.Length];
+        float[] xCoordsForButtons = new float[minions.Length];
+        for (int i = 0; i < minions.Length; i++)
+        {
+            distance += distanceBetweenPic;
+            xCoordsForButtons[i] = distance;
+        }
         for (int i = 0; i < minions.Length;i++)
         {
             MinionBattleBasic minData = minions[i].GetComponent<MinionBattleBasic>();
+            Debug.Log(xCoordsForButtons[minData.partyIndex] +" : "+ xCoordsForButtons[i]);
 
-            distance += distanceBetweenPic;
-            GameObject button = Instantiate(buttonPrefab, new Vector2(distance, buttonHolder.position.y), Quaternion.identity);
+            GameObject button = Instantiate(buttonPrefab, new Vector2(xCoordsForButtons[minData.partyIndex], buttonHolder.position.y), Quaternion.identity);
             button.transform.SetParent(buttonHolder);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
             button.GetComponent<Image>().sprite = minData.icon;
-            button.GetComponent<BattleSummonButton>().minion = minions[i];
-            button.GetComponent<BattleSummonButton>().spawnPos = spawnPos;
-            button.GetComponent<BattleSummonButton>().index = i;
+
+            BattleSummonButton battleButton = button.GetComponent<BattleSummonButton>();
+            battleButton.minion = minions[i];
+            battleButton.spawnPos = spawnPos;
+            battleButton.index = i;
 
             minionsCost[i] = new VectorInt2(minData.stats.Cost);
             summonButtons[i] = button.GetComponent<Button>();
-        }
-        foreach (GameObject minion in minions)
-        {
-
         }
     }
 

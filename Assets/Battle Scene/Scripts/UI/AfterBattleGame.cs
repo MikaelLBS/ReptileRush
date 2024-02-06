@@ -37,12 +37,18 @@ public class AfterBattleGame : MonoBehaviour
         string[] guids = PlayerParty.Instance.GetPrefabPaths();
         // creates buttons
         summonButtons = new Button[minions.Length];
+        float[] xCoordsButtons = new float[minions.Length];
+        for (int i = 0; i < minions.Length; i++)
+        {
+            distance += distanceBetweenPic;
+            xCoordsButtons[i] = distance;
+        }
         for (int i = 0; i < minions.Length; i++)
         {
             MinionBattleBasic minData = minions[i].GetComponent<MinionBattleBasic>();
 
-            distance += distanceBetweenPic;
-            GameObject button = Instantiate(buttonPrefab, new Vector2(distance, buttonHolder.position.y), Quaternion.identity);
+            //distance += distanceBetweenPic;
+            GameObject button = Instantiate(buttonPrefab, new Vector2(xCoordsButtons[minData.partyIndex], buttonHolder.position.y), Quaternion.identity);
             button.transform.SetParent(transform);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
             button.GetComponent<Image>().sprite = minData.icon;

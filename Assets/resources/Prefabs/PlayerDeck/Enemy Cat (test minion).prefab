@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4619976387701337760
+--- !u!1 &1895277977089927403
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7191339212546556514}
-  - component: {fileID: 4339914915619194070}
-  - component: {fileID: 3533255532188421822}
-  - component: {fileID: 3449512914503700705}
-  - component: {fileID: 6433508275203436441}
-  - component: {fileID: 9010939388436563065}
+  - component: {fileID: 8523500606070385308}
+  - component: {fileID: 4184123288752950767}
+  - component: {fileID: 5226869045693210675}
+  - component: {fileID: 704202047631605930}
+  - component: {fileID: 517761442995669860}
+  - component: {fileID: 3414990741162116266}
   m_Layer: 8
   m_Name: Enemy Cat (test minion)
   m_TagString: PlayerMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7191339212546556514
+  m_IsActive: 1
+--- !u!4 &8523500606070385308
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619976387701337760}
+  m_GameObject: {fileID: 1895277977089927403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -36,13 +36,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4339914915619194070
+--- !u!212 &4184123288752950767
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619976387701337760}
+  m_GameObject: {fileID: 1895277977089927403}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -88,13 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3533255532188421822
+--- !u!61 &5226869045693210675
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619976387701337760}
+  m_GameObject: {fileID: 1895277977089927403}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -133,14 +133,14 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &3449512914503700705
+--- !u!50 &704202047631605930
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619976387701337760}
+  m_GameObject: {fileID: 1895277977089927403}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -160,13 +160,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6433508275203436441
+--- !u!114 &517761442995669860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619976387701337760}
+  m_GameObject: {fileID: 1895277977089927403}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 716e9301789c63842962ddabb6b281e3, type: 3}
@@ -174,13 +174,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   minionName: Tank
+  partyIndex: 0
   stats:
-    ATK: 2
-    AttackSpeed: 0.5
-    HP: 50
-    Speed: 0.5
-    Range: 2
-    Cost: 5
+    ATK: 7.5506086
+    AttackSpeed: 0.58971477
+    HP: 89.4992
+    Speed: 1.5250492
+    Range: 7.9239445
+    Cost: 40
   AmountOfKnockbacks: 1000
   KnockbackRange: 2.04
   icon: {fileID: 0}
@@ -188,14 +189,14 @@ MonoBehaviour:
   specal: 0
   areaOfATK: 0
   areaSize: 0
---- !u!95 &9010939388436563065
+--- !u!95 &3414990741162116266
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4619976387701337760}
+  m_GameObject: {fileID: 1895277977089927403}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7615aeb765897bb48a2fd08a6838ac70, type: 2}

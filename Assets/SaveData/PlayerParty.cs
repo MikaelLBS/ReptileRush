@@ -12,6 +12,7 @@ public class PlayerParty : ScriptableObject
         Instance = this;
     }
     public GameObject[] minions;
+    public GameObject Test;
     public short maxMinions;
     public int sceneIndex;
 

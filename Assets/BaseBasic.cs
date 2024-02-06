@@ -24,7 +24,7 @@ public class BaseBasic : MonoBehaviour
     public void DamgeTaken(float damge)
     {
         HP -= damge;
-        if (HP <= 0) { Object.Destroy(gameObject); }
+        if (HP <= 0) { Win(); }
     }
 
     // --ATTACK--
@@ -81,5 +81,14 @@ public class BaseBasic : MonoBehaviour
     void Update()
     {
         Attack();
+    }
+    void AttackButton()
+    {
+        //player press button
+        AttackMinion();
+    }
+    void Win()
+    {
+
     }
 }

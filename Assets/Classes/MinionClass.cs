@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 
 [System.Serializable]
 public class MinionClass
@@ -39,7 +38,7 @@ public class MinionClass
     {
         public GameObject minion;
         public string minionName;
-        public AnimatorController animator;
+        public RuntimeAnimatorController animator;
         public bool resetStats;
         public MinionStats stats;
 

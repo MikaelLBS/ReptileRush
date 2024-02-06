@@ -10,6 +10,7 @@ public class MinionBattleBasic : MonoBehaviour
 {
     public bool isEnemy;
     public string minionName;
+    public int partyIndex;
     public MinionClass.MinionStats stats;
     [SerializeField] protected uint AmountOfKnockbacks;
     [SerializeField] protected float KnockbackRange;

@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   minionName: 
+  partyIndex: 0
   stats:
     ATK: 2
     AttackSpeed: 0.5

@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe97c09259b13642b115b541df698ba, type: 3}
   m_Name: PlayerParty
   m_EditorClassIdentifier: 
-  minions:
-  - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
-  - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
-  - {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
+  minions: []
+  Test: {fileID: 0}
   maxMinions: 3
   sceneIndex: 1

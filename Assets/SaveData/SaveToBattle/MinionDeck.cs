@@ -48,8 +48,8 @@ public class MinionDeck : ScriptableObject
             if (minion.stats.Cost >= 0)
                 basicMinionBattle.stats.Cost = minion.stats.Cost;
 
-            //minion.minionName = 
             basicMinionBattle.minionName = minion.minionName;
+            basicMinionBattle.icon = minion.icon;
 
             basicMinionBattle.isEnemy = true;
 

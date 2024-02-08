@@ -39,6 +39,7 @@ public class MinionClass
     {
         public GameObject minion;
         public string minionName;
+        public Sprite icon;
         public RuntimeAnimatorController animator;
         public bool resetStats;
         public MinionStats stats;
@@ -74,6 +75,7 @@ public class MinionClass
             icon = battleMinion.icon;
             animator = animatorController;
             stats = battleMinion.stats;
+            icon = battleMinion.icon;
 
             slotIndex = 0;
         }

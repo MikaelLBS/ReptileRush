@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    [Header("Summon Buttons")]
-    //[SerializeField] PlayerParty playerDeck;
-    //[SerializeField] MinionDeck minionDeck;
     SwapButtonPlayerUI[] buttonScripts;
     float[] xCoordsButtons;
     float[] xCoordsButtonsSplitLines;
@@ -118,7 +115,98 @@ public class PlayerUI : MonoBehaviour
                 button.transform.position = new Vector2 (xCoordsButtons[button.index], button.transform.position.y);
                 continue;
             }
-            button.MoveTo(xCoordsButtons[button.index], 5f);
+            button.MoveTo(xCoordsButtons[button.index], 50);
         }
+    }
+
+    // Player Open inv
+    [Header("Player Inventory")]
+    [SerializeField] GameObject inv;
+
+    [SerializeField] float pictureSize2; // button size
+    [SerializeField] RectTransform buttonHolder2; // where the button are placed
+    [SerializeField] GameObject buttonPrefab2;
+    [SerializeField] InvStatsObjects invStats;
+    float[] yCoordsButtons;
+    GameObject[] minonButtonsInv;
+
+    [System.Serializable]
+    class InvStatsObjects
+    {
+        public GameObject holder;
+        public TMPro.TextMeshProUGUI minionName;
+        public TMPro.TextMeshProUGUI statsText;
+    }
+    void CreateButtonsInv()
+    {
+        Vector2 startEndPosX = new Vector2(buttonHolder2.position.y - buttonHolder2.sizeDelta.y / 2, buttonHolder2.position.y + buttonHolder2.sizeDelta.y / 2);
+        float sizeBetweenStartAndEndPoints = startEndPosX.y - startEndPosX.x;
+        // if button is lager then placeHolder make the picture size smaller
+        if (pictureSize2 * (PlayerParty.Instance.minions.Count + 1) > sizeBetweenStartAndEndPoints)
+            pictureSize2 = sizeBetweenStartAndEndPoints / (PlayerParty.Instance.minions.Count + 2);
+
+        float distanceBetweenPic = (sizeBetweenStartAndEndPoints) / PlayerParty.Instance.minions.Count;
+        float pictureSize22222222e22e2e2e2e2e2e22e2e2ev2ee2e2e2e2e2e2e2e2e2e2e2e2e222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee2e2e2eee2222222222222222222eeeee = pictureSize2;
+        float distance = startEndPosX.x + pictureSize2 / 2 - distanceBetweenPic + (sizeBetweenStartAndEndPoints - pictureSize22222222e22e2e2e2e2e2e22e2e2ev2ee2e2e2e2e2e2e2e2e2e2e2e2e222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee2e2e2eee2222222222222222222eeeee * PlayerParty.Instance.minions.Count) / PlayerParty.Instance.minions.Count / 2;
+
+        // creates buttons
+        yCoordsButtons = new float[PlayerParty.Instance.minions.Count];
+        minonButtonsInv = new GameObject[PlayerParty.Instance.minions.Count];
+        for (int i = 0; i < PlayerParty.Instance.minions.Count; i++)
+        {
+            distance += distanceBetweenPic;
+            yCoordsButtons[i] = distance;
+        }
+        for (int i = 0; i < PlayerParty.Instance.minions.Count; i++)
+        {
+            MinionClass.MinionSave minData = PlayerParty.Instance.minions[i];
+
+            GameObject button = Instantiate(buttonPrefab2, new Vector2(buttonHolder2.position.x-buttonHolder2.sizeDelta.x/2+pictureSize2/2+50, yCoordsButtons[minData.slotIndex]), Quaternion.identity);
+            button.transform.SetParent(buttonHolder2);
+            button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize2;
+            button.GetComponent<Image>().sprite = minData.icon;
+            minonButtonsInv[i] = button;
+
+            InvButtonUI buttonScriptPlayerUI = button.GetComponent<InvButtonUI>();
+
+            buttonScriptPlayerUI.minionStats = minData.stats;
+            buttonScriptPlayerUI.minionName = minData.minionName;
+            buttonScriptPlayerUI.index = minData.slotIndex;
+            buttonScriptPlayerUI.playerUI = this;
+        }
+    }
+
+    public void OpenInv()
+    { inv.SetActive (true); Time.timeScale = 0; CreateButtonsInv(); }
+    public void CloseInv()
+    {
+        inv.SetActive(false);
+        Time.timeScale = 1;
+        for (int i = 0; i < minonButtonsInv.Length; i++)
+        { Destroy(minonButtonsInv[i]); }
+    
+    }
+
+    public void ShowStats(MinionClass.MinionStats stats,string name)
+    {
+        invStats.holder.SetActive(true);
+        invStats.statsText.text = UppdateStatsText(stats);
+        invStats.minionName.text = name;
+    }
+    public void HideStats()
+    {
+        invStats.holder.SetActive(false);
+    }
+    string UppdateStatsText(MinionClass.MinionStats stats)
+    {
+        string statsText =
+            "ATK: "+stats.ATK*10 +
+            "\nATK Speed: "+stats.AttackSpeed*10 +
+            "\nHP: "+stats.HP*10 + 
+            "\nRange: "+stats.Range * 10 +
+            "\nSpeed: "+stats.Speed*10+
+            "\nCost: "+stats.Cost;
+
+        return statsText;
     }
 }

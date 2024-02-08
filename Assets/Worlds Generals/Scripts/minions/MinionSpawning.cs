@@ -29,15 +29,15 @@ public class MinionSpawning : MonoBehaviour
             {
                 MinionClass.MinionStats minionStats = a.GetComponent<MinionWondering>().battleMinions[i].stats;
                 if (spawnMinion.minionsRndStats.ATK > 0)
-                    minionStats.ATK = Math.Abs(minionStats.ATK + Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK));
+                    minionStats.ATK = MathF.Round(Math.Abs(minionStats.ATK + Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK))*100)/100;
                 if (spawnMinion.minionsRndStats.AttackSpeed > 0)
-                    minionStats.AttackSpeed = Math.Abs(minionStats.AttackSpeed + Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed));
+                    minionStats.AttackSpeed = MathF.Round(Math.Abs(minionStats.AttackSpeed + Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed)) * 100) / 100;
                 if (spawnMinion.minionsRndStats.HP > 0)
-                    minionStats.HP = Math.Abs(minionStats.HP + Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP));
+                    minionStats.HP = MathF.Round(Math.Abs(minionStats.HP + Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP)) * 100) / 100;
                 if (spawnMinion.minionsRndStats.Speed > 0)
-                    minionStats.Speed = Math.Abs(minionStats.Speed + Random.Range(-spawnMinion.minionsRndStats.Speed, spawnMinion.minionsRndStats.Speed));
+                    minionStats.Speed = MathF.Round(Math.Abs(minionStats.Speed + Random.Range(-spawnMinion.minionsRndStats.Speed, spawnMinion.minionsRndStats.Speed)) * 100) / 100;
                 if (spawnMinion.minionsRndStats.Range > 0)
-                    minionStats.Range = Math.Abs(minionStats.Range + Random.Range(-spawnMinion.minionsRndStats.Range, spawnMinion.minionsRndStats.Range));
+                    minionStats.Range = MathF.Round(Math.Abs(minionStats.Range + Random.Range(-spawnMinion.minionsRndStats.Range, spawnMinion.minionsRndStats.Range)) * 100) / 100;
                 if (spawnMinion.minionsRndStats.Cost > 0)
                     minionStats.Cost = Math.Abs(minionStats.Cost + Random.Range(-spawnMinion.minionsRndStats.Cost, spawnMinion.minionsRndStats.Cost));
             }

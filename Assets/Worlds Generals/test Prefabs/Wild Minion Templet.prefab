@@ -136,6 +136,7 @@ MonoBehaviour:
   battleMinions:
   - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
     minionName: Tank
+    icon: {fileID: -658076265, guid: 4e6f5f8084402a04a94b79e35dade9f4, type: 3}
     animator: {fileID: 0}
     resetStats: 0
     stats:
@@ -147,6 +148,7 @@ MonoBehaviour:
       Cost: 5
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
     minionName: Damge
+    icon: {fileID: 723217544, guid: 4fc1cced948982c49b47715070ece8c0, type: 3}
     animator: {fileID: 0}
     resetStats: 0
     stats:

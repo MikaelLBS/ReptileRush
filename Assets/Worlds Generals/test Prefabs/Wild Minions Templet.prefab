@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7813185584578829674}
   - component: {fileID: 443176330395850545}
   m_Layer: 8
-  m_Name: Wild Minion Templet
+  m_Name: Wild Minions Templet
   m_TagString: PlayerMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

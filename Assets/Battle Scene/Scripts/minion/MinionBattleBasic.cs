@@ -8,6 +8,7 @@ using Object = UnityEngine.Object;
 [System.Serializable]
 public class MinionBattleBasic : MonoBehaviour
 {
+
     public bool isEnemy;
     public string minionName;
     public GameObject basePrefab;
@@ -64,19 +65,23 @@ public class MinionBattleBasic : MonoBehaviour
                 attackCoolDown += stats.AttackSpeed;
                 animator.speed = 1;
 
-                if (hit.collider.gameObject.tag == enamyTag)
+                /*if (hit.collider.gameObject.tag == enamyTag)
                 {
                     AttackMinion();
+                    attackCoolDown += stats.AttackSpeed;
                 }
                 else if (hit.collider.gameObject.tag == "Base") // INPLEMENT WHEN HAVE TOWERS
                 {
                     AttackTower();
+                    attackCoolDown += stats.AttackSpeed;
                 }
                 else
                 {
                     attacked = false;
                     animator.SetBool("IsAttacking", false);
-                }
+                }*/
+                attackCoolDown += stats.AttackSpeed;
+                AttackForDamage();
             }
             else
             {
@@ -96,15 +101,21 @@ public class MinionBattleBasic : MonoBehaviour
             animator.SetBool("IsAttacking", false);
         }
     }
+    protected virtual void AttackForDamage()
+    {
+
+        if (hit.collider.tag == enamyTag)
+            AttackMinion();
+        else if (hit.collider.tag == "Base")
+            AttackTower();
+    }
     protected virtual void AttackMinion()
     {
         hit.collider.gameObject.GetComponent<MinionBattleBasic>().DamgeTaken(stats.ATK);
-        attackCoolDown += stats.AttackSpeed;
     }
     protected virtual void AttackTower()
     {
         hit.collider.gameObject.GetComponent<BaseBasic>().DamgeTaken(stats.ATK);
-        attackCoolDown += stats.AttackSpeed;
     }
     // --MOVE--
     protected virtual void Move()
@@ -186,5 +197,11 @@ public class MinionBattleBasic : MonoBehaviour
     {
         Attack();
         Move();
+        Extras();
+
+    }
+    protected virtual void Extras()
+    {
+
     }
 }

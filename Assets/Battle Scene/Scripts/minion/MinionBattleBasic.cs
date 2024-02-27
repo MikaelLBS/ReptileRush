@@ -29,7 +29,7 @@ public class MinionBattleBasic : MonoBehaviour
     uint knockbacksLeft;
     bool isInKnockbackAnimation; // is true when minion is in knockback Animation
 
-    public void DamgeTaken(int damge)
+    public virtual void DamgeTaken(int damge)
     {
         stats.HP -= damge;
         if (stats.HP <= 0) { Object.Destroy(gameObject); }
@@ -103,6 +103,9 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual void AttackForDamage()
     {
+        MinionBattleSpecial minionBattleSpecial = hit.collider.gameObject.GetComponent<MinionBattleSpecial>();
+        if (minionBattleSpecial != null && minionBattleSpecial.hasThorns)
+            DamgeTaken(minionBattleSpecial.stats.ATK / 2);
 
         if (hit.collider.tag == enamyTag)
             AttackMinion();

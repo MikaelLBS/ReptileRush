@@ -11,9 +11,9 @@ using Object = UnityEngine.Object;
 public class BaseBasic : MonoBehaviour
 {
     [SerializeField] protected bool isEnemy;
-    [SerializeField] protected float ATK;
+    [SerializeField] protected int ATK;
     [SerializeField] protected float AttackSpeed;
-    [SerializeField] protected float HP;
+    [SerializeField] protected int HP;
     [SerializeField] protected float Range;
     [SerializeField] protected int Attacks;
     [SerializeField] Button attackbutton;
@@ -25,7 +25,7 @@ public class BaseBasic : MonoBehaviour
     Animator animator;
     float attackAnimeTime;
 
-    public void DamgeTaken(float damge)
+    public void DamgeTaken(int damge)
     {
         HP -= damge;
         if (HP <= 0) { Win(); }

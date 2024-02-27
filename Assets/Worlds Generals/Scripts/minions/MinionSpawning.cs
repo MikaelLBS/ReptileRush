@@ -29,11 +29,11 @@ public class MinionSpawning : MonoBehaviour
             {
                 MinionClass.MinionStats minionStats = a.GetComponent<MinionWondering>().battleMinions[i].stats;
                 if (spawnMinion.minionsRndStats.ATK > 0)
-                    minionStats.ATK = MathF.Round(Math.Abs(minionStats.ATK + Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK))*100)/100;
+                    minionStats.ATK = Math.Abs(minionStats.ATK + Random.Range(-spawnMinion.minionsRndStats.ATK, spawnMinion.minionsRndStats.ATK));
                 if (spawnMinion.minionsRndStats.AttackSpeed > 0)
                     minionStats.AttackSpeed = MathF.Round(Math.Abs(minionStats.AttackSpeed + Random.Range(-spawnMinion.minionsRndStats.AttackSpeed, spawnMinion.minionsRndStats.AttackSpeed)) * 100) / 100;
                 if (spawnMinion.minionsRndStats.HP > 0)
-                    minionStats.HP = MathF.Round(Math.Abs(minionStats.HP + Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP)) * 100) / 100;
+                    minionStats.HP = Math.Abs(minionStats.HP + Random.Range(-spawnMinion.minionsRndStats.HP, spawnMinion.minionsRndStats.HP));
                 if (spawnMinion.minionsRndStats.Speed > 0)
                     minionStats.Speed = MathF.Round(Math.Abs(minionStats.Speed + Random.Range(-spawnMinion.minionsRndStats.Speed, spawnMinion.minionsRndStats.Speed)) * 100) / 100;
                 if (spawnMinion.minionsRndStats.Range > 0)

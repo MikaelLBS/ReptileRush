@@ -27,9 +27,9 @@ public class MinionClass
             Range = stats.Range;
             Cost = stats.Cost;
         }
-        public float ATK;
+        public int ATK;
         public float AttackSpeed;
-        public float HP;
+        public int HP;
         public float Speed;
         public float Range;
         public int Cost;

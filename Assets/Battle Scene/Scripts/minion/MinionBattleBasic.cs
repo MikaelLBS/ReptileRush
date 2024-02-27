@@ -28,7 +28,7 @@ public class MinionBattleBasic : MonoBehaviour
     uint knockbacksLeft;
     bool isInKnockbackAnimation; // is true when minion is in knockback Animation
 
-    public void DamgeTaken(float damge)
+    public void DamgeTaken(int damge)
     {
         stats.HP -= damge;
         if (stats.HP <= 0) { Object.Destroy(gameObject); }

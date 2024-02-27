@@ -5,20 +5,11 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class MinionSpawning : MonoBehaviour
 {
-    [System.Serializable]
-    class MinionPreciseSpawn
-    {
-        public GameObject minion;
-        public Transform spawnPosition;
-        public bool radomizeBattleSatats;
-        public MinionClass.MinionStats minionsRndStats;
-
-    }
     [SerializeField] MinionDeck minionDeck;
     [SerializeField] PlayerParty playerDeck;
-    [SerializeField] MinionPreciseSpawn[] minions;
+    [SerializeField] MinionClass.MinionPreciseSpawn[] minions;
 
-    void MinonSpawn(MinionPreciseSpawn spawnMinion)
+    public void MinonSpawn(MinionClass.MinionPreciseSpawn spawnMinion)
     {
         GameObject a = Instantiate(spawnMinion.minion,spawnMinion.spawnPosition);
         a.transform.SetParent(transform,true);
@@ -55,7 +46,7 @@ public class MinionSpawning : MonoBehaviour
     void Start()
     {
 
-        foreach (MinionPreciseSpawn a in minions)
+        foreach (MinionClass.MinionPreciseSpawn a in minions)
         {
             MinonSpawn(a);
         }

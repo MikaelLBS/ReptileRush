@@ -7,6 +7,14 @@ using UnityEngine.UI;
 public class MinionClass
 {
     [System.Serializable]
+    public class MinionPreciseSpawn
+    {
+        public GameObject minion;
+        public Transform spawnPosition;
+        public bool radomizeBattleSatats;
+        public MinionStats minionsRndStats;
+    }
+    [System.Serializable]
     public class MinionStats
     {
         public MinionStats()

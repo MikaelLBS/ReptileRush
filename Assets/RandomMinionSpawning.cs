@@ -1,11 +1,13 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static MinionClass;
 
 public class RandomMinionSpawning : MonoBehaviour
 {
+    SpawnLocations[] spawnLocations;
     void Start()
     { 
         //MinonSpawn();
@@ -18,10 +20,19 @@ public class RandomMinionSpawning : MonoBehaviour
     }
 }
 
-public class SpawnLocations
+public class SpawnLocations : MonoBehaviour
 {
     Transform parL;
     Transform parR;
+    /*bool canSpawn;
+
+    void OnTriggerEnter2D(GameObject collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canSpawn = false;
+        }
+    }*/
 
     SpawnLocations(Transform parL, Transform parR)
     {

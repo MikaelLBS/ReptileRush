@@ -16,11 +16,13 @@ public class MinionWondering : MonoBehaviour
     [SerializeField] Vector2 randomTimer;
     [SerializeField] GameObject BasicBattleMinion;
     public MinionClass.BattleMinion[] battleMinions;
+    Animator animator;
     float timer;
+    bool isMoving = true;
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
         timer = Random.Range(0, 3);
 
         rbody = GetComponent<Rigidbody2D>();
@@ -36,7 +38,7 @@ public class MinionWondering : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
         speed *= -1;
     }
-    void Update()
+    void FixedUpdate()
     {
         // --Checks--
         /*RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, LayerMask.NameToLayer("EnemyTeam"));
@@ -51,26 +53,39 @@ public class MinionWondering : MonoBehaviour
         }*/
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right+Vector3.down*0.5f, 5, LayerMask.NameToLayer("EnemyTeam"));
         Debug.DrawRay(transform.position, (transform.right + Vector3.down * 0.5f) * 5, Color.green);
-        if (hit2.collider == null)
+        if (isMoving && hit2.collider == null)
         {
             Flip();
         }
         // --Timer--
         if (timer <= 0)
         {
+            if (Random.Range(0,4) == 0)
+            {
+                isMoving = false;
+                timer += 100;
+            }
+            else
+                isMoving = true;
             Flip();
             timer += Random.Range(randomTimer.x,randomTimer.y);
         }
         else
-            timer -= Time.deltaTime;
+            timer -= Time.fixedDeltaTime;
+        animator.SetBool("IsAttacking",!isMoving);
         // --Movement--
-        if (Mathf.Abs(rbody.velocity.x) > Mathf.Abs(speed))
+        if (isMoving && Mathf.Abs(rbody.velocity.x) > Mathf.Abs(speed))
         {
            rbody.velocity = new Vector2 (speed, rbody.velocity.y);
         }
-        else
+        else if (isMoving)
         {
             rbody.velocity = new Vector2(rbody.velocity.x + speed, rbody.velocity.y);
+        }
+        else
+        {
+            if (Random.Range(0,300) == 0)
+                Flip();
         }
     }
     void AddMinionDeck()
@@ -86,7 +101,20 @@ public class MinionWondering : MonoBehaviour
             PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene("Battle");
         }
-        Flip();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.name == "Player")
+        {
+            AddMinionDeck();
+            PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene("Battle");
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isMoving)
+            Flip();
     }
     private void OnValidate()
     {

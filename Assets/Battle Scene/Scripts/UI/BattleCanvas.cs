@@ -137,5 +137,17 @@ public class BattleCanvas : MonoBehaviour
             else
                 timer -= Time.deltaTime;
         }
+        if (Input.anyKey)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (Input.GetButton("Hot " + (i + 1)))
+                {
+                    if (i < summonButtons.Length && summonButtons[i].IsInteractable())
+                        summonButtons[i].GetComponent<BattleSummonButton>().ButtonDown();
+                    break;
+                }
+            }
+        }
     }
 }

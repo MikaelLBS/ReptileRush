@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3924613085238809393}
   - component: {fileID: 7813185584578829674}
   - component: {fileID: 443176330395850545}
+  - component: {fileID: 448074919559293367}
   m_Layer: 8
   m_Name: Wild Minions Templet
   m_TagString: PlayerMinion
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  randomTimer: {x: 3, y: 50}
+  randomTimer: {x: 1, y: 2}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
   battleMinions:
   - minion: {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
@@ -331,6 +332,27 @@ PolygonCollider2D:
       - {x: 0.6105366, y: -0.4316593}
       - {x: 3.1504674, y: 0.47385526}
   m_UseDelaunayMesh: 0
+--- !u!95 &448074919559293367
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71222608602138419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7615aeb765897bb48a2fd08a6838ac70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8502098543956776164
 GameObject:
   m_ObjectHideFlags: 0

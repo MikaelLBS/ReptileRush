@@ -122,7 +122,6 @@ public class BattleCanvas : MonoBehaviour
 
         CheckCosts();
     }
-
     // Update is called once per frame
     void Update()
     {

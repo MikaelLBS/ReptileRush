@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static MinionBattleSpecial;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -129,6 +130,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] InvStatsObjects invStats;
     float[] yCoordsButtons;
     GameObject[] minonButtonsInv;
+    GameObject tempButton;
 
     [System.Serializable]
     class InvStatsObjects
@@ -136,6 +138,7 @@ public class PlayerUI : MonoBehaviour
         public GameObject holder;
         public TMPro.TextMeshProUGUI minionName;
         public TMPro.TextMeshProUGUI statsText;
+        public TMPro.TextMeshProUGUI abilityText;
     }
     void CreateButtonsInv()
     {
@@ -150,6 +153,7 @@ public class PlayerUI : MonoBehaviour
         float distance = startEndPosX.x + pictureSize2 / 2 - distanceBetweenPic + (sizeBetweenStartAndEndPoints - pictureSize22222222e22e2e2e2e2e2e22e2e2ev2ee2e2e2e2e2e2e2e2e2e2e2e2e222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee2e2e2eee2222222222222222222eeeee * PlayerParty.Instance.minions.Count) / PlayerParty.Instance.minions.Count / 2;
 
         // creates buttons
+        tempButton = null;
         yCoordsButtons = new float[PlayerParty.Instance.minions.Count];
         minonButtonsInv = new GameObject[PlayerParty.Instance.minions.Count];
         for (int i = 0; i < PlayerParty.Instance.minions.Count; i++)
@@ -161,23 +165,33 @@ public class PlayerUI : MonoBehaviour
         {
             MinionClass.MinionSave minData = PlayerParty.Instance.minions[i];
 
-            GameObject button = Instantiate(buttonPrefab2, new Vector2(buttonHolder2.position.x-buttonHolder2.sizeDelta.x/2+pictureSize2/2+50, yCoordsButtons[minData.slotIndex]), Quaternion.identity);
-            button.transform.SetParent(buttonHolder2);
-            button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize2;
-            button.GetComponent<Image>().sprite = minData.icon;
-            minonButtonsInv[i] = button;
+            tempButton = Instantiate(buttonPrefab2, new Vector2(buttonHolder2.position.x-buttonHolder2.sizeDelta.x/2+pictureSize2/2+50, yCoordsButtons[minData.slotIndex]), Quaternion.identity);
+            tempButton.transform.SetParent(buttonHolder2);
+            tempButton.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize2;
+            tempButton.GetComponent<Image>().sprite = minData.icon;
+            minonButtonsInv[i] = tempButton;
 
-            InvButtonUI buttonScriptPlayerUI = button.GetComponent<InvButtonUI>();
+            InvButtonUI buttonScriptPlayerUI = tempButton.GetComponent<InvButtonUI>();
 
             buttonScriptPlayerUI.minionStats = minData.stats;
             buttonScriptPlayerUI.minionName = minData.minionName;
             buttonScriptPlayerUI.index = minData.slotIndex;
             buttonScriptPlayerUI.playerUI = this;
+
+            MinionBattleSpecial minDataBattleSpecial = minData.minion.GetComponent<MinionBattleSpecial>();
+            if (minDataBattleSpecial != null && minDataBattleSpecial.specals != null)
+                buttonScriptPlayerUI.abilityType = minDataBattleSpecial.specals[0];
         }
     }
 
     public void OpenInv()
-    { inv.SetActive (true); Time.timeScale = 0; CreateButtonsInv(); }
+    {
+        inv.SetActive (true);
+        Time.timeScale = 0;
+        CreateButtonsInv();
+        if (tempButton != null)
+            tempButton.GetComponent<InvButtonUI>().ButtonDown();
+    }
     public void CloseInv()
     {
         inv.SetActive(false);
@@ -200,13 +214,40 @@ public class PlayerUI : MonoBehaviour
     string UppdateStatsText(MinionClass.MinionStats stats)
     {
         string statsText =
-            "ATK: "+stats.ATK*10 +
-            "\nATK Speed: "+stats.AttackSpeed*10 +
+            "ATK: "+ stats.ATK*10 +
+            "\nATK Speed: "+ Mathf.Round(1 /stats.AttackSpeed*100)/100 +
             "\nHP: "+stats.HP*10 + 
-            "\nRange: "+stats.Range * 10 +
-            "\nSpeed: "+stats.Speed*10+
+            "\nRange: "+ Mathf.Round(stats.Range * 10) +
+            "\nSpeed: "+Mathf.Round(stats.Speed * 10) +
             "\nCost: "+stats.Cost;
 
         return statsText;
+    }
+    public void ShowAbility(Spacials ability)
+    {
+        invStats.abilityText.text = "";
+        switch (ability)
+        {
+            case Spacials.Poison:
+                //string[] hej = { "Ability: Poison", "Poisoned minons take damage over time" };
+                ChangeAbilityText(new string[]{ "Ability: Poison", "Poisoned enemys take damage over time" });
+                break;
+                case Spacials.Thorns:
+                ChangeAbilityText(new string[] { "Ability: Thorns", "if enemys hits a creature with thorns","they also take a samll amount of damage" });
+                    break;
+            case Spacials.AreaOfAttack:
+                ChangeAbilityText(new string[] { "Ability: Area Of Attack", "Can hit several enemys per attack" });
+                break;
+            default:
+                break;
+
+        }
+    }
+    void ChangeAbilityText(string[] abilityText)
+    {
+        foreach (string s in abilityText)
+        {
+            invStats.abilityText.text += s+"\n";
+        }
     }
 }

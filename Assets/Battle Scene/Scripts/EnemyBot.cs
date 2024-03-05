@@ -42,7 +42,9 @@ public class EnemyBot : MonoBehaviour
         if (costs[index] <= mana)
         {
             mana -= costs[index];
-            Instantiate(minions[Random.Range(0, minions.Length)], spawnPos.position, Quaternion.identity).gameObject.SetActive(true);
+            GameObject minionSpawned = Instantiate(minions[Random.Range(0, minions.Length)], spawnPos.position, Quaternion.identity);
+            minionSpawned.SetActive(true);
+            minionSpawned.name = minionSpawned.name+MinionDeck.Instance.minionsAmount+"e";
         }
     }
 }

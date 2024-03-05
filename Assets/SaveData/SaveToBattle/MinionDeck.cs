@@ -15,6 +15,7 @@ public class MinionDeck : ScriptableObject
 
     public GameObject basicBattleMinion; // Minion Used if minion GameObject dont exist
     public MinionClass.BattleMinion[] minions;
+    public uint minionsAmount;
     public GameObject[] loadedMinions { get; private set; }
 
     // Creats prefabs of minions in Assets/resources/Prefabs/MinionDeck/

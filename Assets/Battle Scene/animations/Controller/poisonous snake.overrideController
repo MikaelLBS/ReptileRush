@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: poisonous snake
+  m_Controller: {fileID: 9100000, guid: 7615aeb765897bb48a2fd08a6838ac70, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2b13ec3b582cd804e8c5a8ff7c4dabfd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 334f9423884b4b043963b415928fb40e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 69fefae5f4551394faeb3293247653a3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 670843763ab120b4081076cc492f2ecf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cf1766ff9acc1164982b00187a6d3cdf, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 670843763ab120b4081076cc492f2ecf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5a05b080990e4874aa44a329c3fcf04c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 22c821736148cc4449d6020ddba1a018, type: 2}

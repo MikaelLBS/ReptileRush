@@ -2,20 +2,42 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MinionBattleSpecial : MinionBattleBasic
 {
-    enum Spacials // option of spacials attack/Abilitis
+    public enum Spacials // option of spacials attack/Abilitis
     {
         DontDamageMinion,
         Poison,
         Thorns,
         AreaOfAttack
     }
-    [SerializeField] Spacials[] specals;
+    public Spacials[] specals;
+    // area of attack
     [Header("Area of attck")]
+    [SerializeField] float offPut;
     [SerializeField] float areaSize;
+    void AreaAttack()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(hit.point + Vector2.right * offPut, Vector2.one*areaSize, 0f);
+        Debug.DrawRay(hit.point + Vector2.right * offPut*1.5f, Vector2.right* areaSize, Color.red, 3f);
+        foreach (Collider2D hitCollider in hitColliders)
+        {
+            if (hitCollider.name == gameObject.name)
+                continue;
+            MinionBattleBasic minionBattkeBasicTemp = hitCollider.GetComponent<MinionBattleBasic>();
 
+            if (minionBattkeBasicTemp == null)
+            {
+                if (hitCollider.GetComponent<BaseBasic>() != null)
+                    hitCollider.GetComponent<BaseBasic>().DamgeTaken(stats.ATK);
+                continue;
+            }
+
+            minionBattkeBasicTemp.DamgeTaken(stats.ATK);
+        }
+    }
     // posion
     List<MinionBattleBasic> poisonedMinions = new();
     float poisonTimer;
@@ -65,22 +87,7 @@ public class MinionBattleSpecial : MinionBattleBasic
 
                     break;
                 case Spacials.AreaOfAttack:
-                    Debug.Log("AreaOfAttack");
-                    Collider[] hitColliders = Physics.OverlapBox(hit.point, Vector3.one*areaSize, Quaternion.identity); // dosent work. Fix next time
-                    Debug.DrawRay(hit.point,Vector2.right,Color.red,10f);
-                    foreach (Collider hitCollider in hitColliders)
-                    {
-                        Debug.Log(hitCollider.name);
-                        MinionBattleBasic minionBattkeBasicTemp = hitCollider.GetComponent<MinionBattleBasic>();
-
-                        if (minionBattkeBasicTemp == null)
-                        {
-                            hitCollider.GetComponent<BaseBasic>().DamgeTaken(stats.ATK);
-                            continue;
-                        }
-
-                        minionBattkeBasicTemp.DamgeTaken(stats.ATK);
-                    }
+                    AreaAttack();
                     break;
                 default:
                     base.AttackMinion();
@@ -94,6 +101,9 @@ public class MinionBattleSpecial : MinionBattleBasic
         {
             switch (specal)
             {
+                case Spacials.AreaOfAttack:
+                    AreaAttack();
+                    break;
                 default:
                     base.AttackTower();
                     break;
@@ -128,9 +138,13 @@ public class MinionBattleSpecial : MinionBattleBasic
         }
 
         poisonTimer += stats.AttackSpeed / 3;
-        foreach (MinionBattleBasic poisendMinion in poisonedMinions)
+        for (int i = 0; i < poisonedMinions.Count; i++)
         {
-            poisendMinion.DamgeTaken(stats.ATK/5);
+            if (poisonedMinions[i] == null)
+                poisonedMinions.RemoveAt(i);
+            else
+                poisonedMinions[i].DamgeTaken(stats.ATK / 5);
+
         }
 
 

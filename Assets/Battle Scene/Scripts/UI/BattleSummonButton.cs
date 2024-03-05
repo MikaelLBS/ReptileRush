@@ -29,7 +29,10 @@ public class BattleSummonButton : MonoBehaviour
             transform.GetComponent<Button>().interactable = false;
             StartCoroutine(StartCooldown(minion.GetComponent<MinionBattleBasic>().Cooldown));
 
-            Instantiate(minion, spawnPos.position, Quaternion.identity).gameObject.SetActive(true);
+            GameObject minionSpawned = Instantiate(minion, spawnPos.position, Quaternion.identity);
+            minionSpawned.SetActive(true);
+            minionSpawned.name = minion.name+ MinionDeck.Instance.minionsAmount+"p";
+
         }
 
     }

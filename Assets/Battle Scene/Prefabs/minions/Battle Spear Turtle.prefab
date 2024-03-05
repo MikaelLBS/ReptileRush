@@ -209,4 +209,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   Cooldown: 0
   specals: 03000000
-  areaSize: 20
+  offPut: -0.2
+  areaSize: 1.5

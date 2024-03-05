@@ -143,7 +143,7 @@ Animator:
   m_GameObject: {fileID: 71222608602138419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7615aeb765897bb48a2fd08a6838ac70, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8ef4b3163d6e81a41926541b01aca474, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -209,5 +209,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   Cooldown: 0
   specals: 01000000
-  areaOfATK: 0
+  offPut: 0
   areaSize: 0

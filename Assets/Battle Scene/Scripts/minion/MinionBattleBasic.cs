@@ -64,22 +64,6 @@ public class MinionBattleBasic : MonoBehaviour
                 startedAttackAnime = false;
                 attackCoolDown += stats.AttackSpeed;
                 animator.speed = 1;
-
-                /*if (hit.collider.gameObject.tag == enamyTag)
-                {
-                    AttackMinion();
-                    attackCoolDown += stats.AttackSpeed;
-                }
-                else if (hit.collider.gameObject.tag == "Base") // INPLEMENT WHEN HAVE TOWERS
-                {
-                    AttackTower();
-                    attackCoolDown += stats.AttackSpeed;
-                }
-                else
-                {
-                    attacked = false;
-                    animator.SetBool("IsAttacking", false);
-                }*/
                 attackCoolDown += stats.AttackSpeed;
                 AttackForDamage();
             }
@@ -160,6 +144,8 @@ public class MinionBattleBasic : MonoBehaviour
     }
     private void Awake()
     {
+        MinionDeck.Instance.minionsAmount++;
+
         animator = GetComponent<Animator>();
         attackAnimeTime = animator.runtimeAnimatorController.animationClips[0].length;
         //Debug.Log(animator.runtimeAnimatorController.animationClips[0].name);

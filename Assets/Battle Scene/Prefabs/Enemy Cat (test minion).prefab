@@ -187,8 +187,8 @@ MonoBehaviour:
   KnockbackRange: 2.04
   icon: {fileID: 0}
   Cooldown: 5
-  specals: 
-  areaOfATK: 0
+  specals: 00000000
+  offPut: 0
   areaSize: 0
 --- !u!95 &6808270643860748353
 Animator:

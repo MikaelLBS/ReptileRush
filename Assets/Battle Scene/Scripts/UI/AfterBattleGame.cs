@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -16,13 +17,19 @@ public class AfterBattleGame : MonoBehaviour
     [SerializeField] RectTransform buttonHolder;
     [SerializeField] GameObject buttonPrefab;
     [SerializeField] float pictureSize;
-    //GameObject[] minions;
     Button[] summonButtons;
     [Header("RewardMinion")]
     [SerializeField] GameObject rewardMinionButton;
     [SerializeField] TMPro.TextMeshProUGUI nameText;
     [SerializeField] TMPro.TextMeshProUGUI costText;
-    string rewardMinionPrefabPath;
+    //string rewardMinionPrefabPath;
+    [Header("Stats Box")]
+    [SerializeField] float yOffPut;
+    [SerializeField] GameObject statsHolder;
+    [SerializeField] TMPro.TextMeshProUGUI statsBoxMinionName;
+    [SerializeField] TMPro.TextMeshProUGUI statsBoxStats;
+    [SerializeField] float fadeSpeed;
+    IEnumerator fadeInIEnumerator;
     void CreateButtons()
     {
         Vector2 startEndPosX = new Vector2(buttonHolder.position.x - buttonHolder.sizeDelta.x / 2, buttonHolder.position.x + buttonHolder.sizeDelta.x / 2);
@@ -60,6 +67,8 @@ public class AfterBattleGame : MonoBehaviour
             afterBattleGame.minionBattleScript = minData;
             //button.GetComponent<AfterGameMinionButton>().index = i;
 
+            button.GetComponent<ShowHoveringIcon>().afterBattleGameScript = this;
+
             summonButtons[i] = button.GetComponent<Button>();
         }
     }
@@ -80,6 +89,67 @@ public class AfterBattleGame : MonoBehaviour
     {
         PlayerParty.Instance.minions.RemoveAt(PlayerParty.Instance.minions.Count-1);
         SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
+    }
+    public void ShowMinionStats(int index,Vector2 pos)
+    {
+        if (fadeInIEnumerator != null)
+            StopCoroutine(fadeInIEnumerator);
+        fadeInIEnumerator = FadeInStatsBox(true);
+        StartCoroutine(fadeInIEnumerator);
+
+        if (index == -1)
+            index = PlayerParty.Instance.minions.Count-1;
+        statsHolder.transform.position = pos-Vector2.down*yOffPut;
+        statsBoxMinionName.text = PlayerParty.Instance.minions[index].minionName;
+        statsBoxStats.text = UppdateStatsText(PlayerParty.Instance.minions[index].stats);
+    }
+    IEnumerator FadeInStatsBox(bool fadeIn)
+    {
+        Image image = statsHolder.GetComponent<Image>();
+        Color color = image.color;
+        if (fadeIn)
+        {
+            statsHolder.SetActive(true);
+            color.a = 0;
+        }
+
+        int tempMulti = -1;
+        if (fadeIn)
+            tempMulti = 1;
+
+        while (true)
+        {
+            color.a += Time.deltaTime*tempMulti*fadeSpeed;
+            image.color = color;
+            if (fadeIn && color.a >= 1f)
+                break;
+            else if (!fadeIn && color.a <= 0f)
+                break;
+            yield return null;
+        }
+        if (!fadeIn)
+            statsHolder.SetActive(false);
+        color.a = 1;
+        image.color = color;
+    }
+    public void HideMinionStats()
+    {
+        if (fadeInIEnumerator != null)
+            StopCoroutine(fadeInIEnumerator);
+        fadeInIEnumerator = FadeInStatsBox(false);
+        StartCoroutine(fadeInIEnumerator);
+    }
+    string UppdateStatsText(MinionClass.MinionStats stats)
+    {
+        string statsText =
+            "ATK: " + stats.ATK * 10 +
+            "\nATK Speed: " + Mathf.Round(1 / stats.AttackSpeed * 100) / 100 +
+            "\nHP: " + stats.HP * 10 +
+            "\nRange: " + Mathf.Round(stats.Range * 10) +
+            "\nSpeed: " + Mathf.Round(stats.Speed * 10) +
+            "\nCost: " + stats.Cost;
+
+        return statsText;
     }
     // Start is called before the first frame update
     void Start()

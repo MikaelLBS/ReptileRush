@@ -314,7 +314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4884829066179572013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 7504815165445559674}
           m_TargetAssemblyTypeName: ShowHoveringIcon, Assembly-CSharp
-          m_MethodName: ShowIcon
+          m_MethodName: HoverEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -733,7 +733,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 7504815165445559674}
           m_TargetAssemblyTypeName: ShowHoveringIcon, Assembly-CSharp
-          m_MethodName: HideIcon
+          m_MethodName: HoverExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -755,4 +755,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9689fac5388f5bb4792f284fbbe46ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  afterBattleGameScript: {fileID: 0}
   hoveringIcon: {fileID: 7333038420452374983}

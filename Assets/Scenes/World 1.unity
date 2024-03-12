@@ -527,6 +527,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ed42df2ea63cd4097f183a572abae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randSpawnLocations:
+  - paramL: {fileID: 0}
+    paramR: {fileID: 0}
+    minions: []
+  spawnZValue: 1
 --- !u!1 &467764387
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,45 +1,38 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static MinionClass;
 
 public class RandomMinionSpawning : MonoBehaviour
 {
-    SpawnLocations[] spawnLocations;
+    [SerializeField] RandSpawnLocations[] randSpawnLocations;
+    [SerializeField] float spawnZValue;
+
     void Start()
-    { 
-        //MinonSpawn();
-    }
-    private void Reset()
     {
-        //SpawnLocations[] location = random;
-        //location.minions[random]
-        //get random pos between parL and parR
+        SpawnRandom();
+    }
+
+    private void SpawnRandom()
+    {
+        foreach (RandSpawnLocations location in randSpawnLocations)
+        {
+            if (location != null && location.minions.Length > 0)
+            {
+                int randMinion = Random.Range(0, location.minions.Length);
+                float randX = Random.Range(location.paramL.position.x, location.paramR.position.x);
+                float randY = Random.Range(location.paramL.position.y, location.paramR.position.y);                
+                Vector3 randomPosition = new Vector3(randX, randY, spawnZValue);
+
+                GameObject minion = Instantiate(location.minions[randMinion], randomPosition, Quaternion.identity);
+            }
+        }
     }
 }
 
-public class SpawnLocations : MonoBehaviour
+[System.Serializable]
+public class RandSpawnLocations
 {
-    Transform parL;
-    Transform parR;
-    /*bool canSpawn;
-
-    void OnTriggerEnter2D(GameObject collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            canSpawn = false;
-        }
-    }*/
-
-    SpawnLocations(Transform parL, Transform parR)
-    {
-        this.parL=parL;
-        this.parR=parR;
-    }
-
+    public Transform paramL;
+    public Transform paramR;
     public GameObject[] minions;
 }
 

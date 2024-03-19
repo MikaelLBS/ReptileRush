@@ -50,6 +50,8 @@ public class MinionDeck : ScriptableObject
                 basicMinionBattle.stats.Cost = minion.stats.Cost;
 
             basicMinionBattle.minionName = minion.minionName;
+            if (minion.icon == null)
+                minion.icon = basicBattleMinion.GetComponent<MinionBattleBasic>().icon;
             basicMinionBattle.icon = minion.icon;
 
             basicMinionBattle.isEnemy = true;

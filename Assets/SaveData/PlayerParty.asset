@@ -15,7 +15,7 @@ MonoBehaviour:
   minions:
   - minion: {fileID: 71222608602138419, guid: 004c4d00c5348f0469849161863f9314, type: 3}
     minionName: Poison
-    icon: {fileID: 1259274839, guid: c725dbb5bb8f4ce4ba20489b34724891, type: 3}
+    icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     slotIndex: 0
     animator: {fileID: 0}
     stats:
@@ -27,7 +27,7 @@ MonoBehaviour:
       Cost: 1
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
     minionName: "S\xE5r"
-    icon: {fileID: 706599432, guid: b3fb6d2bd92558e48a73a94c38984ae1, type: 3}
+    icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
     slotIndex: 1
     animator: {fileID: 0}
     stats:
@@ -39,7 +39,7 @@ MonoBehaviour:
       Cost: 10
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
     minionName: Idel
-    icon: {fileID: 2083808989, guid: a598a686951308d4093e073706ed489d, type: 3}
+    icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
     slotIndex: 2
     animator: {fileID: 0}
     stats:

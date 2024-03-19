@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4e56a6fadca41449aa3713abd968b13, type: 3}
   m_Color: {r: 0.8590162, g: 1, b: 0, a: 0.7882353}
   m_FlipX: 0
   m_FlipY: 0
@@ -198,16 +198,16 @@ MonoBehaviour:
   basePrefab: {fileID: 0}
   partyIndex: 0
   stats:
-    ATK: -1
-    AttackSpeed: -1
-    HP: -1
-    Speed: -1
-    Range: -1
-    Cost: -1
-  AmountOfKnockbacks: 0
-  KnockbackRange: 0
-  icon: {fileID: 0}
-  Cooldown: 0
+    ATK: 5
+    AttackSpeed: 1
+    HP: 25
+    Speed: 0.8
+    Range: 1
+    Cost: 10
+  AmountOfKnockbacks: 3
+  KnockbackRange: 5
+  icon: {fileID: 21300000, guid: f4e56a6fadca41449aa3713abd968b13, type: 3}
+  Cooldown: 10
   specals: 03000000
   offPut: -0.2
   areaSize: 1.5

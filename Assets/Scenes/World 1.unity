@@ -530,7 +530,8 @@ MonoBehaviour:
   randSpawnLocations:
   - paramL: {fileID: 0}
     paramR: {fileID: 0}
-    minions: []
+    minions:
+    - {fileID: 0}
   spawnZValue: 1
 --- !u!1 &467764387
 GameObject:

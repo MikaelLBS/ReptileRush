@@ -13,7 +13,7 @@ public class BaseBasic : MonoBehaviour
     [SerializeField] protected bool isEnemy;
     [SerializeField] protected int ATK;
     [SerializeField] protected float AttackSpeed;
-    [SerializeField] protected int HP;
+    [SerializeField] public int HP;
     [SerializeField] protected float Range;
     [SerializeField] protected int Attacks;
     [SerializeField] Button attackbutton;

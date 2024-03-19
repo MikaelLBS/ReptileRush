@@ -25,9 +25,6 @@ public class AfterGameMinionButton : MonoBehaviour
     public void ButtonDown()
     {
         PlayerParty.Instance.minions.RemoveAt(indexInPlayerParty);
-        // creating prefabs
-        /*string[] guids = PlayerParty.Instance.GetPrefabPaths();
-        AssetDatabase.DeleteAsset(AssetDatabase.GUIDToAssetPath(path));*/
         SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
     }
 }

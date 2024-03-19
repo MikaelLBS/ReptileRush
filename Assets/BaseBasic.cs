@@ -25,10 +25,11 @@ public class BaseBasic : MonoBehaviour
     Animator animator;
     float attackAnimeTime;
 
+    [SerializeField] GameObject gameOverScreen;
     public void DamgeTaken(int damge)
     {
         HP -= damge;
-        if (HP <= 0) { Win(); }
+        if (HP <= 0) { gameOverScreen.SetActive(true); HP = 999999; }
     }
 
     // --ATTACK--
@@ -95,9 +96,5 @@ public class BaseBasic : MonoBehaviour
             for (int i = 0; i < Attacks; i++)
                 AttackMinion();
         }       
-    }
-    void Win()
-    {
-
     }
 }

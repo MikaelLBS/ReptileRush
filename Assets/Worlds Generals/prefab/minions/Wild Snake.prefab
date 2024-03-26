@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 443176330395850545}
   - component: {fileID: 448074919559293367}
   m_Layer: 8
-  m_Name: Wild Turtle
+  m_Name: Wild Snake
   m_TagString: PlayerMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f4e56a6fadca41449aa3713abd968b13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,11 +132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   randomTimer: {x: 1, y: 2}
-  BasicBattleMinion: {fileID: 71222608602138419, guid: b1880774462191b449271e6877c634f3, type: 3}
+  BasicBattleMinion: {fileID: 71222608602138419, guid: 004c4d00c5348f0469849161863f9314, type: 3}
   battleMinions:
   - minion: {fileID: 0}
     minionName: Tank
-    icon: {fileID: 21300000, guid: f4e56a6fadca41449aa3713abd968b13, type: 3}
+    icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}
     resetStats: 0
     stats:
@@ -148,7 +148,7 @@ MonoBehaviour:
       Cost: -1
   - minion: {fileID: 0}
     minionName: Damge
-    icon: {fileID: 21300000, guid: f4e56a6fadca41449aa3713abd968b13, type: 3}
+    icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}
     resetStats: 0
     stats:
@@ -341,7 +341,7 @@ Animator:
   m_GameObject: {fileID: 71222608602138419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 0034e1d9315c0054e8ef5c64ac0aca1a, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8ef4b3163d6e81a41926541b01aca474, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

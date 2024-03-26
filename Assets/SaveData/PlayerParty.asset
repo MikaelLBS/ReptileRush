@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerParty
   m_EditorClassIdentifier: 
   minions:
-  - minion: {fileID: 71222608602138419, guid: 004c4d00c5348f0469849161863f9314, type: 3}
+  - minion: {fileID: 71222608602138419, guid: d61f408ca6c616347ace698a5b605d5e, type: 3}
     minionName: Poison
     icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     slotIndex: 0
@@ -21,10 +21,10 @@ MonoBehaviour:
     stats:
       ATK: 3
       AttackSpeed: 1
-      HP: 1000
+      HP: 50
       Speed: 2
-      Range: 2.9011078
-      Cost: 1
+      Range: 0.8
+      Cost: 10
   - minion: {fileID: 71222608602138419, guid: 970394d5049a85744a4f6a221d57ba32, type: 3}
     minionName: "S\xE5r"
     icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}

@@ -49,7 +49,7 @@ public class RandomMinionSpawning : MonoBehaviour
             return;
         if (Physics2D.Raycast(hit.point + Vector2.left * enitySize.x * 0.5f, Vector2.right, enitySize.x).collider != null)
             return;
-        /*
+        /* // fix if whant a max amount of minions that can spawn
         bool foundNull = false;
         for (int i = 0; i < spawnedEntitys.Length; i++)
         {

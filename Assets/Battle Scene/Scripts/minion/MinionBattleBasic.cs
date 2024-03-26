@@ -168,6 +168,7 @@ public class MinionBattleBasic : MonoBehaviour
             stats.Speed *= -1;
             stats.Range *= -1;
             KnockbackRange *= -1;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
             transform.tag = "EnemyMinion";
             enamyTag = "PlayerMinion";

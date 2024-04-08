@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using static MinionBattleSpecial;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerUI : MonoBehaviour, IDataPersitiens
 {
     SwapButtonPlayerUI[] buttonScripts;
     float[] xCoordsButtons;
@@ -13,6 +14,19 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] RectTransform buttonHolder; // where the button are placed
     [SerializeField] GameObject buttonPrefab; // minion summon button
 
+    public void LoadData(GameData data)
+    {
+    }
+    public void SaveData(ref GameData data)
+    {
+        /*
+        Debug.Log("SavePlayerUI");
+        data.partyMinions = new MinionClass.MinionSave[PlayerParty.Instance.minions.Count];
+        for (int i = 0; i < data.partyMinions.Length; i++)
+        {
+            data.partyMinions[i] = PlayerParty.Instance.minions[i];
+        }*/
+    }
     void CreateButtons()
     {
         Vector2 startEndPosX = new Vector2(buttonHolder.position.x - buttonHolder.sizeDelta.x / 2, buttonHolder.position.x + buttonHolder.sizeDelta.x / 2);
@@ -71,6 +85,7 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //DataPersistenceManager.Instance.SaveGame();
         CreateButtons();
     }
     public void UppdateButtonsPos(int buttonIndex, int movedIndex)

@@ -483,6 +483,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378238486}
   m_CullTransparentMesh: 1
+--- !u!1 &423008740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423008742}
+  - component: {fileID: 423008741}
+  m_Layer: 0
+  m_Name: saveData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &423008741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423008740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86695fb19ce8d2646aa84e32284d973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: PlaceHolderData
+--- !u!4 &423008742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423008740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.184688, y: 1.4765782, z: -0.123652294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459032566
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &459032567
 Transform:
   m_ObjectHideFlags: 0
@@ -953,6 +998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614435531}
+  - component: {fileID: 614435532}
   m_Layer: 0
   m_Name: Spawns
   m_TagString: Untagged
@@ -977,6 +1023,19 @@ Transform:
   - {fileID: 1285392957}
   m_Father: {fileID: 1646615908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614435532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614435530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad52fe171fdd3740a5368f5d69b94a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minions: []
 --- !u!1 &689667464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,7 +2577,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646615906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be0d146ad7ee32a45b18e44990284741, type: 3}
   m_Name: 
@@ -3781,3 +3840,4 @@ SceneRoots:
   - {fileID: 597773342}
   - {fileID: 2048115415}
   - {fileID: 1850980805}
+  - {fileID: 423008742}

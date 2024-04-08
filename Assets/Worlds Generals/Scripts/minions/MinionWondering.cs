@@ -4,18 +4,20 @@ using System.Threading;
 using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEditor.Animations;*/
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class MinionWondering : MonoBehaviour
 {
 
     Rigidbody2D rbody;
-    [SerializeField] float speed;
-    [SerializeField] Vector2 randomTimer;
-    [SerializeField] GameObject BasicBattleMinion;
+    public float speed;
+    public Vector2 randomTimer;
+    public GameObject BasicBattleMinion;
     public MinionClass.BattleMinion[] battleMinions;
+    /*[NonSerialized]*/ public bool hasEnterdBattle;
     Animator animator;
     float timer;
     bool isMoving = true;
@@ -26,6 +28,9 @@ public class MinionWondering : MonoBehaviour
         timer = Random.Range(0, 3);
 
         rbody = GetComponent<Rigidbody2D>();
+
+        if (EntityManager.instance != null)
+            EntityManager.instance.AddMinion(gameObject);
     }
 
     // Update is called once per frame
@@ -88,28 +93,28 @@ public class MinionWondering : MonoBehaviour
                 Flip();
         }
     }
-    void AddMinionDeck()
+    public void AddMinionDeck()
     {
         MinionDeck.Instance.basicBattleMinion = BasicBattleMinion;
         MinionDeck.Instance.minions = battleMinions;
     }
+    void EnteringBattle()
+    {
+        AddMinionDeck();
+        PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        hasEnterdBattle = true;
+        DataPersistenceManager.Instance.SaveGame();
+        SceneManager.LoadScene("Battle");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.name == "Player")
-        {
-            AddMinionDeck();
-            PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene("Battle");
-        }
+            EnteringBattle();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.name == "Player")
-        {
-            AddMinionDeck();
-            PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene("Battle");
-        }
+            EnteringBattle();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

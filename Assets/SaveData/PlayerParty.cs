@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -15,6 +16,10 @@ public class PlayerParty : ScriptableObject
     public GameObject[] loadedMinions;
     public short maxMinions;
     public int sceneIndex;
+
+    [NonSerialized] public bool wonBattle;
+    [NonSerialized] public bool isExitingBattle;
+
 
     // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
     public void AddMinion(GameObject minion)

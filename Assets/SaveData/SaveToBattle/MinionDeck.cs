@@ -55,7 +55,6 @@ public class MinionDeck : ScriptableObject
             basicMinionBattle.icon = minion.icon;
 
             basicMinionBattle.isEnemy = true;
-
             loadedMinions[i] = minionGameObject;
             i++;
 

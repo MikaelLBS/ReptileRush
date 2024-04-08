@@ -45,6 +45,7 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void SaveGame()
     {
+        SavePartyData();
         foreach (IDataPersitiens dataPer in dataPersistenceObjcets)
             dataPer.SaveData(ref gameData);
 
@@ -59,5 +60,46 @@ public class DataPersistenceManager : MonoBehaviour
         IEnumerable<IDataPersitiens> dataPersistenceObjcets = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersitiens>();
 
         return new List<IDataPersitiens>(dataPersistenceObjcets);
+    }
+
+    // Player Party
+    public void LoadPartyData()
+    {
+        if (PlayerParty.Instance == null || gameData.PartyMinions == null)
+            return;
+
+        PlayerParty.Instance.sceneIndex = gameData.sceneIndex;
+
+        for (int i = 0; i < gameData.PartyMinions.Length; i++)
+        {
+            if (i == PlayerParty.Instance.minions.Count)
+                PlayerParty.Instance.minions.Add(new());
+            PlayerParty.Instance.minions[i].LoadFromGeneric(gameData.PartyMinions[i].minionSave);
+
+            PlayerParty.Instance.minions[i].minion = Resources.Load<GameObject>(gameData.PartyMinions[i].minionPrefabPath);
+            PlayerParty.Instance.minions[i].icon = Resources.Load<Sprite>(gameData.PartyMinions[i].iconAssetPath);
+            PlayerParty.Instance.minions[i].animator = Resources.Load<RuntimeAnimatorController>(gameData.PartyMinions[i].animatorAssetPath);
+        }
+    }
+     void SavePartyData()
+    {
+        if (PlayerParty.Instance == null)
+            return;
+
+        gameData.sceneIndex = PlayerParty.Instance.sceneIndex;
+
+        gameData.PartyMinions = new MinionClass.MinionFileSave[PlayerParty.Instance.minions.Count];
+        for (int i = 0; i < PlayerParty.Instance.minions.Count; i++)
+        {
+            gameData.PartyMinions[i] = new MinionClass.MinionFileSave();
+
+            gameData.PartyMinions[i].minionSave = new MinionClass.GenericMinionSave(PlayerParty.Instance.minions[i]);
+            if (PlayerParty.Instance.minions[i].minion != null)
+                gameData.PartyMinions[i].minionPrefabPath = "Battles/" + PlayerParty.Instance.minions[i].minion.name;
+            if (PlayerParty.Instance.minions[i].animator != null)
+                gameData.PartyMinions[i].animatorAssetPath = "Anime/" + PlayerParty.Instance.minions[i].animator.name;
+            if (PlayerParty.Instance.minions[i].icon != null)
+                gameData.PartyMinions[i].iconAssetPath = "Icons/" + PlayerParty.Instance.minions[i].icon.name;
+        }
     }
 }

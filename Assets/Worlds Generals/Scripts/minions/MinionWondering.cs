@@ -9,27 +9,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class MinionWondering : MonoBehaviour
+public class MinionWondering : MonoBehaviour, IDataPersitiens
 {
-
+    [SerializeField] bool isPresetSpawn; // if placing a wild minion by hand turn on this bool. This bool makes it so this GameObject is destoryed on the secound load and forth.
     Rigidbody2D rbody;
     public float speed;
     public Vector2 randomTimer;
     public GameObject BasicBattleMinion;
     public MinionClass.BattleMinion[] battleMinions;
-    /*[NonSerialized]*/ public bool hasEnterdBattle;
+    [NonSerialized] public bool hasEnterdBattle;
     Animator animator;
     float timer;
     bool isMoving = true;
     // Start is called before the first frame update
     void Start()
     {
+
         animator = GetComponent<Animator>();
         timer = Random.Range(0, 3);
 
         rbody = GetComponent<Rigidbody2D>();
 
-        if (EntityManager.instance != null)
+        if (!isPresetSpawn && EntityManager.instance != null)
             EntityManager.instance.AddMinion(gameObject);
     }
 
@@ -131,5 +132,22 @@ public class MinionWondering : MonoBehaviour
                 minion.stats = BasicBattleMinion.GetComponent<MinionBattleBasic>().stats;
             }
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+
+        if (data.startSpawnForMinionsWorld1)
+        {
+            data.startSpawnForMinionsWorld1 = false;
+            if (EntityManager.instance != null)
+                EntityManager.instance.AddMinion(gameObject);
+        }
+        else
+            Destroy(gameObject);
+    }
+    public void SaveData(ref GameData data)
+    {
+
     }
 }

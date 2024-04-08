@@ -4,9 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    // wild minions
     public bool startSpawnForMinionsWorld1;
     public MinionClass.WildMinionSave[] WildMinions;
-    //public MinionClass.MinionSave[] partyMinions;
+
+    // player party
+    public int sceneIndex;
+    public MinionClass.MinionFileSave[] PartyMinions;
+
     // music
     public float[] soundsVolume;
 

@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
+  m_Sprite: {fileID: 1225753180, guid: f3c59de9c85a7074a87b12c6018a25d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,13 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   randomTimer: {x: 1, y: 2}
-  BasicBattleMinion: {fileID: 71222608602138419, guid: 510246c8ed93576429b40ff4cc7d5068, type: 3}
+  BasicBattleMinion: {fileID: 71222608602138419, guid: 9285f2d505495a143b15d4ac3e9cb6ca, type: 3}
   battleMinions:
-  - minion: {fileID: 0}
-    minionName: Tank
-    icon: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
-    animator: {fileID: 0}
-    resetStats: 0
+  - minionName: Tank
     stats:
       ATK: -1
       AttackSpeed: -1
@@ -146,11 +142,11 @@ MonoBehaviour:
       Speed: -1
       Range: -1
       Cost: -1
-  - minion: {fileID: 0}
-    minionName: Damge
+    minion: {fileID: 0}
     icon: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
     animator: {fileID: 0}
     resetStats: 0
+  - minionName: Damge
     stats:
       ATK: -1
       AttackSpeed: -1
@@ -158,6 +154,11 @@ MonoBehaviour:
       Speed: -1
       Range: -1
       Cost: -1
+    minion: {fileID: 0}
+    icon: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
+    animator: {fileID: 0}
+    resetStats: 0
+  hasEnterdBattle: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,8 +191,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0021766555, y: -0.39278078}
-  m_Size: {x: 1.0217713, y: 0.21444169}
+  m_Offset: {x: -0.040988352, y: -0.18589891}
+  m_Size: {x: 1.9892356, y: 0.22932532}
   m_Direction: 1
 --- !u!61 &3924613085238809393
 BoxCollider2D:
@@ -225,18 +226,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.04797609}
+  m_Offset: {x: -0.041674256, y: -0.002628103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2.09375, y: 0.59375}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.90404785}
+  m_Size: {x: 1.9704092, y: 0.39800587}
   m_EdgeRadius: 0
 --- !u!61 &7813185584578829674
 BoxCollider2D:
@@ -274,7 +275,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2.09375, y: 0.59375}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -319,7 +320,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2.09375, y: 0.59375}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -327,9 +328,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.61053646, y: 0.48291492}
-      - {x: 0.6105366, y: -0.4316593}
-      - {x: 3.1504674, y: 0.47385526}
+    - - {x: 0.97437567, y: 0.383686}
+      - {x: 0.9798886, y: -0.20012525}
+      - {x: 3.5087938, y: 0.54552066}
   m_UseDelaunayMesh: 0
 --- !u!95 &448074919559293367
 Animator:
@@ -341,7 +342,7 @@ Animator:
   m_GameObject: {fileID: 71222608602138419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 0034e1d9315c0054e8ef5c64ac0aca1a, type: 2}
+  m_Controller: {fileID: 22100000, guid: 60c5444ea8386cb4caf58b51659d0a30, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

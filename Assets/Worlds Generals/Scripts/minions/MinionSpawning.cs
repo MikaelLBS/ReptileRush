@@ -5,8 +5,6 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class MinionSpawning : MonoBehaviour
 {
-    [SerializeField] MinionDeck minionDeck;
-    [SerializeField] PlayerParty playerDeck;
     [SerializeField] MinionClass.MinionPreciseSpawn[] minions;
 
     public void MinonSpawn(MinionClass.MinionPreciseSpawn spawnMinion)
@@ -40,8 +38,7 @@ public class MinionSpawning : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        minionDeck.SetInstance();
-        playerDeck.SetInstance();
+        MinionDeck.SetInstance();
     }
     void Start()
     {

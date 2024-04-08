@@ -48,12 +48,10 @@ public class MinionClass
         public GameObject minion;
         public Sprite icon;
         public RuntimeAnimatorController animator;
-
-        BattleMinion() { }
+        public bool resetStats;
         public void LoadFromGeneric(GenericBattleMinion genericBattle)
         {
             minionName = genericBattle.minionName;
-            resetStats = genericBattle.resetStats;
             stats = genericBattle.stats;
         }
 
@@ -62,17 +60,18 @@ public class MinionClass
     public class BattleMinionSave
     {
         public GenericBattleMinion minionSave;
+
         public string minionPrefabPath;
+        public string iconAssetPath;
+        public string animatorAssetPath;
+
     }
     [System.Serializable]
-    public class MinionSave
+    public class MinionSave : GenericMinionSave
     {
-        public GameObject minion;
-        public string minionName;
         public Sprite icon;
-        public int slotIndex;
         public RuntimeAnimatorController animator;
-        public MinionStats stats;
+        public GameObject minion;
         public MinionSave()
         {
             stats = new MinionStats();
@@ -99,17 +98,32 @@ public class MinionClass
 
             slotIndex = 0;
         }
+
+        public void LoadFromGeneric(GenericMinionSave genericBattle)
+        {
+            minionName = genericBattle.minionName;
+            slotIndex = genericBattle.slotIndex;
+            stats = genericBattle.stats;
+        }
+    }
+    public class MinionFileSave
+    {
+        public GenericMinionSave minionSave;
+
+        public string minionPrefabPath;
+        public string iconAssetPath;
+        public string animatorAssetPath;
     }
     [System.Serializable]
     public class WildMinionSave
     {
+        public string wildMinionPrefabPath;
+        public (float x, float y) worldCoords;
+
         public float speed;
         public (float x, float y) randomTimer;
         public bool hasEnterdBattle;
         public BattleMinionSave[] battleMinions;
-
-        public string wildMinionPrefabPath;
-        public (float x, float y) worldCoords;
     }
     // Generic Classes
     public class GenericBattleMinion
@@ -121,12 +135,23 @@ public class MinionClass
         public GenericBattleMinion(GenericBattleMinion minion)
         {
             minionName = minion.minionName;
-            resetStats = minion.resetStats;
             stats = minion.stats;
         }
         public string minionName;
-        public bool resetStats;
         public MinionStats stats;
+    }
+    public class GenericMinionSave
+    {
+        public GenericMinionSave() { }
+        public GenericMinionSave(GenericMinionSave minion)
+        {
+            stats = minion.stats;
+            minionName = minion.minionName;
+            slotIndex = minion.slotIndex;
+        }
+        public MinionStats stats;
+        public string minionName;
+        public int slotIndex;
     }
 
 }

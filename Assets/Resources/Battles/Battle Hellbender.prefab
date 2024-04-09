@@ -206,5 +206,5 @@ MonoBehaviour:
     Cost: -1
   AmountOfKnockbacks: 0
   KnockbackRange: 0
-  icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
+  icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
   Cooldown: 0

@@ -28,8 +28,11 @@ public class BaseBasic : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     public void DamgeTaken(int damge)
     {
-        HP -= damge;
-        if (HP <= 0) { gameOverScreen.SetActive(true); HP = 999999; }
+        if (HP!=0)
+        {
+            HP -= damge;
+            if (HP <= 0) { gameOverScreen.SetActive(true); HP = 0; }
+        }
     }
 
     // --ATTACK--

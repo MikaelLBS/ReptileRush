@@ -66,6 +66,8 @@ public class BattleCamera : MonoBehaviour
                 cmrsz--;
             }
             cmr.orthographicSize = cmrsz;
+                        
+            cmr.transform.position = new Vector3(cmr.transform.position.x, cmrsz-5, cmr.transform.position.z);
         }
     }
 

@@ -19,7 +19,6 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
     public short maxMinions;
 
     public int sceneIndex; // used when exiting battle to get to correct world
-    public Vector2 position;
 
     [NonSerialized] public bool wonBattle;
     [NonSerialized] public bool isExitingBattle;

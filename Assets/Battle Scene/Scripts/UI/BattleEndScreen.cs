@@ -23,10 +23,18 @@ public class BattleEndScreen : MonoBehaviour
 
         if (delay <= 0)
         {
+            PlayerParty.Instance.isExitingBattle = true;
             if (nextScreen == null)
+            {
+                PlayerParty.Instance.wonBattle = false;
                 SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
+            }
             else
+            {
+                PlayerParty.Instance.wonBattle = true;
                 nextScreen.SetActive(true);
+            }
+
             battleUI.SetActive(false);
             gameObject.SetActive(false);
         }

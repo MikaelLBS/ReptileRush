@@ -17,8 +17,6 @@ class VectorInt2
 public class BattleCanvas : MonoBehaviour
 {
     [Header("Summon Buttons")]
-    [SerializeField] PlayerParty playerDeck;
-    [SerializeField] MinionDeck minionDeck;
     [SerializeField] GameObject[] minions; // minions in the player party
     Button[] summonButtons;
     VectorInt2[]minionsCost; // Variable used to check minion cost
@@ -109,8 +107,8 @@ public class BattleCanvas : MonoBehaviour
     }
     private void Awake()
     {
-        playerDeck.SetInstance();
-        minionDeck.SetInstance();
+        PlayerParty.SetInstance();
+        MinionDeck.SetInstance();
     }
     // Start is called before the first frame update
     void Start()

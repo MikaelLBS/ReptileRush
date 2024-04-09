@@ -71,7 +71,7 @@ public class MinionBattleBasic : MonoBehaviour
             {
                 if (attackAnimeTime >= attackCoolDown && !startedAttackAnime)
                 {
-                    animator.speed = attackAnimeSpeed;
+                    animator.speed = attackAnimeSpeed; // need to fix aniamtion speed!!!
                     animator.SetTrigger("Attack");
                     startedAttackAnime = true;
                 }

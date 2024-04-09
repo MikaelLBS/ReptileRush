@@ -8,9 +8,10 @@ using static MinionClass;
 public class MinionDeck : ScriptableObject
 {
     public static MinionDeck Instance { get; private set; }
-    public void SetInstance()
+    public static void SetInstance()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = Resources.Load<MinionDeck>("MinionDeck");
     }
 
     public GameObject basicBattleMinion; // Minion Used if minion GameObject dont exist
@@ -55,7 +56,6 @@ public class MinionDeck : ScriptableObject
             basicMinionBattle.icon = minion.icon;
 
             basicMinionBattle.isEnemy = true;
-
             loadedMinions[i] = minionGameObject;
             i++;
 

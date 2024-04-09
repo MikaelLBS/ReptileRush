@@ -1,20 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class PlayerParty : ScriptableObject
+public class PlayerParty : ScriptableObject, IDataPersitiens
 {
     public static PlayerParty Instance { get; private set; }
-    public void SetInstance()
+
+    public static void SetInstance()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = Resources.Load<PlayerParty>("PlayerParty");
     }
     public List<MinionClass.MinionSave> minions;
     public GameObject[] loadedMinions;
     public short maxMinions;
-    public int sceneIndex;
+
+    public int sceneIndex; // used when exiting battle to get to correct world
+    public Vector2 position;
+
+    [NonSerialized] public bool wonBattle;
+    [NonSerialized] public bool isExitingBattle;
+
 
     // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
     public void AddMinion(GameObject minion)
@@ -68,5 +77,34 @@ public class PlayerParty : ScriptableObject
             i++;
         }
         return loadedMinions;
+    }
+    public void LoadData(GameData data)
+    {
+        Debug.Log("Load");
+        sceneIndex = data.sceneIndex;
+        loadedMinions = new GameObject[0];
+
+        for (int i = 0; i < data.PartyMinions.Length; i++)
+        {
+            minions[i].LoadFromGeneric(data.PartyMinions[i].minionSave);
+
+            minions[i].minion = Resources.Load<GameObject>(data.PartyMinions[i].minionPrefabPath);
+            minions[i].icon = Resources.Load<Sprite>(data.PartyMinions[i].iconAssetPath);
+            minions[i].animator = Resources.Load<RuntimeAnimatorController>(data.PartyMinions[i].animatorAssetPath);
+        }
+    }
+    public void SaveData(ref GameData data)
+    {
+        Debug.Log("Save");
+        data.sceneIndex = sceneIndex;
+
+        data.PartyMinions = new MinionClass.MinionFileSave[minions.Count];
+        for (int i = 0; i < minions.Count; i++)
+        {
+            data.PartyMinions[i].minionSave = new MinionClass.GenericMinionSave(minions[i]);
+            data.PartyMinions[i].minionPrefabPath = "Battles/"+minions[i].minion.name;
+            data.PartyMinions[i].animatorAssetPath = "Anime/" + minions[i].animator.name;
+            data.PartyMinions[i].iconAssetPath = "Anime/" + minions[i].icon.name;
+        }
     }
 }

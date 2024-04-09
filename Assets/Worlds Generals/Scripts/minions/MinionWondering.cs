@@ -4,28 +4,34 @@ using System.Threading;
 using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEditor.Animations;*/
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
-public class MinionWondering : MonoBehaviour
+public class MinionWondering : MonoBehaviour, IDataPersitiens
 {
-
+    [SerializeField] bool isPresetSpawn; // if placing a wild minion by hand turn on this bool. This bool makes it so this GameObject is destoryed on the secound load and forth.
     Rigidbody2D rbody;
-    [SerializeField] float speed;
-    [SerializeField] Vector2 randomTimer;
-    [SerializeField] GameObject BasicBattleMinion;
+    public float speed;
+    public Vector2 randomTimer;
+    public GameObject BasicBattleMinion;
     public MinionClass.BattleMinion[] battleMinions;
+    [NonSerialized] public bool hasEnterdBattle;
     Animator animator;
     float timer;
     bool isMoving = true;
     // Start is called before the first frame update
     void Start()
     {
+
         animator = GetComponent<Animator>();
         timer = Random.Range(0, 3);
 
         rbody = GetComponent<Rigidbody2D>();
+
+        if (!isPresetSpawn && EntityManager.instance != null)
+            EntityManager.instance.AddMinion(gameObject);
     }
 
     // Update is called once per frame
@@ -88,28 +94,28 @@ public class MinionWondering : MonoBehaviour
                 Flip();
         }
     }
-    void AddMinionDeck()
+    public void AddMinionDeck()
     {
         MinionDeck.Instance.basicBattleMinion = BasicBattleMinion;
         MinionDeck.Instance.minions = battleMinions;
     }
+    void EnteringBattle()
+    {
+        AddMinionDeck();
+        PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        hasEnterdBattle = true;
+        DataPersistenceManager.Instance.SaveGame();
+        SceneManager.LoadScene("Battle");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.name == "Player")
-        {
-            AddMinionDeck();
-            PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene("Battle");
-        }
+            EnteringBattle();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.name == "Player")
-        {
-            AddMinionDeck();
-            PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene("Battle");
-        }
+            EnteringBattle();
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -126,5 +132,22 @@ public class MinionWondering : MonoBehaviour
                 minion.stats = BasicBattleMinion.GetComponent<MinionBattleBasic>().stats;
             }
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+
+        if (data.startSpawnForMinionsWorld1)
+        {
+            data.startSpawnForMinionsWorld1 = false;
+            if (EntityManager.instance != null)
+                EntityManager.instance.AddMinion(gameObject);
+        }
+        else
+            Destroy(gameObject);
+    }
+    public void SaveData(ref GameData data)
+    {
+
     }
 }

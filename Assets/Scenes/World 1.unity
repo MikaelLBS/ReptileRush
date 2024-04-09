@@ -483,6 +483,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378238486}
   m_CullTransparentMesh: 1
+--- !u!1 &423008740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423008742}
+  - component: {fileID: 423008741}
+  m_Layer: 0
+  m_Name: saveData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &423008741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423008740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86695fb19ce8d2646aa84e32284d973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: PlaceHolderData
+--- !u!4 &423008742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423008740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.184688, y: 1.4765782, z: -0.123652294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459032566
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,11 +573,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randSpawnLocations:
-  - paramL: {fileID: 0}
-    paramR: {fileID: 0}
+  - recParam: {fileID: 532232791}
+    cycleDelay: 0
+    spawnChance: {x: 0, y: 0}
     minions:
-    - {fileID: 0}
+    - {fileID: 71222608602138419, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
   spawnZValue: 1
+  cycleDelay: 0
+  cycleTimer: 0
 --- !u!1 &467764387
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +696,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1388202628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &532232790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532232791}
+  m_Layer: 0
+  m_Name: exampleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &532232791
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532232790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.127955}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 689667465}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -41.378876, y: 0.1863}
+  m_SizeDelta: {x: 15.1535, y: 3.0156}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &592606956
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614435531}
+  - component: {fileID: 614435532}
   m_Layer: 0
   m_Name: Spawns
   m_TagString: Untagged
@@ -937,6 +1021,51 @@ Transform:
   m_Children:
   - {fileID: 2013054756}
   - {fileID: 1285392957}
+  m_Father: {fileID: 1646615908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614435532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614435530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad52fe171fdd3740a5368f5d69b94a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minions: []
+--- !u!1 &689667464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 689667465}
+  m_Layer: 0
+  m_Name: RndSpawnLocations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &689667465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689667464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 532232791}
   m_Father: {fileID: 1646615908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &749134729
@@ -1223,6 +1352,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888880660}
   m_CullTransparentMesh: 1
+--- !u!1 &987920595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 987920597}
+  - component: {fileID: 987920596}
+  m_Layer: 0
+  m_Name: DEV TOOLS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &987920596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987920595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2dca1184f15fa84298555767fa62763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: PlaceHolderData
+  resetFile: 0
+--- !u!4 &987920597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987920595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.602477, y: 0.64834154, z: -0.2365635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074635871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1658,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1182163737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 71222608602138419, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_Name
+      value: Wild Crocodile
+      objectReference: {fileID: 0}
+    - target: {fileID: 71222608602138419, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.361303
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7827444
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 288076688328880667, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: c704c97376c361848951d47ea1196a35, type: 3}
+      propertyPath: isPresetSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c704c97376c361848951d47ea1196a35, type: 3}
 --- !u!1 &1207561310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,15 +2688,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646615906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be0d146ad7ee32a45b18e44990284741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minionDeck: {fileID: 11400000, guid: de36103fb82e95842b22a6b8dc9438fb, type: 2}
-  playerDeck: {fileID: 11400000, guid: 730276c1eb944e740b026b92b1ff163e, type: 2}
   minions:
-  - minion: {fileID: 71222608602138419, guid: 0e94dba5161a7bf458322ff12f10f137, type: 3}
+  - minion: {fileID: 71222608602138419, guid: c704c97376c361848951d47ea1196a35, type: 3}
     spawnPosition: {fileID: 2013054756}
     radomizeBattleSatats: 1
     minionsRndStats:
@@ -2466,7 +2704,7 @@ MonoBehaviour:
       Speed: 3
       Range: 10
       Cost: 5
-  - minion: {fileID: 71222608602138419, guid: 0e94dba5161a7bf458322ff12f10f137, type: 3}
+  - minion: {fileID: 71222608602138419, guid: 8d95de4cbeb9f384780365f1549563bc, type: 3}
     spawnPosition: {fileID: 1285392957}
     radomizeBattleSatats: 0
     minionsRndStats:
@@ -2491,6 +2729,7 @@ Transform:
   m_Children:
   - {fileID: 614435531}
   - {fileID: 459032567}
+  - {fileID: 689667465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787927891
@@ -3710,3 +3949,6 @@ SceneRoots:
   - {fileID: 597773342}
   - {fileID: 2048115415}
   - {fileID: 1850980805}
+  - {fileID: 423008742}
+  - {fileID: 1182163737}
+  - {fileID: 987920597}

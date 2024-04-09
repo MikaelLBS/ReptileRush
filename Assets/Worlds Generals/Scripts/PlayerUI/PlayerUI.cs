@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using static MinionBattleSpecial;
 
@@ -12,7 +13,6 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] float pictureSize; // button size
     [SerializeField] RectTransform buttonHolder; // where the button are placed
     [SerializeField] GameObject buttonPrefab; // minion summon button
-
     void CreateButtons()
     {
         Vector2 startEndPosX = new Vector2(buttonHolder.position.x - buttonHolder.sizeDelta.x / 2, buttonHolder.position.x + buttonHolder.sizeDelta.x / 2);
@@ -71,6 +71,7 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DataPersistenceManager.Instance.LoadPartyData();
         CreateButtons();
     }
     public void UppdateButtonsPos(int buttonIndex, int movedIndex)

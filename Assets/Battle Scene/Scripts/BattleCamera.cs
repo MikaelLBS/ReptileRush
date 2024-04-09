@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class BattleCamera : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D Rigidbody2D;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Camera cmr;
+    [SerializeField] float cmrsz = 5;
 
+    Vector2 veloz = new Vector2(0, 0);
     bool left = false;
     bool right = false;
     bool up = false;
@@ -30,21 +33,33 @@ public class BattleCamera : MonoBehaviour
             down = false;
 
 
-        if (right && !left)
-        {
-            //move right
+        if (right != left)
+        {            
+            if (right)
+            {
+                veloz.x = 1;
+            }
+            else if (left)
+            {
+                veloz.x = -1;
+            }
+            rb.velocity = veloz;
+        }        
+        if (right == left)
+        {            
+            rb.velocity = Vector2.zero;
         }
-        if (!right  && left)
-        {
-            //left
-        }
-        if (up && !down)
-        {
-            //zoom out
-        }
-        if (!up && down)
-        {
-            //zoom in
+        if (up != down)
+        {            
+            if (up)
+            {                
+                cmrsz++;
+            }
+            else if (down)
+            {
+                cmrsz--;
+            }
+            cmr.orthographicSize = cmrsz;
         }
     }
 }

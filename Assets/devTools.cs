@@ -8,6 +8,7 @@ public class devTools : MonoBehaviour
     [SerializeField] string fileName;
     [Header("Tools")]
     [SerializeField] bool resetFile;
+    [SerializeField] bool getFilePath;
     private void OnValidate()
     {
         if (resetFile)
@@ -16,6 +17,11 @@ public class devTools : MonoBehaviour
             //FileDataHandler handeler = new FileDataHandler(Application.persistentDataPath, saveFileName);
             new FileDataHandler(Application.persistentDataPath, fileName).Save(new());
             Debug.Log("Deleted SaveData File!");
+        }
+        if (getFilePath)
+        {
+            getFilePath = false;
+            Debug.Log(Application.persistentDataPath);
         }
     }
 }

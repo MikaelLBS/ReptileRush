@@ -3980,7 +3980,7 @@ MonoBehaviour:
   spawnPos: {fileID: 613608789}
   minions:
   - {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
-  resetTimer: 1
+  resetTimer: 0.2
 --- !u!114 &1871414249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4001,7 +4001,7 @@ MonoBehaviour:
   spawnPos: {fileID: 775916907}
   manaFillBar: {fileID: 1404404161}
   manaText: {fileID: 2012133977}
-  sekPerMana: 0.1
+  sekPerMana: 0.2
   maxMana: 500
 --- !u!1 &2012133976
 GameObject:

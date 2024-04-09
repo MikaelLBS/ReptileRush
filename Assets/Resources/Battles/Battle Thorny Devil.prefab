@@ -198,16 +198,16 @@ MonoBehaviour:
   basePrefab: {fileID: 0}
   partyIndex: 0
   stats:
-    ATK: 3
-    AttackSpeed: 1
-    HP: 12
-    Speed: 1.5
-    Range: 2
-    Cost: 10
+    ATK: 2
+    AttackSpeed: 2
+    HP: 60
+    Speed: 2
+    Range: 0.7
+    Cost: 50
   AmountOfKnockbacks: 5
-  KnockbackRange: 0.5
+  KnockbackRange: 5
   icon: {fileID: 21300000, guid: 4815a89ce7408854f9ba4e5e877959f6, type: 3}
-  Cooldown: 3
-  specals: 0000000002000000
+  Cooldown: 5
+  specals: 02000000
   offPut: 0
   areaSize: 0

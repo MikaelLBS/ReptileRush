@@ -5,6 +5,7 @@ public class BattleCamera : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Camera cmr;
     [SerializeField] float cmrsz = 5;
+    [SerializeField] Transform groundTrans;
 
     Vector2 veloz = new Vector2(0, 0);
     bool left = false;
@@ -13,11 +14,14 @@ public class BattleCamera : MonoBehaviour
     bool down = false;
     float deltaTime;
     float accumulatedTime = 0f;
-    float zoomInterval = 1f; // 50 milliseconds
+    float zoomInterval = 1f; // 50 milliseconds    
+    float sizeLim;
 
     private void Start()
     {
         deltaTime = Time.deltaTime;
+
+        sizeLim = groundTrans.lossyScale.x / 3.5556f;
     }
 
     void Update()
@@ -67,6 +71,8 @@ public class BattleCamera : MonoBehaviour
             }
             if(cmrsz < 1)
                 cmrsz = 1;
+            if (cmrsz > sizeLim)
+                cmrsz = sizeLim;
             cmr.orthographicSize = cmrsz;
             
             cmr.transform.position = new Vector3(cmr.transform.position.x, cmrsz-5, cmr.transform.position.z);

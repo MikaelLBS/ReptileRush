@@ -85,7 +85,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             }
             // Save the rest
             data.WildMinions[i].worldCoords = (minions[i].transform.position.x, minions[i].transform.position.y);
-            data.WildMinions[i].speed = minionWonderingScript.speed;
+            data.WildMinions[i].speed = Mathf.Abs(minionWonderingScript.speed);
             data.WildMinions[i].randomTimer = (minionWonderingScript.randomTimer.x, minionWonderingScript.randomTimer.y);
             data.WildMinions[i].hasEnterdBattle = minionWonderingScript.hasEnterdBattle;
         }

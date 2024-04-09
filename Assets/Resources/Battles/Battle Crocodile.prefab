@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &288076688328880667
 Transform:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 951881934, guid: f3c59de9c85a7074a87b12c6018a25d5, type: 3}
+  m_Sprite: {fileID: -1738572682, guid: f95b232d116e80148a411512ade30cf4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.09375, y: 0.59375}
+    oldSize: {x: 2, y: 0.4375}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -194,17 +194,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  minionName: 
+  minionName: Crocodile
   basePrefab: {fileID: 0}
   partyIndex: 0
   stats:
-    ATK: 1
-    AttackSpeed: 0.2
-    HP: 50
+    ATK: 5
+    AttackSpeed: 1
+    HP: 30
     Speed: 0.4
     Range: 1
-    Cost: 4
+    Cost: 50
   AmountOfKnockbacks: 2
   KnockbackRange: 2
   icon: {fileID: 21300000, guid: bdda1bb0c847fe7489c216ed0d13f6b6, type: 3}
-  Cooldown: 3
+  Cooldown: 10

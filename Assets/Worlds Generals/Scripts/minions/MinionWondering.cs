@@ -68,10 +68,11 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
                 SceneManager.LoadScene("Battle");
             }
         }*/
-        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right+Vector3.down*0.5f, 5, LayerMask.NameToLayer("EnemyTeam"));
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right+Vector3.down*0.5f, 5, 64);
         Debug.DrawRay(transform.position, (transform.right + Vector3.down * 0.5f) * 5, Color.green);
         if (isMoving && hit2.collider == null)
         {
+            Debug.Log("ColiderFlip");
             Flip();
         }
         // --Timer--
@@ -80,7 +81,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
             if (Random.Range(0,4) == 0)
             {
                 isMoving = false;
-                timer += 100;
+                timer += Random.Range(randomTimer.x, randomTimer.y)*0.5f;
             }
             else
                 isMoving = true;
@@ -133,7 +134,8 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isMoving)
+        //Debug.Log(collision.gameObject.layer);
+        if (isMoving && collision.gameObject.layer == 6)
             Flip();
     }
     private void OnValidate()
@@ -153,7 +155,6 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
 
         if (data.startSpawnForMinionsWorld1)
         {
-            data.startSpawnForMinionsWorld1 = false;
             if (EntityManager.instance != null)
                 EntityManager.instance.AddMinion(gameObject);
         }
@@ -162,6 +163,6 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     public void SaveData(ref GameData data)
     {
-
+        data.startSpawnForMinionsWorld1 = false;
     }
 }

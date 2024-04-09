@@ -194,17 +194,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
-  minionName: 
+  minionName: Hellbender
   basePrefab: {fileID: 0}
   partyIndex: 0
   stats:
-    ATK: -1
-    AttackSpeed: -1
-    HP: -1
-    Speed: 4.43
-    Range: -1
-    Cost: -1
-  AmountOfKnockbacks: 0
-  KnockbackRange: 0
+    ATK: 1
+    AttackSpeed: 0.2
+    HP: 50
+    Speed: 1.5
+    Range: 0.7
+    Cost: 30
+  AmountOfKnockbacks: 3
+  KnockbackRange: 10
   icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
-  Cooldown: 0
+  Cooldown: 4

@@ -23,6 +23,7 @@ public class MinionBattleBasic : MonoBehaviour
     protected LayerMask teamLayerMask; // the Layermask for allays
     
     Animator animator;
+    AnimationClip[] animeClips;
     float attackAnimeTime;
 
     float knockbackAt; // the amount of HP needed to reach the next knockback stage
@@ -71,8 +72,11 @@ public class MinionBattleBasic : MonoBehaviour
             {
                 if (attackAnimeTime >= attackCoolDown && !startedAttackAnime)
                 {
-                    animator.speed = attackAnimeSpeed; // need to fix aniamtion speed!!!
+                    if (animeClips[0].length > attackCoolDown)
+                        animator.speed = 1+attackCoolDown / animeClips[0].length;
+                    //Debug.Log("attackSPeed: "+ animator.speed+ " L: "+ animeClips[0].length+ " C: "+ attackCoolDown);
                     animator.SetTrigger("Attack");
+
                     startedAttackAnime = true;
                 }
 
@@ -149,6 +153,10 @@ public class MinionBattleBasic : MonoBehaviour
         animator = GetComponent<Animator>();
         attackAnimeTime = animator.runtimeAnimatorController.animationClips[0].length;
         //Debug.Log(animator.runtimeAnimatorController.animationClips[0].name);
+
+        animeClips = animator.runtimeAnimatorController.animationClips;
+        /*for (int i = 0; i < animeClips.Length; i++)
+            Debug.Log(i + ": "+ animeClips[i].name);*/
 
         attackCoolDown = stats.AttackSpeed;
 

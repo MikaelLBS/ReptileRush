@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovment : MonoBehaviour
+public class playerMovment : MonoBehaviour, IDataPersitiens
 {
 
     private float horizontal;
@@ -20,10 +20,7 @@ public class playerMovment : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
             Application.Quit();
         if (Input.GetButtonDown("Submit"))
-        {
-            Debug.Log("Saved");
             DataPersistenceManager.Instance.SaveGame();
-        }
 
         horizontal = Input.GetAxisRaw("Horizontal");
         Flip();
@@ -58,5 +55,16 @@ public class playerMovment : MonoBehaviour
             Vector3 localScale= transform.localScale;
 
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        if (data.playerPosWasSaved)
+            transform.position = new Vector2(data.worldPos.x,data.worldPos.y);
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosWasSaved = true;
+        data.worldPos = (transform.position.x,transform.position.y);
     }
 }

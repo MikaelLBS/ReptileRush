@@ -5,13 +5,16 @@ using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEditor.Animations;*/
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 public class MinionWondering : MonoBehaviour, IDataPersitiens
 {
     [SerializeField] bool isPresetSpawn; // if placing a wild minion by hand turn on this bool. This bool makes it so this GameObject is destoryed on the secound load and forth.
+    [SerializeField] float timeBeforeEnableBattle;
     Rigidbody2D rbody;
     public float speed;
     public Vector2 randomTimer;
@@ -24,7 +27,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(StartBattleCountDown());
         animator = GetComponent<Animator>();
         timer = Random.Range(0, 3);
 
@@ -33,7 +36,15 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         if (!isPresetSpawn && EntityManager.instance != null)
             EntityManager.instance.AddMinion(gameObject);
     }
-
+    IEnumerator StartBattleCountDown()
+    {
+        while (timeBeforeEnableBattle > 0)
+        {
+            timeBeforeEnableBattle -= Time.deltaTime;
+            yield return null; 
+        }
+        timeBeforeEnableBattle = 0;
+    }
     // Update is called once per frame
     float rot = 0;
 
@@ -101,6 +112,9 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     void EnteringBattle()
     {
+        if (timeBeforeEnableBattle != 0)
+            return;
+
         AddMinionDeck();
         PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
         hasEnterdBattle = true;

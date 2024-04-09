@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 [System.Serializable]
 public class GameData
@@ -11,6 +12,9 @@ public class GameData
     // player party
     public int sceneIndex;
     public MinionClass.MinionFileSave[] PartyMinions;
+    // player
+    public bool playerPosWasSaved;
+    public (float x, float y) worldPos;
 
     // music
     public float[] soundsVolume;
@@ -20,7 +24,6 @@ public class GameData
     public GameData()
     {
         startSpawnForMinionsWorld1 = true;
-        //test = new();
-        //soundsVolume = null;
+        playerPosWasSaved = false;
     }
 }

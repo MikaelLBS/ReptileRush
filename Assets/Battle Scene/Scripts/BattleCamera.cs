@@ -16,25 +16,31 @@ public class BattleCamera : MonoBehaviour
     float accumulatedTime = 0f;
     float zoomInterval = 1f; // 50 milliseconds    
     float sizeLim;
+    float widhLim;
+    float widh;
 
     private void Start()
     {
         deltaTime = Time.deltaTime;
 
         sizeLim = groundTrans.lossyScale.x / 3.5556f;
+
+        widhLim = Mathf.Abs(groundTrans.lossyScale.x / 2);
     }
 
     void Update()
     {
         accumulatedTime += deltaTime;
+        widh = cmrsz * 1.8f;        
 
         GetInput();
-        Move();
 
         while (accumulatedTime >= zoomInterval) { 
             Zoom();
             accumulatedTime -= zoomInterval;
         }
+
+        Move();
     }
 
     void GetInput()
@@ -97,5 +103,12 @@ public class BattleCamera : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+
+        if (transform.position.x+widh > widhLim)            
+            cmr.transform.position = new Vector3(widhLim-widh, cmr.transform.position.y, cmr.transform.position.z);
+        //Debug.Log("to far left");
+        if (transform.position.x-widh < -widhLim)
+            cmr.transform.position = new Vector3(-widhLim+widh, cmr.transform.position.y, cmr.transform.position.z);
+        //Debug.Log("to far right");
     }
 }

@@ -65,7 +65,7 @@ public class DataPersistenceManager : MonoBehaviour
     // Player Party
     public void LoadPartyData()
     {
-        if (PlayerParty.Instance == null || gameData.PartyMinions == null)
+        if (PlayerParty.Instance == null || gameData.PartyMinions == null || PlayerParty.Instance.isExitingBattle == true)
             return;
 
         PlayerParty.Instance.sceneIndex = gameData.sceneIndex;

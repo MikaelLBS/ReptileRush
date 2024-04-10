@@ -29,7 +29,6 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             if (wild.hasEnterdBattle && PlayerParty.Instance.isExitingBattle)
             {
                 wild.hasEnterdBattle = false;
-                PlayerParty.Instance.isExitingBattle = false;
                 if (PlayerParty.Instance.wonBattle)
                     continue;
             }
@@ -61,6 +60,8 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
     }
     public void SaveData(ref GameData data)
     {
+        PlayerParty.Instance.isExitingBattle = false;
+
         data.startSpawnForMinionsWorld1 = false;
         data.WildMinions = new MinionClass.WildMinionSave[minions.Count];
         for (int i = 0; i < minions.Count; i++)

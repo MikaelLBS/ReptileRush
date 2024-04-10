@@ -18,6 +18,7 @@ public class BattleEndScreen : MonoBehaviour
     void Update() {
         if (Input.GetButtonDown("Submit"))
         {
+            Debug.Log("skip");
             delay = 0;
         }
 

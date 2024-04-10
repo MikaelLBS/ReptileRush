@@ -155,7 +155,7 @@ public class AfterBattleGame : MonoBehaviour
         }
         else if (PlayerParty.Instance.minions.Count < PlayerParty.Instance.maxMinions)
         {
-            CreateRewardMinion();
+            PlayerParty.Instance.AddMinion(bot.minions[Random.Range(0, bot.minions.Length)]);
             SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
         }
         else

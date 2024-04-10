@@ -15,6 +15,8 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
 {
     [SerializeField] bool isPresetSpawn; // if placing a wild minion by hand turn on this bool. This bool makes it so this GameObject is destoryed on the secound load and forth.
     [SerializeField] float timeBeforeEnableBattle;
+    [SerializeField] float jumpDelay;
+    float jumpTimer;
     Rigidbody2D rbody;
     public float speed;
     public Vector2 randomTimer;
@@ -46,10 +48,52 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         timeBeforeEnableBattle = 0;
     }
     // Update is called once per frame
-    float rot = 0;
+    bool isRuning = false;
+    public void RunFrom(Transform target)
+    {
+        isRuning = true;
+        StartCoroutine(Run(target));
+    }
+    public void StopRuning()
+    {
+        isRuning = false;
+    }
+    IEnumerator Run(Transform target)
+    {
+        Flip();
+        bool targetIsRight = false;
+        if (transform.position.x < target.position.x)
+            targetIsRight = true;
 
+        while (isRuning)
+        {
+            if (targetIsRight && transform.position.x > target.position.x)
+            {
+                Flip();
+                targetIsRight = false;
+            }
+            else if (transform.position.x < target.position.x)
+            {
+                Flip();
+                targetIsRight = true;
+            }
+
+            if (Mathf.Abs(rbody.velocity.x) > Mathf.Abs(speed))
+            {
+                rbody.velocity = new Vector2(speed*3f, rbody.velocity.y);
+            }
+            else
+            {
+                rbody.velocity = new Vector2(rbody.velocity.x + speed*3f, rbody.velocity.y);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    float rot = 0;
     void Flip()
     {
+
         rot = Mathf.Abs(rot - 180);
 
         transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
@@ -57,6 +101,12 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     void FixedUpdate()
     {
+        if (jumpTimer > 0)
+            jumpTimer -= Time.fixedDeltaTime;
+
+        if (isRuning)
+            return;
+
         // --Checks--
         /*RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, LayerMask.NameToLayer("EnemyTeam"));
         Debug.DrawRay(transform.position, transform.right * 1, Color.red);
@@ -133,9 +183,12 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (jumpTimer > 0)
+            return;
         //Debug.Log(collision.gameObject.layer);
+        jumpTimer = jumpDelay;
         if (isMoving && collision.gameObject.layer == 6)
-            Flip();
+            rbody.AddForce(Vector2.up*100f);
     }
     private void OnValidate()
     {

@@ -34,7 +34,7 @@ public class WildDectactPlayer : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name != "Player" || !gameObject.activeSelf)
+        if (collision.name != "Player" || !gameObject.active)
             return;
         StartCoroutine(StopRunDelay());
     }

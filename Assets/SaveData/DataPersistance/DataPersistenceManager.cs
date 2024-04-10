@@ -70,6 +70,7 @@ public class DataPersistenceManager : MonoBehaviour
 
         PlayerParty.Instance.sceneIndex = gameData.sceneIndex;
 
+        PlayerParty.Instance.minions.Clear();
         for (int i = 0; i < gameData.PartyMinions.Length; i++)
         {
             if (i == PlayerParty.Instance.minions.Count)

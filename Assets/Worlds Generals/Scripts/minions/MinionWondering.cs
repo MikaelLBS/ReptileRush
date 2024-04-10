@@ -72,7 +72,6 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         Debug.DrawRay(transform.position, (transform.right + Vector3.down * 0.5f) * 5, Color.green);
         if (isMoving && hit2.collider == null)
         {
-            Debug.Log("ColiderFlip");
             Flip();
         }
         // --Timer--

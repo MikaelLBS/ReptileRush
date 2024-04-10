@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1225753180, guid: f3c59de9c85a7074a87b12c6018a25d5, type: 3}
+  m_Sprite: {fileID: 1965499739, guid: f3c59de9c85a7074a87b12c6018a25d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,8 +192,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.040988352, y: -0.18589891}
-  m_Size: {x: 1.9892356, y: 0.22932532}
+  m_Offset: {x: -0.040988352, y: -0.14}
+  m_Size: {x: 1.9892356, y: 0.35}
   m_Direction: 1
 --- !u!61 &3924613085238809393
 BoxCollider2D:
@@ -202,7 +202,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71222608602138419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -238,7 +238,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9704092, y: 0.39800587}
+  m_Size: {x: 1.9704092, y: 0.2}
   m_EdgeRadius: 0
 --- !u!61 &7813185584578829674
 BoxCollider2D:

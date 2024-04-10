@@ -1,74 +1,71 @@
 using System;
 using UnityEngine;
-using static MinionClass;
+using static UnityEditor.FilePathAttribute;
 using Random = UnityEngine.Random;
 
 public class RandomMinionSpawning : MonoBehaviour
 {
-    [SerializeField] RandSpawnLocations[] randSpawnLocations;
-    [SerializeField] float spawnZValue;
+    [SerializeField] uint maxEnitys;
     [SerializeField] float cycleDelay;
-    [SerializeField] float cycleTimer;
+
+    [SerializeField] RandSpawnLocations[] randSpawnLocations;
+    //[SerializeField] float spawnZValue;
+    float cycleTimer;
 
     void Start()
     {
         cycleTimer = cycleDelay;
-
+        
         foreach (RandSpawnLocations location in randSpawnLocations)
         {
             // set max/min
             location.maxPoint = location.recParam.position + new Vector3(location.recParam.sizeDelta.x, location.recParam.sizeDelta.y);
             location.minPoint = location.recParam.position;
-
-            if (location != null && location.minions.Length > 0)
+            
+            /*if (location != null && location.minions.Length > 0)
             {
                 int randMinion = Random.Range(0, location.minions.Length);
                 float randX = Random.Range(location.minPoint.x, location.maxPoint.x);
                 float randY = Random.Range(location.minPoint.y, location.maxPoint.y);
                 Vector3 randomPosition = new Vector3(randX, randY, spawnZValue);
-
+                
                 GameObject minion = Instantiate(location.minions[randMinion], randomPosition, Quaternion.identity);
-            }
+            }*/
         }
+        
     }
 
     private void Spawn(RandSpawnLocations locaton)
     {
-        if (locaton.minions.Length <= 0)
+        if (locaton.minions.Length <= 0 || EntityManager.instance.minions.Count >= maxEnitys)
             return;
 
-        float xSpawn = Random.Range(locaton.minPoint.x, locaton.maxPoint.x);
+        float xSpawn;
+        RaycastHit2D hit;
 
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(xSpawn, Random.Range(locaton.minPoint.y, locaton.maxPoint.y)), Vector2.down, locaton.maxPoint.y-locaton.minPoint.y);
-        if (hit.collider == null)
-            return;
-
-        GameObject enity = locaton.minions[Random.Range(0, locaton.minions.Length)];
-        Vector2 enitySize = enity.GetComponent<SpriteRenderer>().bounds.size;
-        if (Physics2D.Raycast(hit.point, Vector2.up, enitySize.y).collider != null)
-            return;
-        if (Physics2D.Raycast(hit.point + Vector2.left * enitySize.x * 0.5f, Vector2.right, enitySize.x).collider != null)
-            return;
-        /* // fix if whant a max amount of minions that can spawn
-        bool foundNull = false;
-        for (int i = 0; i < spawnedEntitys.Length; i++)
+        int cycels = 0;
+        while (true)
         {
-            if (spawnedEntitys[i] == null)
-            {
-                foundNull = true;
-                spawnedEntitys[i] = Instantiate(enity, hit.point + Vector2.up * enitySize.y * 0.5f, Quaternion.identity);
-                break;
-            }
+            if (cycels >= 20)
+                return;
+
+            cycels++;
+             xSpawn = Random.Range(locaton.minPoint.x, locaton.maxPoint.x);
+            //Debug.Log("SpawnIn: "+ locaton.maxPoint.y +" - " +  locaton.minPoint.y + " = "+ (locaton.maxPoint.y - locaton.minPoint.y));
+            hit = Physics2D.Raycast(new Vector2(xSpawn, Random.Range(locaton.minPoint.y, locaton.maxPoint.y)), Vector2.down, locaton.maxPoint.y - locaton.minPoint.y, ~256);
+            if (hit.collider == null)
+                continue;
+            GameObject enity = locaton.minions[Random.Range(0, locaton.minions.Length)];
+            Vector2 enitySize = enity.GetComponent<SpriteRenderer>().bounds.size;
+            if (Physics2D.Raycast(hit.point, Vector2.up, enitySize.y).collider != null)
+                continue;
+            if (Physics2D.Raycast(hit.point + Vector2.left * enitySize.x * 0.5f, Vector2.right, enitySize.x).collider != null)
+                continue;
+
+            break;
         }
-        if (!foundNull)
-        {
-            for (int i = 0; i < spawnedEntitys.Length; i++)
-            {
-                if (Mathf.Abs(spawnedEntitys[i].transform.position.x - transform.position.x) > spawingDistance.y || Mathf.Abs(spawnedEntitys[i].transform.position.y - transform.position.y) > spawingDistance.y)
-                    Destroy(spawnedEntitys[i]);
-            }
-        }
-        */
+
+        Instantiate(locaton.minions[Random.Range(0, locaton.minions.Length)], hit.point, Quaternion.identity);
     }
 
     void Update()
@@ -85,7 +82,6 @@ public class RandomMinionSpawning : MonoBehaviour
                     continue;
                 }
                 location.cycle = location.cycleDelay;
-
                 if (Random.Range(location.spawnChance.x,location.spawnChance.y+1) == location.spawnChance.x)
                     Spawn(location);
             }

@@ -15,7 +15,7 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
             Instance = Resources.Load<PlayerParty>("PlayerParty");
     }
     public List<MinionClass.MinionSave> minions;
-    public GameObject[] loadedMinions;
+    [NonSerialized] public GameObject[] loadedMinions;
     public short maxMinions;
 
     public int sceneIndex; // used when exiting battle to get to correct world

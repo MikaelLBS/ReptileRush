@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class GenerationHandeler : MonoBehaviour
+public class GenerationHandeler : MonoBehaviour, IDataPersitiens
 {
     [System.Serializable]
     public class SpawnParams : RandSpawnLocations
@@ -37,10 +37,9 @@ public class GenerationHandeler : MonoBehaviour
     [SerializeField] Vector2Int stepsBetwenSpawners;
     [Header("Background")]
     [SerializeField] Tilemap bTilemap;
-    // Start is called before the first frame update
-    void Start()
+    void CreateCave()
     {
-        TilePlacer.FillTiles(ref tilemap,ref wallTiles,new Vector2Int(-50,-mainPathLength/2), new Vector2Int(mainPathLength,80));
+        TilePlacer.FillTiles(ref tilemap, ref wallTiles, new Vector2Int(-50, -mainPathLength / 2), new Vector2Int(mainPathLength, 80));
         HashSet<Vector3Int> path = new HashSet<Vector3Int>();
         Vector2Int endPos = TilePlacer.GeneratePath(Vector2Int.zero, mainPathLength, ref path, new TilePlacer.GenDirChances());
 
@@ -51,7 +50,7 @@ public class GenerationHandeler : MonoBehaviour
             if (spawnAtCunter == cunter)
             {
                 spawnAtCunter += Random.Range(stepsBetwenSpawners.x, stepsBetwenSpawners.y);
-                SpawnParams spawnBox = spawnBoxes[Random.Range(0,spawnBoxes.Length)];
+                SpawnParams spawnBox = spawnBoxes[Random.Range(0, spawnBoxes.Length)];
                 spawnBox.recParam = new GameObject().AddComponent<RectTransform>();
                 spawnBox.recParam.position = tilemap.CellToWorld(pos);
                 spawnBox.recParam.sizeDelta = spawnBox.recSize;
@@ -59,7 +58,7 @@ public class GenerationHandeler : MonoBehaviour
             }
             cunter++;
         }
-        TilePlacer.RemoveTiles(ref tilemap,ref path,4);
+        TilePlacer.RemoveTiles(ref tilemap, ref path, 4);
 
         path.AddRange(TilePlacer.CreateRoom(ref tilemap, 900, Vector2Int.one * -3, Vector2Int.one * 3));
         path.AddRange(TilePlacer.CreateRoom(ref tilemap, 300, endPos + Vector2Int.one * -5, endPos + Vector2Int.one * 3));
@@ -137,4 +136,67 @@ public class GenerationHandeler : MonoBehaviour
 
         return false;
     }
+
+    public void LoadData(GameData data)
+    {
+        if (data.tileMapInfos == null)
+        {
+            CreateCave();
+            return;
+        }
+        tilemap.ClearAllTiles();
+        foreach (GameData.TileInfo tileInfo in data.tileMapInfos[0].tilesInfo)
+        {
+            if (tileInfo == null)
+                break;
+
+            tilemap.SetTile(new Vector3Int(tileInfo.coords.x,tileInfo.coords.y),Resources.Load<Tile>("Tiles/"+tileInfo.name));
+        }
+        foreach (GameData.TileInfo tileInfo in data.tileMapInfos[1].tilesInfo)
+        {
+            if (tileInfo == null)
+                break;
+
+            bTilemap.SetTile(new Vector3Int(tileInfo.coords.x, tileInfo.coords.y), Resources.Load<Tile>("Tiles/" + tileInfo.name));
+        }
+        foreach (GameData.TileInfo tileInfo in data.tileMapInfos[2].tilesInfo)
+        {
+            if (tileInfo == null)
+                break;
+
+            stairsTilemap.SetTile(new Vector3Int(tileInfo.coords.x, tileInfo.coords.y), Resources.Load<Tile>("Tiles/" + tileInfo.name));
+        }
+    }
+    public void SaveData(ref GameData data)
+    {
+        //Vector2Int(-50,-mainPathLength/2), new Vector2Int(mainPathLength,80) // tilemap.cellBounds.xMin, tilemap.cellBounds.max.x
+        Vector2Int tempVector = new Vector2Int(50+mainPathLength,mainPathLength/2+80);
+
+        data.tileMapInfos = new GameData.TileMapInfo[3];
+        SaveTileMap(ref data, ref tilemap, 0);
+        SaveTileMap(ref data, ref bTilemap, 1);
+        SaveTileMap(ref data, ref stairsTilemap, 2);
+
+        void SaveTileMap(ref GameData data,ref Tilemap tilemapSave,int mapIndex)
+        {
+            GameData.TileInfo[] allTiles = new GameData.TileInfo[tempVector.x * tempVector.y];
+            int index = 0;
+            for (int x = tilemapSave.cellBounds.xMin; x < tilemapSave.cellBounds.max.x; x++)
+            {
+                for (int y = tilemapSave.cellBounds.yMin; y < tilemapSave.cellBounds.max.y; y++)
+                {
+                    if (tilemapSave.GetTile(new Vector3Int(x, y)) == null)
+                        continue;
+                    allTiles[index] = new GameData.TileInfo();
+                    allTiles[index].coords = (x, y);
+                    allTiles[index].name = tilemapSave.GetTile(new Vector3Int(x, y)).name;
+                    index++;
+                }
+
+            }
+            data.tileMapInfos[mapIndex] = new GameData.TileMapInfo();
+            data.tileMapInfos[mapIndex].tilesInfo = allTiles;
+        }
+    }
+
 }

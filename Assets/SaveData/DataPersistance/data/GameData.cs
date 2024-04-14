@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 [System.Serializable]
 public class GameData
 {
@@ -15,6 +16,18 @@ public class GameData
     // player
     public bool playerPosWasSaved;
     public (float x, float y) worldPos;
+
+    //Generation Handeler
+    public class TileInfo
+    {
+        public string name;
+        public (int x, int y) coords;
+    }
+    public class TileMapInfo
+    {
+        public TileInfo[] tilesInfo;
+    }
+    public TileMapInfo[] tileMapInfos;
 
     // music
     public float[] soundsVolume;

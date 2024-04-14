@@ -14,6 +14,11 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    Animator animator;
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +33,7 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
         
         if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
+            animator.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
@@ -40,6 +46,10 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
     private void FixedUpdate()
     {
         rb.velocity=new Vector2(horizontal*speed, rb.velocity.y);
+        if (rb.velocity.x > 0.1f)
+            animator.SetBool("IsMoving", true);
+        else
+            animator.SetBool("IsMoving",false);
     }
 
     private bool IsGrounded()

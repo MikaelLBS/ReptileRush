@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
 using Random = UnityEngine.Random;
 
 public class RandomMinionSpawning : MonoBehaviour
@@ -8,10 +8,13 @@ public class RandomMinionSpawning : MonoBehaviour
     [SerializeField] uint maxEnitys;
     [SerializeField] float cycleDelay;
 
-    [SerializeField] RandSpawnLocations[] randSpawnLocations;
+    [SerializeField] List<RandSpawnLocations> randSpawnLocations;
     //[SerializeField] float spawnZValue;
     float cycleTimer;
-
+    public void AddSpawnLoacation(RandSpawnLocations randSpawn)
+    {
+        randSpawnLocations.Add(randSpawn);
+    }
     void Start()
     {
         cycleTimer = cycleDelay;

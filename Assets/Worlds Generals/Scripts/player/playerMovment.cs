@@ -34,6 +34,7 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
         if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
             animator.SetTrigger("Jump");
+            StartCoroutine(InAirCheck());
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
@@ -42,11 +43,25 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
     }
-
+    IEnumerator InAirCheck()
+    {
+        yield return new WaitForSeconds(0.2f);
+        while (!IsGrounded())
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        animator.ResetTrigger("Jump");
+    }
     private void FixedUpdate()
     {
         rb.velocity=new Vector2(horizontal*speed, rb.velocity.y);
-        if (rb.velocity.x > 0.1f)
+
+        if (rb.velocity.y < -1.5f)
+            animator.SetBool("Falling", true);
+        else
+            animator.SetBool("Falling", false);
+
+        if (Mathf.Abs(rb.velocity.x) > 0.1f)
             animator.SetBool("IsMoving", true);
         else
             animator.SetBool("IsMoving",false);
@@ -62,7 +77,7 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
         if(isFacingRight && horizontal <0f || !isFacingRight && horizontal >0)
         {
             isFacingRight=!isFacingRight;
-            Vector3 localScale= transform.localScale;
+            transform.Rotate(0,180,0);
 
         }
     }

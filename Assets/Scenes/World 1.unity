@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 25737984}
   - component: {fileID: 25737983}
   - component: {fileID: 25737985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: S Tilemap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36613,7 +36613,7 @@ Transform:
   m_GameObject: {fileID: 512004933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.74, z: 0}
+  m_LocalPosition: {x: 0, y: -1.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36924,7 +36924,7 @@ GameObject:
   - component: {fileID: 610075518}
   - component: {fileID: 610075517}
   - component: {fileID: 610075519}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38413,7 +38413,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 1490247090, guid: dac223c8feca1a443a4c2c1b97c76e80, type: 3}
-  m_Color: {r: 0.07747769, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -38455,7 +38455,7 @@ MonoBehaviour:
   groundCheck: {fileID: 512004934}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
 --- !u!50 &1388202630
 Rigidbody2D:
   serializedVersion: 4
@@ -39095,7 +39095,7 @@ GameObject:
   - component: {fileID: 1664049196}
   - component: {fileID: 1664049194}
   - component: {fileID: 1664049195}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: B Tilemap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

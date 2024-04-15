@@ -8,6 +8,9 @@ public class RandomMinionSpawning : MonoBehaviour
     [SerializeField] uint maxEnitys;
     [SerializeField] float cycleDelay;
 
+    [SerializeField] float maxDisFromPlayer;
+    Transform player;
+
     [SerializeField] List<RandSpawnLocations> randSpawnLocations;
     //[SerializeField] float spawnZValue;
     float cycleTimer;
@@ -17,6 +20,7 @@ public class RandomMinionSpawning : MonoBehaviour
     }
     void Start()
     {
+        player = GameObject.Find("Player").transform;
         cycleTimer = cycleDelay;
         
         foreach (RandSpawnLocations location in randSpawnLocations)
@@ -49,16 +53,17 @@ public class RandomMinionSpawning : MonoBehaviour
         int cycels = 0;
         while (true)
         {
-            if (cycels >= 20)
+            if (cycels >= 50)
                 return;
 
             cycels++;
              xSpawn = Random.Range(locaton.minPoint.x, locaton.maxPoint.x);
             //Debug.Log("SpawnIn: "+ locaton.maxPoint.y +" - " +  locaton.minPoint.y + " = "+ (locaton.maxPoint.y - locaton.minPoint.y));
-            hit = Physics2D.Raycast(new Vector2(xSpawn, Random.Range(locaton.minPoint.y, locaton.maxPoint.y)), Vector2.down, locaton.maxPoint.y - locaton.minPoint.y, ~256);
+            hit = Physics2D.Raycast(new Vector2(xSpawn, Random.Range(locaton.minPoint.y, locaton.maxPoint.y)), Vector2.down, (locaton.maxPoint.y - locaton.minPoint.y)*2, ~256);
             if (hit.collider == null)
                 continue;
             GameObject enity = locaton.minions[Random.Range(0, locaton.minions.Length)];
+            enity.SetActive(true);
             Vector2 enitySize = enity.GetComponent<SpriteRenderer>().bounds.size;
             if (Physics2D.Raycast(hit.point, Vector2.up, enitySize.y).collider != null)
                 continue;
@@ -79,6 +84,9 @@ public class RandomMinionSpawning : MonoBehaviour
         {
             foreach(RandSpawnLocations location in randSpawnLocations)
             {
+                if (location.recParam.position.x - player.position.x > maxDisFromPlayer)
+                    return;
+                Debug.DrawRay(location.recParam.position, (location.recParam.position.x - player.position.x)*Vector2.left,Color.yellow,1f);
                 if (location.cycle != 0)
                 {
                     location.cycle--;

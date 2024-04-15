@@ -84,7 +84,7 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
             if (spawnAtCunter == cunter)
             {
                 spawnAtCunter += Random.Range(stepsBetwenSpawners.x, stepsBetwenSpawners.y);
-                SpawnParams spawnBox = spawnBoxes[Random.Range(0, spawnBoxes.Length)];
+                SpawnParams spawnBox =  new(spawnBoxes[Random.Range(0, spawnBoxes.Length)]);
                 spawnBox.recParam = new GameObject().AddComponent<RectTransform>();
                 spawnBox.recParam.position = tilemap.CellToWorld(pos);
                 spawnBox.recParam.sizeDelta = spawnBox.recSize;

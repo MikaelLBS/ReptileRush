@@ -60,7 +60,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     IEnumerator Run(Transform target)
     {
-        Flip();
+        animator.SetBool("IsAttacking", false);
         bool targetIsRight = false;
         if (transform.position.x < target.position.x)
             targetIsRight = true;
@@ -69,12 +69,12 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         {
             if (targetIsRight && transform.position.x > target.position.x)
             {
-                Flip();
+                FaceRight(false);
                 targetIsRight = false;
             }
             else if (transform.position.x < target.position.x)
             {
-                Flip();
+                FaceRight(true);
                 targetIsRight = true;
             }
 
@@ -98,6 +98,21 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
 
         transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
         speed *= -1;
+    }
+    void FaceRight(bool faceRight)
+    {
+        if (faceRight)
+        {
+            rot = 0;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            speed = MathF.Abs(speed);
+        }
+        else
+        {
+            rot = 180;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            speed = -MathF.Abs(speed);
+        }
     }
     void FixedUpdate()
     {
@@ -188,7 +203,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         //Debug.Log(collision.gameObject.layer);
         jumpTimer = jumpDelay;
         if (isMoving && collision.gameObject.layer == 6)
-            rbody.AddForce(Vector2.up*100f);
+            rbody.AddForce(Vector2.up*200f);
     }
     private void OnValidate()
     {

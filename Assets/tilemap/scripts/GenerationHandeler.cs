@@ -184,25 +184,13 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
         spawnBoxes = new SpawnParams[data.minionSpawners.Count];
         for (int i = 0; i < spawnBoxes.Length; i++)
             spawnBoxes[i] = new (data.minionSpawners[i]);
-        /*for (int i = 0; i < spawnBoxes.Length; i++)
-        {
-            RectTransform rec = new GameObject().AddComponent<RectTransform>();
-            rec.position = new Vector2(data.minionSpawners[i].pos.x, data.minionSpawners[i].pos.y);
-            rec.sizeDelta = new Vector2(data.minionSpawners[i].recSize.x, data.minionSpawners[i].recSize.y);
 
-            spawnBoxes[i] =
-        }*/
         foreach (SaveSpawners saveSpawn in data.minionSpawners)
         {
-            /*RectTransform rec = new GameObject().AddComponent<RectTransform>();
-            rec.position = new Vector2(saveSpawn.pos.x, saveSpawn.pos.y);
-            rec.sizeDelta = new Vector2(saveSpawn.recSize.x, saveSpawn.recSize.y);*/
-
             SpawnParams spawnBox = new(saveSpawn);
             spawnBox.recParam = new GameObject().AddComponent<RectTransform>();
             spawnBox.recParam.position = new Vector2(saveSpawn.pos.x, saveSpawn.pos.y);
             spawnBox.recParam.sizeDelta = new Vector2(saveSpawn.recSize.x, saveSpawn.recSize.y);
-            //Debug.Log(spawnBox.recParam.position + " : "+ new Vector2(saveSpawn.pos.x, saveSpawn.pos.y));
             minionSpawning.AddSpawnLoacation(spawnBox);
         }
 
@@ -231,25 +219,10 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
     }
     public void SaveData(ref GameData data)
     {
-        //Vector2Int(-50,-mainPathLength/2), new Vector2Int(mainPathLength,80) // tilemap.cellBounds.xMin, tilemap.cellBounds.max.x
         Vector2Int tempVector = new Vector2Int(50+mainPathLength,mainPathLength/2+80);
-        //data.minionSpawners = new SaveSpawners[saveSpawners.Count];
-        //for (int i = 0; i < saveSpawners.Count; i++)
-        //    data.minionSpawners[i] = saveSpawners[i];
         data.minionSpawners = new List<SaveSpawners>();
-        /*foreach (GameData.SaveSpawners sp in saveSpawners)
-        {
-            data.WildMinions = new MinionClass.WildMinionSave[spBox.minions.Length];
-            for (int i = 0; i < data.WildMinions.Length; i++)
-                EntityManager.WildToSave(ref spBox.minions[i], ref data.WildMinions[i]);
-        }*/
-        for (int j = 0; j < saveSpawners.Count; j++)
-        {
-            data.minionSpawners.Add(saveSpawners[j]);
-            /*data.minionSpawners[j].WildMinions = new MinionClass.WildMinionSave[saveSpawners[j].WildMinions.Length];
-            for (int i = 0; i < data.WildMinions.Length; i++)
-                data.minionSpawners[j].WildMinions[i] = saveSpawners[j].WildMinions[i];*/
-        }
+        foreach (SaveSpawners svSpawner in saveSpawners)
+            data.minionSpawners.Add(svSpawner);
 
         data.tileMapInfos = new GameData.TileMapInfo[3];
         SaveTileMap(ref data, ref tilemap, 0);

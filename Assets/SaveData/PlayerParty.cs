@@ -36,6 +36,7 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
         if (bScript.basePrefab == null)
             bScript.basePrefab = Resources.Load<GameObject>("Battles/" + EntityManager.GetPrefabName(minion.name));
         MinionClass.MinionSave minionSave = new(minionGameObject.GetComponent<MinionBattleBasic>(), minionGameObject.GetComponent<RuntimeAnimatorController>());
+        minionSave.stats.HP -= GameData.difficultyMultiplayer;
         minions.Add(minionSave);
     }
 

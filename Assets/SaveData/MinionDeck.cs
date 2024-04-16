@@ -50,6 +50,8 @@ public class MinionDeck : ScriptableObject
             if (minion.stats.Cost >= 0)
                 basicMinionBattle.stats.Cost = minion.stats.Cost;
 
+            basicMinionBattle.stats.HP += GameData.difficultyMultiplayer;
+
             basicMinionBattle.minionName = minion.minionName;
             if (minion.icon == null)
                 minion.icon = basicBattleMinion.GetComponent<MinionBattleBasic>().icon;

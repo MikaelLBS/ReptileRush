@@ -70,7 +70,7 @@ public class GameData
     public static int difficultyMultiplayer;
     public void NewLevelDataReset()
     {
-        difficultyMultiplayer += 3;
+        difficultyMultiplayer += 100;
         playerPosWasSaved = false;
         tileMapInfos = null;
         minionSpawners = null;
@@ -79,7 +79,7 @@ public class GameData
 
     public GameData()
     {
-        difficultyMultiplayer = 1;
+        difficultyMultiplayer = 0;
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;
     }

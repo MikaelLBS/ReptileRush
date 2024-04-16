@@ -61,7 +61,7 @@ public class GameData
     public List<SaveSpawners> minionSpawners; // Need to save minion Spawners! ! !
 
     // Bosses
-    public MinionClass.WildMinionSave[] bosses;
+    public List<MinionClass.WildMinionSave> bosses;
 
     // music
     public float[] soundsVolume;

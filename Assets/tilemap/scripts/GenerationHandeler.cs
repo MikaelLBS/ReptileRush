@@ -118,7 +118,9 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
 
         PlaceOtherTiles(ref path);
 
-        Instantiate(boss).transform.position = tilemap.CellToWorld((Vector3Int)endPos);
+        GameObject tempbossMinion = Instantiate(boss);
+        tempbossMinion.transform.position = tilemap.CellToWorld((Vector3Int)endPos);
+        tempbossMinion.SetActive(true);
     }
     void PlaceOtherTiles(ref HashSet<Vector3Int> path)
     {
@@ -193,15 +195,33 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
     {
         if (data.tileMapInfos == null)
         {
-            GameObject[] bosses = Resources.LoadAll<GameObject>("Bosses");
+            GameObject[] bosses = new GameObject[0];
+
+            if (data.bosses == null)
+                bosses = Resources.LoadAll<GameObject>("Bosses");
+            else if (data.bosses.Count > 0)
+            {
+                bosses = new GameObject[data.bosses.Count];
+                for (int i = 0; i < bosses.Length; i++)
+                {
+                    MinionClass.WildMinionSave tempWildSave = data.bosses[i];
+                    bosses[i] = EntityManager.SaveToWild(ref tempWildSave, false);
+                }
+            }
             int index = Random.Range(0, bosses.Length);
             CreateCave(bosses[index]);
             if (index != bosses.Length - 1)
                 bosses[index] = bosses[bosses.Length-1];
 
-            data.bosses = new MinionClass.WildMinionSave[bosses.Length-1];
+            //data.bosses = new MinionClass.WildMinionSave[bosses.Length-1];
+            data.bosses = new List<MinionClass.WildMinionSave>();
             for (int i = 0; i < bosses.Length-1; i++)
-                EntityManager.WildToSave(ref bosses[i], ref data.bosses[i]);
+            {
+                data.bosses.Add(new());
+                MinionClass.WildMinionSave tempWildSave = data.bosses[i];
+                EntityManager.CustomWildToSave(ref bosses[i], ref tempWildSave,"Bosses/");
+                data.bosses[i] = tempWildSave;
+            }
             return;
         }
         saveSpawners = data.minionSpawners;

@@ -89,18 +89,26 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         for (int i = 0; i < minions.Count; i++)
         {
             GameObject tempMinion = minions[i];
-            if (tempMinion.name[0] == 'B')
-                BossWildToSave(ref tempMinion, ref data.WildMinions[i]);
+            if (tempMinion.GetComponent<MinionWondering>().isBoss)
+            {
+                CustomWildToSave(ref tempMinion, ref data.WildMinions[i], "Bosses/");
+            }
             else
                 WildToSave(ref tempMinion, ref data.WildMinions[i]);
+            //Debug.Log(data.WildMinions[i].wildMinionPrefabPath);
 
         }
+        //Debug.Log("------");
     }
     public static GameObject SaveToWild(ref MinionClass.WildMinionSave wild, bool isActive)
     {
         if (wild == null)
             return null;
-        GameObject minion = Instantiate(Resources.Load<GameObject>(wild.wildMinionPrefabPath));
+        //Debug.Log(wild.wildMinionPrefabPath);
+        GameObject tempMinion = Resources.Load<GameObject>(wild.wildMinionPrefabPath);
+        if (tempMinion == null)
+            return null;
+        GameObject minion = Instantiate(tempMinion);
         minion.SetActive(isActive);
         MinionWondering minionWonderingScript = minion.GetComponent<MinionWondering>();
         minionWonderingScript.battleMinions = new MinionClass.BattleMinion[wild.battleMinions.Length];
@@ -146,13 +154,13 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         save.randomTimer = (minionWonderingScript.randomTimer.x, minionWonderingScript.randomTimer.y);
         save.hasEnterdBattle = minionWonderingScript.hasEnterdBattle;
     }
-    public static void BossWildToSave(ref GameObject minion, ref MinionClass.WildMinionSave save)
+    public static void CustomWildToSave(ref GameObject minion, ref MinionClass.WildMinionSave save, string wildPath)
     {
         save = new MinionClass.WildMinionSave();
         MinionWondering minionWonderingScript = minion.GetComponent<MinionWondering>();
         save.battleMinions = new MinionClass.BattleMinionSave[minionWonderingScript.battleMinions.Length];
 
-        save.wildMinionPrefabPath = "Bosses/" + GetPrefabName(minion.name);
+        save.wildMinionPrefabPath = wildPath + GetPrefabName(minion.name);
 
         for (int j = 0; j < minionWonderingScript.battleMinions.Length; j++)
         {

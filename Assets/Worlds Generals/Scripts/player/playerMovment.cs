@@ -43,6 +43,19 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+
+
+        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        {
+            animator.SetTrigger("Jump");
+            StartCoroutine(InAirCheck());
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
     }
     IEnumerator InAirCheck()
     {

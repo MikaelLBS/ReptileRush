@@ -5,6 +5,7 @@ using static MinionClass;
 
 public class devTools : MonoBehaviour
 {
+    [SerializeField] PlayerParty playerParty;
     [SerializeField] string fileName;
     [Header("Tools")]
     [SerializeField] bool resetFile;
@@ -16,6 +17,7 @@ public class devTools : MonoBehaviour
             resetFile = false;
             //FileDataHandler handeler = new FileDataHandler(Application.persistentDataPath, saveFileName);
             new FileDataHandler(Application.persistentDataPath, fileName).Save(new());
+            playerParty.minions.Clear();
             Debug.Log("Deleted SaveData File!");
         }
         if (getFilePath)

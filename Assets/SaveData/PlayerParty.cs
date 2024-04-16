@@ -21,6 +21,7 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
     public int sceneIndex; // used when exiting battle to get to correct world
 
     [NonSerialized] public bool wonBattle;
+    [NonSerialized] public bool isGameOver;
     [NonSerialized] public bool isExitingBattle;
 
 
@@ -30,8 +31,10 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
         minion.SetActive(false);
         GameObject minionGameObject = Instantiate(minion);
 
-        minionGameObject.GetComponent<MinionBattleBasic>().isEnemy = false;
-
+        MinionBattleBasic bScript = minionGameObject.GetComponent<MinionBattleBasic>();
+        bScript.isEnemy = false;
+        if (bScript.basePrefab == null)
+            bScript.basePrefab = Resources.Load<GameObject>("Battles/" + EntityManager.GetPrefabName(minion.name));
         MinionClass.MinionSave minionSave = new(minionGameObject.GetComponent<MinionBattleBasic>(), minionGameObject.GetComponent<RuntimeAnimatorController>());
         minions.Add(minionSave);
     }

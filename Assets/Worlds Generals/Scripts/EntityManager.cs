@@ -181,7 +181,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         save.hasEnterdBattle = minionWonderingScript.hasEnterdBattle;
         save.isBoss = true;
     }
-    static string GetPrefabName(string instanceName)
+    public static string GetPrefabName(string instanceName)
     {
         for (int i = 0;i < instanceName.Length;i++)
         {

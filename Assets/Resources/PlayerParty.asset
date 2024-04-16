@@ -14,28 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minions:
   - stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: 1
-    minionName: Krok
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
     slotIndex: 0
-    icon: {fileID: 21300000, guid: bdda1bb0c847fe7489c216ed0d13f6b6, type: 3}
-    animator: {fileID: 0}
-    minion: {fileID: 71222608602138419, guid: 9285f2d505495a143b15d4ac3e9cb6ca, type: 3}
-  - stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: 1
-    minionName: Damge
-    slotIndex: 1
     icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
     animator: {fileID: 0}
-    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+    minion: {fileID: 0}
   maxMinions: 3
   sceneIndex: 1

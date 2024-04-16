@@ -37585,6 +37585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2dca1184f15fa84298555767fa62763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerParty: {fileID: 11400000, guid: abeb10a459f3fa44083b3aa2685a13bc, type: 2}
   fileName: PlaceHolderData
   resetFile: 0
   getFilePath: 0

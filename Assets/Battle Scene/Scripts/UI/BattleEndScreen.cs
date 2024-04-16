@@ -10,13 +10,12 @@ public class BattleEndScreen : MonoBehaviour
     [SerializeField] GameObject text;
     [SerializeField] float delay;
     [SerializeField] GameObject nextScreen;
-
     private void OnEnable()
     {
         text.SetActive(true);
     }
     void Update() {
-        if (Input.GetButtonDown("Submit"))
+        if (Input.anyKeyDown)
         {
             Debug.Log("skip");
             delay = 0;
@@ -28,7 +27,10 @@ public class BattleEndScreen : MonoBehaviour
             if (nextScreen == null)
             {
                 PlayerParty.Instance.wonBattle = false;
-                SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
+                if (PlayerParty.Instance.minions.Count == 0)
+                    nextScreen.SetActive(true);
+                else
+                    SceneManager.LoadScene(PlayerParty.Instance.sceneIndex);
             }
             else
             {

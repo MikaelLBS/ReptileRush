@@ -117,7 +117,6 @@ public class BattleCanvas : MonoBehaviour
         CreateButtons();
         timer = sekPerMana;
         manaFillBar.maxValue = maxMana;
-
         CheckCosts();
     }
     // Update is called once per frame

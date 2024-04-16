@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 86695fb19ce8d2646aa84e32284d973e
+guid: 5cb994810f2c5744584b21ecb031f9bb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - starterMinion: {fileID: 71222608602138419, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -32,7 +35,15 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         this.gameData = DataHandler.Load();
-        //Debug.Log(Application.persistentDataPath);
+        
+        if (PlayerParty.Instance.isGameOver)
+        {
+            PlayerParty.Instance.isGameOver = false;
+            NewGameData();
+            WriteSaveFile();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         if (gameData == null)
         {
             NewGameData();
@@ -69,14 +80,24 @@ public class DataPersistenceManager : MonoBehaviour
     // Player Party
     public void LoadPartyData()
     {
-        if (PlayerParty.Instance == null || gameData.PartyMinions == null || PlayerParty.Instance.isExitingBattle == true)
+        if (PlayerParty.Instance == null || PlayerParty.Instance.isExitingBattle == true)
             return;
 
         PlayerParty.Instance.sceneIndex = gameData.sceneIndex;
 
+        if (gameData.PartyMinions == null || gameData.PartyMinions.Length == 0)
+        {
+            //Debug.Log("Trigger");
+            PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Hellbender"));
+            //SavePartyData();
+            //LoadPartyData();
+            return;
+        }
+
         PlayerParty.Instance.minions.Clear();
         for (int i = 0; i < gameData.PartyMinions.Length; i++)
         {
+            //Debug.Log("trigger 2--: "+ gameData.PartyMinions[i].minionPrefabPath);
             if (i == PlayerParty.Instance.minions.Count)
                 PlayerParty.Instance.minions.Add(new());
             PlayerParty.Instance.minions[i].LoadFromGeneric(gameData.PartyMinions[i].minionSave);

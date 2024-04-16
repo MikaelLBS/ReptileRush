@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 [System.Serializable]
 public class GameData
@@ -59,10 +60,20 @@ public class GameData
     public TileMapInfo[] tileMapInfos;
     public List<SaveSpawners> minionSpawners; // Need to save minion Spawners! ! !
 
+    // Bosses
+    public MinionClass.WildMinionSave[] bosses;
+
     // music
     public float[] soundsVolume;
 
-
+    // other
+    public void NewLevelDataReset()
+    {
+        playerPosWasSaved = false;
+        tileMapInfos = null;
+        minionSpawners = null;
+        WildMinions = new MinionClass.WildMinionSave[0];
+    }
 
     public GameData()
     {

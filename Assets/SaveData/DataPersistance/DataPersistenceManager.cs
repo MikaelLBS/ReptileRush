@@ -11,7 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     private List<IDataPersitiens> dataPersistenceObjcets;
 
-    FileDataHandler DataHandler;
+    public FileDataHandler DataHandler {  get; private set; }
     public static DataPersistenceManager Instance { get; private set; }
 
     private void Awake()
@@ -51,6 +51,10 @@ public class DataPersistenceManager : MonoBehaviour
 
         DataHandler.Save(gameData);
     }
+    public void WriteSaveFile()
+    { DataHandler.Save(gameData); }
+    public void NewLevelDataReset()
+    { gameData.NewLevelDataReset(); }
     private void OnApplicationQuit()
     {
         SaveGame();

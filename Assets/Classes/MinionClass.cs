@@ -122,6 +122,7 @@ public class MinionClass
 
         public float speed;
         public (float x, float y) randomTimer;
+        public bool isBoss;
         public bool hasEnterdBattle;
         public BattleMinionSave[] battleMinions;
     }

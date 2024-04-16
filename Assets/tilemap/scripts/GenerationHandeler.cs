@@ -71,7 +71,20 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
     [NonSerialized] public List<GameData.SaveSpawners> saveSpawners = new List<SaveSpawners>();
     [Header("Background")]
     [SerializeField] Tilemap bTilemap;
-    void CreateCave()
+
+    public void RemoveTile(Vector2Int pos)
+    {
+        tilemap.SetTile((Vector3Int)pos,null);
+        stairsTilemap.SetTile((Vector3Int)pos, null);
+        bTilemap.SetTile((Vector3Int)pos, wallTiles[Random.Range(0,wallTiles.Length)]);
+    }
+    public void RemoveTile(Vector3 pos)
+    {
+        tilemap.SetTile(tilemap.WorldToCell(pos), null);
+        stairsTilemap.SetTile(stairsTilemap.WorldToCell(pos), null);
+        bTilemap.SetTile(bTilemap.WorldToCell(pos), wallTiles[Random.Range(0, wallTiles.Length)]);
+    }
+    void CreateCave(GameObject boss)
     {
         TilePlacer.FillTiles(ref tilemap, ref wallTiles, new Vector2Int(-50, -mainPathLength / 2), new Vector2Int(mainPathLength, 80));
         HashSet<Vector3Int> path = new HashSet<Vector3Int>();
@@ -97,11 +110,15 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
         TilePlacer.RemoveTiles(ref tilemap, ref path, 4);
 
         path.AddRange(TilePlacer.CreateRoom(ref tilemap, 900, Vector2Int.one * -3, Vector2Int.one * 3));
+        path.AddRange(TilePlacer.CreateRoom(ref tilemap, 50, new Vector2Int(-2,0), new Vector2Int(2, 80)));
+
         path.AddRange(TilePlacer.CreateRoom(ref tilemap, 300, endPos + Vector2Int.one * -5, endPos + Vector2Int.one * 3));
 
         TilePlacer.PlaceTiles(ref bTilemap, ref wallTiles, path, 0);
 
         PlaceOtherTiles(ref path);
+
+        Instantiate(boss).transform.position = tilemap.CellToWorld((Vector3Int)endPos);
     }
     void PlaceOtherTiles(ref HashSet<Vector3Int> path)
     {
@@ -172,12 +189,19 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
 
         return false;
     }
-
     public void LoadData(GameData data)
     {
         if (data.tileMapInfos == null)
         {
-            CreateCave();
+            GameObject[] bosses = Resources.LoadAll<GameObject>("Bosses");
+            int index = Random.Range(0, bosses.Length);
+            CreateCave(bosses[index]);
+            if (index != bosses.Length - 1)
+                bosses[index] = bosses[bosses.Length-1];
+
+            data.bosses = new MinionClass.WildMinionSave[bosses.Length-1];
+            for (int i = 0; i < bosses.Length-1; i++)
+                EntityManager.WildToSave(ref bosses[i], ref data.bosses[i]);
             return;
         }
         saveSpawners = data.minionSpawners;

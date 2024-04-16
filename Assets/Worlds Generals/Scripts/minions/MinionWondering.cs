@@ -13,6 +13,7 @@ using System.Collections;
 
 public class MinionWondering : MonoBehaviour, IDataPersitiens
 {
+    public bool isBoss;
     [SerializeField] bool isPresetSpawn; // if placing a wild minion by hand turn on this bool. This bool makes it so this GameObject is destoryed on the secound load and forth.
     [SerializeField] float timeBeforeEnableBattle;
     [SerializeField] float jumpDelay;
@@ -191,7 +192,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         if (collision.transform.name == "Player")
             EnteringBattle();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.transform.name == "Player")
             EnteringBattle();

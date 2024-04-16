@@ -18,6 +18,7 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
     private void Start()
     {
         animator = GetComponent<Animator>();
+        rb.AddForce(Vector2.down*1000);
     }
     // Update is called once per frame
     void Update()

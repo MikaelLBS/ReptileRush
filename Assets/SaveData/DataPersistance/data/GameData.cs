@@ -19,7 +19,7 @@ public class GameData
     public bool playerPosWasSaved;
     public (float x, float y) worldPos;
 
-    //Generation Handeler
+    // Generation Handeler
     public class TileInfo
     {
         public string name;
@@ -66,9 +66,11 @@ public class GameData
     // music
     public float[] soundsVolume;
 
-    // other
+    // levels
+    public static int difficultyMultiplayer;
     public void NewLevelDataReset()
     {
+        difficultyMultiplayer += 3;
         playerPosWasSaved = false;
         tileMapInfos = null;
         minionSpawners = null;
@@ -77,6 +79,7 @@ public class GameData
 
     public GameData()
     {
+        difficultyMultiplayer = 1;
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;
     }

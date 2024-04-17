@@ -113,6 +113,7 @@ public class BattleCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerParty.Instance.battleHasEnded = false;
         minions = PlayerParty.Instance.LoadMinions();
         CreateButtons();
         timer = sekPerMana;

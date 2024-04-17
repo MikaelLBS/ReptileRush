@@ -130,7 +130,7 @@ public class MinionBattleBasic : MonoBehaviour
         isInKnockbackAnimation = true;
         yield return new WaitForSeconds(0.1f);
         if (isEnemy)
-            transform.rotation = Quaternion.Euler(0, -180, -25);
+            transform.rotation = Quaternion.Euler(0, -180, 25);
         else
             transform.rotation = Quaternion.Euler(0, 0, 25);
 

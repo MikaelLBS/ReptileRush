@@ -24,6 +24,7 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
     [NonSerialized] public bool isGameOver;
     [NonSerialized] public bool isExitingBattle;
 
+    [NonSerialized] public bool battleHasEnded;
 
     // Creates a prefab of the inputed GameObject in Assets/resources/Prefabs/PlayerDeck/
     public void AddMinion(GameObject minion)
@@ -83,7 +84,6 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
     }
     public void LoadData(GameData data)
     {
-        Debug.Log("Load");
         sceneIndex = data.sceneIndex;
         loadedMinions = new GameObject[0];
 
@@ -98,7 +98,6 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
     }
     public void SaveData(ref GameData data)
     {
-        Debug.Log("Save");
         data.sceneIndex = sceneIndex;
 
         data.PartyMinions = new MinionClass.MinionFileSave[minions.Count];

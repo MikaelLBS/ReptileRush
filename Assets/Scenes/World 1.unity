@@ -37528,9 +37528,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1174021513215186651, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_Name
       value: PauseManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7595242045950990588, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37571,6 +37579,18 @@ PrefabInstance:
     - target: {fileID: 7595242045950990588, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714789178779567328, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104284257099183399, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165593815818760026, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

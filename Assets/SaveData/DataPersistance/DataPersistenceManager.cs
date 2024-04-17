@@ -79,10 +79,9 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (PlayerParty.Instance == null || PlayerParty.Instance.isExitingBattle == true)
             return;
-
         PlayerParty.Instance.sceneIndex = gameData.sceneIndex;
 
-        if (gameData.PartyMinions == null || gameData.PartyMinions.Length == 0)
+        if (PlayerParty.Instance.minions == null || PlayerParty.Instance.minions.Count == 0)
         {
             //Debug.Log("Trigger");
             PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Hellbender"));
@@ -90,7 +89,8 @@ public class DataPersistenceManager : MonoBehaviour
             //LoadPartyData();
             return;
         }
-
+        if (gameData.PartyMinions == null)
+            return;
         PlayerParty.Instance.minions.Clear();
         for (int i = 0; i < gameData.PartyMinions.Length; i++)
         {

@@ -71,6 +71,8 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PlayerParty.Instance.isGameOver)
+            return;
         DataPersistenceManager.Instance.LoadPartyData();
         CreateButtons();
     }

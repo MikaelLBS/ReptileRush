@@ -28,10 +28,14 @@ public class BaseBasic : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     public void DamgeTaken(int damge)
     {
-        if (HP!=0)
+        if (HP!=0 && !PlayerParty.Instance.battleHasEnded)
         {
             HP -= damge;
-            if (HP <= 0) { gameOverScreen.SetActive(true); HP = 0; }
+            if (HP <= 0) {
+                gameOverScreen.SetActive(true);
+                HP = 0;
+                PlayerParty.Instance.battleHasEnded = true;
+            }
         }
     }
 

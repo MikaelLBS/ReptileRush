@@ -9,6 +9,7 @@ public class BattleEndScreen : MonoBehaviour
     [SerializeField] GameObject battleUI;
     [SerializeField] GameObject text;
     [SerializeField] float delay;
+    [SerializeField] bool isVictoryScreen;
     [SerializeField] GameObject nextScreen;
     private void OnEnable()
     {
@@ -24,7 +25,7 @@ public class BattleEndScreen : MonoBehaviour
         if (delay <= 0)
         {
             PlayerParty.Instance.isExitingBattle = true;
-            if (nextScreen == null)
+            if (!isVictoryScreen)
             {
                 PlayerParty.Instance.wonBattle = false;
                 if (PlayerParty.Instance.minions.Count == 0)

@@ -24,6 +24,78 @@ MonoBehaviour:
     slotIndex: 0
     icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
     animator: {fileID: 0}
-    minion: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+  - stats:
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
+    slotIndex: 1
+    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    animator: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+  - stats:
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
+    slotIndex: 2
+    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    animator: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+  - stats:
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
+    slotIndex: 3
+    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    animator: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+  - stats:
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
+    slotIndex: 4
+    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    animator: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+  - stats:
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
+    slotIndex: 5
+    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    animator: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+  - stats:
+      ATK: 1
+      AttackSpeed: 0.2
+      HP: 50
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minionName: Hellbender
+    slotIndex: 6
+    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    animator: {fileID: 0}
+    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
   maxMinions: 3
-  sceneIndex: 1
+  sceneIndex: 0

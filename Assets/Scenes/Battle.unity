@@ -2764,6 +2764,7 @@ MonoBehaviour:
   battleUI: {fileID: 2115768477}
   text: {fileID: 334195779}
   delay: 3
+  isVictoryScreen: 1
   nextScreen: {fileID: 2106458772}
 --- !u!1 &1024265622
 GameObject:
@@ -3629,6 +3630,7 @@ MonoBehaviour:
   battleUI: {fileID: 2115768477}
   text: {fileID: 586740422}
   delay: 8
+  isVictoryScreen: 0
   nextScreen: {fileID: 476260851}
 --- !u!224 &1404763436
 RectTransform:

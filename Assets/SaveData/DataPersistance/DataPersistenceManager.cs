@@ -83,8 +83,8 @@ public class DataPersistenceManager : MonoBehaviour
 
         if (PlayerParty.Instance.minions == null || PlayerParty.Instance.minions.Count == 0)
         {
-            PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Hellbender"));
-            //PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Spear Turtle"));
+            //PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Hellbender"));
+            PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Spear Turtle"));
             return;
         }
         if (gameData.PartyMinions == null)

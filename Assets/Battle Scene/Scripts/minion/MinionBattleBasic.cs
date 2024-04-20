@@ -21,7 +21,7 @@ public class MinionBattleBasic : MonoBehaviour
     public float Cooldown;
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
-    
+
     Animator animator;
     AnimationClip[] animeClips;
     float attackAnimeTime;
@@ -151,6 +151,8 @@ public class MinionBattleBasic : MonoBehaviour
         MinionDeck.Instance.minionsAmount++;
 
         animator = GetComponent<Animator>();
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
         attackAnimeTime = animator.runtimeAnimatorController.animationClips[0].length;
         //Debug.Log(animator.runtimeAnimatorController.animationClips[0].name);
 

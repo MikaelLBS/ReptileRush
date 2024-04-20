@@ -32,6 +32,8 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     {
         StartCoroutine(StartBattleCountDown());
         animator = GetComponent<Animator>();
+        if (animator == null )
+            animator = GetComponentInChildren<Animator>();
         timer = Random.Range(0, 3);
 
         rbody = GetComponent<Rigidbody2D>();

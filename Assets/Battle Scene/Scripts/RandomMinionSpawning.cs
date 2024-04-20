@@ -9,6 +9,7 @@ public class RandomMinionSpawning : MonoBehaviour
     [SerializeField] float cycleDelay;
 
     [SerializeField] float maxDisFromPlayer;
+    [SerializeField] float minDisFromPlayer;
     Transform player;
 
     [SerializeField] List<RandSpawnLocations> randSpawnLocations;
@@ -84,7 +85,7 @@ public class RandomMinionSpawning : MonoBehaviour
         {
             foreach(RandSpawnLocations location in randSpawnLocations)
             {
-                if (location.recParam.position.x - player.position.x > maxDisFromPlayer)
+                if (location.recParam.position.x - player.position.x > maxDisFromPlayer || Mathf.Abs(location.recParam.position.x - player.position.x) < minDisFromPlayer)
                     return;
                 Debug.DrawRay(location.recParam.position, (location.recParam.position.x - player.position.x)*Vector2.left,Color.yellow,1f);
                 if (location.cycle != 0)

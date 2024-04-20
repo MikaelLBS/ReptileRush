@@ -127,7 +127,10 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         minionWonderingScript.randomTimer = new Vector2(wild.randomTimer.x, wild.randomTimer.y);
         minionWonderingScript.hasEnterdBattle = wild.hasEnterdBattle;
 
-        minionWonderingScript.GetComponent<SpriteRenderer>().color = new Color(wild.color.r,wild.color.g,wild.color.b,wild.color.a);
+        if (minion.GetComponent<SpriteRenderer>() == null)
+            minionWonderingScript.GetComponentInChildren<SpriteRenderer>().color = new Color(wild.color.r, wild.color.g, wild.color.b, wild.color.a);
+        else
+            minionWonderingScript.GetComponent<SpriteRenderer>().color = new Color(wild.color.r, wild.color.g, wild.color.b, wild.color.a);
         minionWonderingScript.transform.localScale = new Vector2(wild.size.x, wild.size.y);
 
         return minion;
@@ -158,7 +161,11 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         save.randomTimer = (minionWonderingScript.randomTimer.x, minionWonderingScript.randomTimer.y);
         save.hasEnterdBattle = minionWonderingScript.hasEnterdBattle;
 
-        Color minionColor = minion.GetComponent<SpriteRenderer>().color;
+        Color minionColor;
+        if (minion.GetComponent<SpriteRenderer>() == null)
+            minionColor = minion.GetComponentInChildren<SpriteRenderer>().color;
+        else
+            minionColor = minion.GetComponent<SpriteRenderer>().color;
         save.color = (minionColor.r,minionColor.g,minionColor.b,minionColor.a);
         save.size = (minion.transform.localScale.x, minion.transform.localScale.y);
     }

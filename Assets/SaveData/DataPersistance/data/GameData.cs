@@ -68,9 +68,10 @@ public class GameData
 
     // levels
     public static int difficultyMultiplayer;
+    public int difficultyMultiplayerPrivate;
     public void NewLevelDataReset()
     {
-        difficultyMultiplayer += 100;
+        difficultyMultiplayerPrivate = difficultyMultiplayer + 1;
         playerPosWasSaved = false;
         tileMapInfos = null;
         minionSpawners = null;

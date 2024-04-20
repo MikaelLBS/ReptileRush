@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class EntityManager : MonoBehaviour, IDataPersitiens
 {
+    static Color worldColor;
     public static EntityManager instance;
     private void Awake()
     {
         if (instance == null)
             instance = this;
         PlayerParty.SetInstance();
+        worldColor = new Color(0, 0.1f, 0.1f, 0) * GameData.difficultyMultiplayer;
     }
 
     public List<GameObject> minions = new List<GameObject>();
@@ -132,11 +134,10 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         minionWonderingScript.hasEnterdBattle = wild.hasEnterdBattle;
 
         if (minion.GetComponent<SpriteRenderer>() == null)
-            minionWonderingScript.GetComponentInChildren<SpriteRenderer>().color = new Color(wild.color.r, wild.color.g, wild.color.b, wild.color.a);
+            minionWonderingScript.GetComponentInChildren<SpriteRenderer>().color = new Color(wild.color.r, wild.color.g, wild.color.b, wild.color.a)- worldColor;
         else
-            minionWonderingScript.GetComponent<SpriteRenderer>().color = new Color(wild.color.r, wild.color.g, wild.color.b, wild.color.a);
+            minionWonderingScript.GetComponent<SpriteRenderer>().color = new Color(wild.color.r, wild.color.g, wild.color.b, wild.color.a) - worldColor;
         minionWonderingScript.transform.localScale = new Vector2(wild.size.x, wild.size.y);
-
         return minion;
     }
     public static void WildToSave(ref GameObject minion, ref MinionClass.WildMinionSave save)

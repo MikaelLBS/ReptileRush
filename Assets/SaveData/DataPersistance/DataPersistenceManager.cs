@@ -32,7 +32,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         this.gameData = DataHandler.Load();
-        
+        GameData.difficultyMultiplayer = gameData.difficultyMultiplayerPrivate;
         if (PlayerParty.Instance.isGameOver)
         {
             PlayerParty.Instance.isGameOver = false;
@@ -49,7 +49,6 @@ public class DataPersistenceManager : MonoBehaviour
 
         foreach (IDataPersitiens dataPer in dataPersistenceObjcets)
             dataPer.LoadData(gameData);
-
     }
     public void SaveGame()
     {

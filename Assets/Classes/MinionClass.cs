@@ -125,6 +125,9 @@ public class MinionClass
         public bool isBoss;
         public bool hasEnterdBattle;
         public BattleMinionSave[] battleMinions;
+
+        public (float r, float g, float b, float a) color;
+        public (float x, float y) size;
     }
     // Generic Classes
     public class GenericBattleMinion

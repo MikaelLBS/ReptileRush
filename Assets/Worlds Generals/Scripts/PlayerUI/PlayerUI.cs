@@ -20,7 +20,10 @@ public class PlayerUI : MonoBehaviour
 
         // if button is lager then placeHolder make the picture size smaller
         if (pictureSize * (PlayerParty.Instance.minions.Count + 1) > sizeBetweenStartAndEndPoints)
+        {
             pictureSize = sizeBetweenStartAndEndPoints / (PlayerParty.Instance.minions.Count + 2);
+            Debug.Log("Trigger");
+        }
 
         float distanceBetweenPic = (sizeBetweenStartAndEndPoints) / PlayerParty.Instance.minions.Count;
 
@@ -233,13 +236,13 @@ public class PlayerUI : MonoBehaviour
         {
             case Spacials.Poison:
                 //string[] hej = { "Ability: Poison", "Poisoned minons take damage over time" };
-                ChangeAbilityText(new string[]{ "Ability: Poison", "Poisoned enemys take damage over time" });
+                ChangeAbilityText(new string[]{ "ABILITY: Poison", "Poisoned enemys take damage over time" });
                 break;
                 case Spacials.Thorns:
-                ChangeAbilityText(new string[] { "Ability: Thorns", "if enemys hits a creature with thorns","they also take a samll amount of damage" });
+                ChangeAbilityText(new string[] { "ABILITY: Thorns", "if enemys hits a creature with thorns","they also take a samll amount of damage" });
                     break;
             case Spacials.AreaOfAttack:
-                ChangeAbilityText(new string[] { "Ability: Area Of Attack", "Can hit several enemys per attack" });
+                ChangeAbilityText(new string[] { "ABILITY: Area Of Attack", "Can hit several enemys per attack" });
                 break;
             default:
                 break;

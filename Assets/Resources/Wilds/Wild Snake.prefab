@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1418d07e83eb6848a5de108df2fddf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
   isPresetSpawn: 0
   timeBeforeEnableBattle: 3
   jumpDelay: 0.3

@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1418d07e83eb6848a5de108df2fddf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
   isPresetSpawn: 0
   timeBeforeEnableBattle: 3
   jumpDelay: 0.3
@@ -149,6 +150,7 @@ MonoBehaviour:
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
     animator: {fileID: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
   - minionName: Damge
     stats:
@@ -161,6 +163,7 @@ MonoBehaviour:
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
     animator: {fileID: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

@@ -72,7 +72,11 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
             if (minion.stats.Cost >= 0)
                 basicMinionBattle.stats.Cost = minion.stats.Cost;
 
-            //minion.minionName = 
+            if (basicMinionBattle.GetComponent<SpriteRenderer>() == null)
+                basicMinionBattle.GetComponentInChildren<SpriteRenderer>().color = minion.color;
+            else
+                basicMinionBattle.GetComponent<SpriteRenderer>().color = minion.color;
+
             basicMinionBattle.minionName = minion.minionName;
 
             basicMinionBattle.isEnemy = false;

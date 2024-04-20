@@ -48,6 +48,7 @@ public class MinionClass
         public GameObject minion;
         public Sprite icon;
         public RuntimeAnimatorController animator;
+        public Color color = Color.white;
         public bool resetStats;
         public void LoadFromGeneric(GenericBattleMinion genericBattle)
         {
@@ -64,12 +65,14 @@ public class MinionClass
         public string minionPrefabPath;
         public string iconAssetPath;
         public string animatorAssetPath;
+        public (float r, float g, float b, float a) color;
 
     }
     [System.Serializable]
     public class MinionSave : GenericMinionSave
     {
         public Sprite icon;
+        public Color color;
         public RuntimeAnimatorController animator;
         public GameObject minion;
         public MinionSave()
@@ -95,7 +98,10 @@ public class MinionClass
             animator = animatorController;
             stats = battleMinion.stats;
             icon = battleMinion.icon;
-
+            if (battleMinion.GetComponent<SpriteRenderer>() == null)
+                color = battleMinion.GetComponentInChildren<SpriteRenderer>().color;
+            else
+                color = battleMinion.GetComponent<SpriteRenderer>().color;
             slotIndex = 0;
         }
 
@@ -113,6 +119,7 @@ public class MinionClass
         public string minionPrefabPath;
         public string iconAssetPath;
         public string animatorAssetPath;
+        public (float r, float g, float b, float a) color;
     }
     [System.Serializable]
     public class WildMinionSave

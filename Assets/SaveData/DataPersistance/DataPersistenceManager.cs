@@ -100,6 +100,9 @@ public class DataPersistenceManager : MonoBehaviour
             PlayerParty.Instance.minions[i].minion = Resources.Load<GameObject>(gameData.PartyMinions[i].minionPrefabPath);
             PlayerParty.Instance.minions[i].icon = Resources.Load<Sprite>(gameData.PartyMinions[i].iconAssetPath);
             PlayerParty.Instance.minions[i].animator = Resources.Load<RuntimeAnimatorController>(gameData.PartyMinions[i].animatorAssetPath);
+
+            (float r, float g, float b,float a) color = gameData.PartyMinions[i].color;
+            PlayerParty.Instance.minions[i].color = new Color(color.r,color.g,color.b,color.a);
         }
     }
      void SavePartyData()
@@ -121,6 +124,9 @@ public class DataPersistenceManager : MonoBehaviour
                 gameData.PartyMinions[i].animatorAssetPath = "Anime/" + PlayerParty.Instance.minions[i].animator.name;
             if (PlayerParty.Instance.minions[i].icon != null)
                 gameData.PartyMinions[i].iconAssetPath = "Icons/" + PlayerParty.Instance.minions[i].icon.name;
+
+            Color color = PlayerParty.Instance.minions[i].color;
+            gameData.PartyMinions[i].color = (color.r, color.g, color.b, color.a);
         }
     }
 }

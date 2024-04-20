@@ -14,52 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minions:
   - stats:
-      ATK: 1
-      AttackSpeed: 0.2
-      HP: 50
-      Speed: 1.5
-      Range: 0.7
-      Cost: 30
-    minionName: Hellbender
+      ATK: 5
+      AttackSpeed: 1
+      HP: 1000
+      Speed: 0.8
+      Range: 1
+      Cost: 10
+    minionName: Turtule
     slotIndex: 0
-    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
+    icon: {fileID: 21300000, guid: 200fdef4d6ed2774f89e06d4cad9e3e3, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
     animator: {fileID: 0}
-    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
-  - stats:
-      ATK: 1
-      AttackSpeed: 0.2
-      HP: 50
-      Speed: 1.5
-      Range: 0.7
-      Cost: 30
-    minionName: Damge
-    slotIndex: 1
-    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
-    animator: {fileID: 0}
-    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
-  - stats:
-      ATK: 1
-      AttackSpeed: 0.2
-      HP: 50
-      Speed: 1.5
-      Range: 0.7
-      Cost: 30
-    minionName: Damge
-    slotIndex: 1
-    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
-    animator: {fileID: 0}
-    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
-  - stats:
-      ATK: 1
-      AttackSpeed: 0.2
-      HP: 50
-      Speed: 1.5
-      Range: 0.7
-      Cost: 30
-    minionName: Tank
-    slotIndex: 0
-    icon: {fileID: 21300000, guid: f2858122c805a0744a97c53ce55bab3c, type: 3}
-    animator: {fileID: 0}
-    minion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
+    minion: {fileID: 71222608602138419, guid: 6a78521299523ce4aadd6a2d6f05ae8b, type: 3}
   maxMinions: 3
   sceneIndex: 1

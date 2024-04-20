@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 using static MinionClass;
@@ -56,6 +57,11 @@ public class MinionDeck : ScriptableObject
             if (minion.icon == null)
                 minion.icon = basicBattleMinion.GetComponent<MinionBattleBasic>().icon;
             basicMinionBattle.icon = minion.icon;
+
+            if (basicMinionBattle.GetComponent<SpriteRenderer>() == null)
+                basicMinionBattle.GetComponentInChildren<SpriteRenderer>().color = minion.color;
+            else
+                basicMinionBattle.GetComponent<SpriteRenderer>().color = minion.color;
 
             basicMinionBattle.isEnemy = true;
             loadedMinions[i] = minionGameObject;

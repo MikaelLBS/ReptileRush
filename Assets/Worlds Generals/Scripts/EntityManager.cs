@@ -121,6 +121,10 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             minionWonderingScript.battleMinions[i].minion = Resources.Load<GameObject>(wild.battleMinions[i].minionPrefabPath);
             minionWonderingScript.battleMinions[i].icon = Resources.Load<Sprite>(wild.battleMinions[i].iconAssetPath);
             minionWonderingScript.battleMinions[i].animator = Resources.Load<RuntimeAnimatorController>(wild.battleMinions[i].animatorAssetPath);
+
+            (float r, float g, float b, float a) color = wild.battleMinions[i].color;
+            minionWonderingScript.battleMinions[i].color = new Color(color.r, color.g, color.b, color.a);
+
         }
         minion.transform.position = new Vector2(wild.worldCoords.x, wild.worldCoords.y);
         minionWonderingScript.speed = wild.speed;
@@ -152,6 +156,9 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
                 save.battleMinions[j].iconAssetPath = "Icons/" + minionWonderingScript.battleMinions[j].icon.name;
             if (minionWonderingScript.battleMinions[j].animator != null)
                 save.battleMinions[j].animatorAssetPath = "Anime/" + minionWonderingScript.battleMinions[j].animator.name;
+
+            Color color = minionWonderingScript.battleMinions[j].color;
+            save.battleMinions[j].color = (color.r, color.g, color.b, color.a);
 
             save.battleMinions[j].minionSave = new MinionClass.GenericBattleMinion(minionWonderingScript.battleMinions[j]);
         }

@@ -4730,6 +4730,8 @@ MonoBehaviour:
   cmr: {fileID: 2054478986}
   cmrsz: 5
   groundTrans: {fileID: 1640471978}
+  zoomInterval: 0.01
+  zoomChangeAmount: 0.1
 --- !u!224 &2076716975 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7446367808265367362, guid: a8c77e3b60b5c3e48966e29b04cbea26, type: 3}

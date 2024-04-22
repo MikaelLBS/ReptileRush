@@ -71,48 +71,27 @@ public class BattleCamera : MonoBehaviour
     {
         if (up != down)
         {
-            if (up)
-            {
-                cmrsz += zoomChangeAmount;
-            }
-            else if (down)
-            {
-                cmrsz -= zoomChangeAmount;
-            }
-            if(cmrsz < 1)
-                cmrsz = 1;
-            if (cmrsz > sizeLim)
-                cmrsz = sizeLim;
+            float targetZoom = cmrsz + (up ? zoomChangeAmount : -zoomChangeAmount);
+
+            targetZoom = Mathf.Clamp(targetZoom, 1f, sizeLim);
+
+            cmrsz = Mathf.Lerp(cmrsz, targetZoom, Time.deltaTime * 200f);
+
             cmr.orthographicSize = cmrsz;
-            
-            cmr.transform.position = new Vector3(cmr.transform.position.x, cmrsz-5, cmr.transform.position.z);
+
+            cmr.transform.position = new Vector3(cmr.transform.position.x, cmrsz - 5f, cmr.transform.position.z);
         }
     }
 
+
     void Move()
     {
-        if (right != left)
-        {
-            if (right)
-            {
-                veloz.x = 15;
-            }
-            else if (left)
-            {
-                veloz.x = -15;
-            }
-            rb.velocity = veloz;
-        }
-        if (right == left)
-        {
-            rb.velocity = Vector2.zero;
-        }
+        float boundaryOffset = widhLim - cmrsz * cmr.aspect;
 
-        if (transform.position.x+widh > widhLim)            
-            cmr.transform.position = new Vector3(widhLim-widh, cmr.transform.position.y, cmr.transform.position.z);
-        //Debug.Log("to far left");
-        if (transform.position.x-widh < -widhLim)
-            cmr.transform.position = new Vector3(-widhLim+widh, cmr.transform.position.y, cmr.transform.position.z);
-        //Debug.Log("to far right");
+        veloz.x = (right ? 1 : 0) * 15 - (left ? 1 : 0) * 15;
+        rb.velocity = veloz;
+
+        float clampedX = Mathf.Clamp(transform.position.x, -boundaryOffset, boundaryOffset);
+        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 }

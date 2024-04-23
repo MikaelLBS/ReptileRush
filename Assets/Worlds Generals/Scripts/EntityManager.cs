@@ -53,9 +53,12 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             time -= Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (GameData.difficultyMultiplayer == 4)
+            sceneIndex = 3;
         DataPersistenceManager.Instance.NewLevelDataReset();
         DataPersistenceManager.Instance.WriteSaveFile();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(sceneIndex);
     }
     public void LoadData(GameData data)
     {

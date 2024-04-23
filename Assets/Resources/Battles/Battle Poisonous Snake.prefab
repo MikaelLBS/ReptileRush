@@ -199,15 +199,15 @@ MonoBehaviour:
   partyIndex: 0
   stats:
     ATK: 1
-    AttackSpeed: 3
-    HP: 70
+    AttackSpeed: 2
+    HP: 30
     Speed: 0.5
     Range: 1
     Cost: 50
   AmountOfKnockbacks: 2
   KnockbackRange: 1
   icon: {fileID: 21300000, guid: 2c4a37040ed35ac45818b3f0b2b22770, type: 3}
-  Cooldown: 6
+  Cooldown: 4
   specals: 01000000
   offPut: 0
   areaSize: 0

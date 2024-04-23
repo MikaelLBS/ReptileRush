@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,6 +58,11 @@ public class BattleCanvas : MonoBehaviour
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
             button.GetComponent<Image>().sprite = minData.icon;
 
+            if (minions[i].GetComponent<SpriteRenderer>() == null)
+                button.GetComponent<Image>().color = minions[i].GetComponentInChildren<SpriteRenderer>().color;
+            else
+                button.GetComponent<Image>().color = minions[i].GetComponent<SpriteRenderer>().color;
+
             BattleSummonButton battleButton = button.GetComponent<BattleSummonButton>();
             battleButton.minion = minions[i];
             battleButton.spawnPos = spawnPos;
@@ -113,6 +119,7 @@ public class BattleCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxMana *= (uint)GameData.difficultyMultiplayer+1;
         PlayerParty.Instance.battleHasEnded = false;
         minions = PlayerParty.Instance.LoadMinions();
         CreateButtons();

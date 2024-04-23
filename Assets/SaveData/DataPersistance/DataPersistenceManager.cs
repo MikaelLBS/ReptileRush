@@ -17,6 +17,8 @@ public class DataPersistenceManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        if (PlayerParty.Instance == null)
+            PlayerParty.SetInstance();
     }
     private void Start()
     {
@@ -32,7 +34,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         this.gameData = DataHandler.Load();
-        GameData.difficultyMultiplayer = gameData.difficultyMultiplayerPrivate;
+        GameData.difficultyMultiplayer = gameData.difficultyMultiplayerLocal;
         if (PlayerParty.Instance.isGameOver)
         {
             PlayerParty.Instance.isGameOver = false;

@@ -16,7 +16,7 @@ MonoBehaviour:
   - stats:
       ATK: 5
       AttackSpeed: 1
-      HP: 1000
+      HP: 15
       Speed: 0.8
       Range: 1
       Cost: 10
@@ -27,4 +27,4 @@ MonoBehaviour:
     animator: {fileID: 0}
     minion: {fileID: 71222608602138419, guid: 6a78521299523ce4aadd6a2d6f05ae8b, type: 3}
   maxMinions: 3
-  sceneIndex: 1
+  sceneIndex: 0

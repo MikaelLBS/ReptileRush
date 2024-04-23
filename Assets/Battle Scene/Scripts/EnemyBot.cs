@@ -28,7 +28,7 @@ public class EnemyBot : MonoBehaviour
     {
         if (timer <= 0)
         {
-            mana += 1;
+            mana += 1+GameData.difficultyMultiplayer;
             TrySummon();
             timer += resetTimer;
         }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ public class GameData
             WildMinions = new MinionClass.WildMinionSave[sp.minions.Length];
             for (int i = 0; i < sp.minions.Length; i++)
             {
-                EntityManager.WildToSave(ref sp.minions[i], ref WildMinions[i]);
+                EntityManager.WildToSave(ref sp.minions[i].minion, ref WildMinions[i]);
             }
         }
     }
@@ -62,16 +63,21 @@ public class GameData
 
     // Bosses
     public List<MinionClass.WildMinionSave> bosses;
+    public bool hasEnterFinalBoss;
 
     // music
     public float[] soundsVolume;
 
     // levels
     public static int difficultyMultiplayer;
-    public int difficultyMultiplayerPrivate;
+    public int difficultyMultiplayerLocal;
     public void NewLevelDataReset()
     {
-        difficultyMultiplayerPrivate = difficultyMultiplayer + 1;
+        if (difficultyMultiplayer == 4)
+            difficultyMultiplayerLocal = 0;
+        else
+            difficultyMultiplayerLocal = difficultyMultiplayer + 1;
+
         playerPosWasSaved = false;
         tileMapInfos = null;
         minionSpawners = null;
@@ -80,8 +86,17 @@ public class GameData
 
     public GameData()
     {
+
         difficultyMultiplayer = 0;
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;
+        soundsVolume = new float[0];
+    }
+    public GameData(float[] volumes)
+    {
+        difficultyMultiplayer = 0;
+        startSpawnForMinionsWorld1 = true;
+        playerPosWasSaved = false;
+        soundsVolume = volumes;
     }
 }

@@ -18,7 +18,6 @@ public class BattleEndScreen : MonoBehaviour
     void Update() {
         if (Input.anyKeyDown)
         {
-            Debug.Log("skip");
             delay = 0;
         }
 

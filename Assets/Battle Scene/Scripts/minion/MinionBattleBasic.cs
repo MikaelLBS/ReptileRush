@@ -30,6 +30,8 @@ public class MinionBattleBasic : MonoBehaviour
     uint knockbacksLeft;
     bool isInKnockbackAnimation; // is true when minion is in knockback Animation
 
+    int rayflip = 1;
+
     public virtual void DamgeTaken(int damge)
     {
         stats.HP -= damge;
@@ -50,8 +52,10 @@ public class MinionBattleBasic : MonoBehaviour
     protected RaycastHit2D hit;
     protected virtual void Attack()
     {
-        hit = Physics2D.Raycast(transform.position, transform.right, stats.Range, teamLayerMask);
-        Debug.DrawRay(transform.position, transform.right * stats.Range, Color.green);
+        hit = Physics2D.Raycast(transform.position, transform.right*rayflip, stats.Range, teamLayerMask);
+        //RaycastHit2D hitUp = Physics2D.Raycast(transform.position, new Vector2(1,1.5f * rayflip), stats.Range, teamLayerMask);
+        Debug.DrawRay(transform.position, transform.right * stats.Range*rayflip, Color.green);
+        //Debug.DrawRay(transform.position, new Vector2(1, 1.5f * rayflip) * stats.Range, Color.red);
         if (hit.collider != null)
         {
             if (!attacked)
@@ -124,8 +128,9 @@ public class MinionBattleBasic : MonoBehaviour
     }
     protected virtual IEnumerator StartKnockBackAnimation()
     {
+        animator.SetBool("Grounded", false);
         LayerMask rayMask = ~(LayerMask.GetMask("PlayerTeam") + LayerMask.GetMask("EnemyTeam"));
-        float length = Physics2D.Raycast(transform.position, Vector2.down, 10, rayMask).distance+0.01f;
+        float length = Physics2D.Raycast(transform.position, Vector2.down, 100, rayMask).distance+0.01f;
 
         isInKnockbackAnimation = true;
         yield return new WaitForSeconds(0.1f);
@@ -137,14 +142,14 @@ public class MinionBattleBasic : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, length, rayMask);
-            Debug.DrawRay(transform.position, Vector2.down*length, Color.red);
+            Debug.DrawRay(transform.position, Vector2.down*length, Color.yellow);
             if (hit.collider == null) {
                 yield return null;
             }
             else { break; }
         }
         isInKnockbackAnimation = false;
-        animator.SetTrigger("Grounded");
+        animator.SetBool("Grounded",true);
     }
     private void Awake()
     {
@@ -175,6 +180,7 @@ public class MinionBattleBasic : MonoBehaviour
         teamLayerMask = 0;
         if (isEnemy)
         {
+            rayflip = -1;
             stats.Speed *= -1;
             stats.Range *= -1;
             KnockbackRange *= -1;

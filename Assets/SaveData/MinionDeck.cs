@@ -63,6 +63,9 @@ public class MinionDeck : ScriptableObject
             else
                 basicMinionBattle.GetComponent<SpriteRenderer>().color = minion.color;
 
+            basicMinionBattle.stats.Cost = basicMinionBattle.stats.HP / 10 + basicMinionBattle.stats.ATK + (int)Mathf.Round(basicMinionBattle.stats.AttackSpeed + basicMinionBattle.stats.Speed);
+            //Debug.Log(basicMinionBattle.stats.HP / 10 + " + " + basicMinionBattle.stats.ATK + " + " + (int)Mathf.Round(basicMinionBattle.stats.AttackSpeed + basicMinionBattle.stats.Speed));
+
             basicMinionBattle.isEnemy = true;
             loadedMinions[i] = minionGameObject;
             i++;

@@ -136,9 +136,9 @@ public class AfterBattleGame : MonoBehaviour
     string UppdateStatsText(MinionClass.MinionStats stats)
     {
         string statsText =
-            "ATK: " + stats.ATK * 10 +
+            "ATK: " + stats.ATK +
             "\nATK Speed: " + Mathf.Round(1 / stats.AttackSpeed * 100) / 100 +
-            "\nHP: " + stats.HP * 10 +
+            "\nHP: " + stats.HP +
             "\nRange: " + Mathf.Round(stats.Range * 10) +
             "\nSpeed: " + Mathf.Round(stats.Speed * 10) +
             "\nCost: " + stats.Cost;

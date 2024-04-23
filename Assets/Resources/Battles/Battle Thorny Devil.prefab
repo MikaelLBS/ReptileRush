@@ -200,14 +200,14 @@ MonoBehaviour:
   stats:
     ATK: 2
     AttackSpeed: 2
-    HP: 60
+    HP: 30
     Speed: 2
     Range: 0.7
-    Cost: 50
+    Cost: 8
   AmountOfKnockbacks: 5
   KnockbackRange: 1.5
   icon: {fileID: 21300000, guid: 4815a89ce7408854f9ba4e5e877959f6, type: 3}
-  Cooldown: 5
+  Cooldown: 6
   specals: 02000000
   offPut: 0
   areaSize: 0

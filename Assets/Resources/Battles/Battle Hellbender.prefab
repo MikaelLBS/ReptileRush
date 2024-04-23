@@ -199,8 +199,8 @@ MonoBehaviour:
   partyIndex: 0
   stats:
     ATK: 1
-    AttackSpeed: 0.2
-    HP: 50
+    AttackSpeed: 0.4
+    HP: 40
     Speed: 1.5
     Range: 0.7
     Cost: 30

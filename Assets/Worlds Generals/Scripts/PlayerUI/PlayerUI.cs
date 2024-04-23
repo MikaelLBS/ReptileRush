@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 using static MinionBattleSpecial;
 
 public class PlayerUI : MonoBehaviour
@@ -47,7 +48,9 @@ public class PlayerUI : MonoBehaviour
             GameObject button = Instantiate(buttonPrefab, new Vector2(xCoordsButtons[minData.slotIndex], buttonHolder.position.y), Quaternion.identity);
             button.transform.SetParent(buttonHolder);
             button.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize;
+
             button.GetComponent<Image>().sprite = minData.icon;
+            button.GetComponent<Image>().color = minData.color;
 
             SwapButtonPlayerUI buttonScriptPlayerUI = button.GetComponent<SwapButtonPlayerUI>();
             buttonScriptPlayerUI.minion = minData.minion;
@@ -137,6 +140,7 @@ public class PlayerUI : MonoBehaviour
     float[] yCoordsButtons;
     GameObject[] minonButtonsInv;
     GameObject tempButton;
+    bool isInvOpen = false;
 
     [System.Serializable]
     class InvStatsObjects
@@ -175,6 +179,7 @@ public class PlayerUI : MonoBehaviour
             tempButton.transform.SetParent(buttonHolder2);
             tempButton.GetComponent<RectTransform>().sizeDelta = Vector2.one * pictureSize2;
             tempButton.GetComponent<Image>().sprite = minData.icon;
+            tempButton.GetComponent<Image>().color = minData.color;
             minonButtonsInv[i] = tempButton;
 
             InvButtonUI buttonScriptPlayerUI = tempButton.GetComponent<InvButtonUI>();
@@ -192,6 +197,7 @@ public class PlayerUI : MonoBehaviour
 
     public void OpenInv()
     {
+        isInvOpen = true;
         inv.SetActive (true);
         Time.timeScale = 0;
         CreateButtonsInv();
@@ -200,6 +206,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void CloseInv()
     {
+        isInvOpen = false;
         inv.SetActive(false);
         Time.timeScale = 1;
         for (int i = 0; i < minonButtonsInv.Length; i++)
@@ -220,9 +227,9 @@ public class PlayerUI : MonoBehaviour
     string UppdateStatsText(MinionClass.MinionStats stats)
     {
         string statsText =
-            "ATK: "+ stats.ATK*10 +
+            "ATK: "+ stats.ATK +
             "\nATK Speed: "+ Mathf.Round(1 /stats.AttackSpeed*100)/100 +
-            "\nHP: "+stats.HP*10 + 
+            "\nHP: "+stats.HP + 
             "\nRange: "+ Mathf.Round(stats.Range * 10) +
             "\nSpeed: "+Mathf.Round(stats.Speed * 10) +
             "\nCost: "+stats.Cost;
@@ -254,6 +261,16 @@ public class PlayerUI : MonoBehaviour
         foreach (string s in abilityText)
         {
             invStats.abilityText.text += s+"\n";
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetButtonDown("Open Inv"))
+        {
+            if (isInvOpen)
+                CloseInv();
+            else
+                OpenInv();
         }
     }
 }

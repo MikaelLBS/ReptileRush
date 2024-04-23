@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static MinionClass;
 using Random = UnityEngine.Random;
 
 public class RandomMinionSpawning : MonoBehaviour
@@ -63,9 +64,14 @@ public class RandomMinionSpawning : MonoBehaviour
             hit = Physics2D.Raycast(new Vector2(xSpawn, Random.Range(locaton.minPoint.y, locaton.maxPoint.y)), Vector2.down, (locaton.maxPoint.y - locaton.minPoint.y)*2, ~256);
             if (hit.collider == null)
                 continue;
-            GameObject enity = locaton.minions[Random.Range(0, locaton.minions.Length)];
-            enity.SetActive(true);
-            Vector2 enitySize = enity.GetComponent<SpriteRenderer>().bounds.size;
+
+            Vector2 enitySize;
+            GameObject enity = locaton.minions[Random.Range(0, locaton.minions.Length)].minion;
+            if (enity.GetComponent<SpriteRenderer>() == null)
+                enitySize = enity.GetComponentInChildren<SpriteRenderer>().bounds.size;
+            else
+                enitySize = enity.GetComponent<SpriteRenderer>().bounds.size;
+
             if (Physics2D.Raycast(hit.point, Vector2.up, enitySize.y).collider != null)
                 continue;
             if (Physics2D.Raycast(hit.point + Vector2.left * enitySize.x * 0.5f, Vector2.right, enitySize.x).collider != null)
@@ -73,8 +79,30 @@ public class RandomMinionSpawning : MonoBehaviour
 
             break;
         }
+        int minIndex = Random.Range(0, locaton.minions.Length);
+        GameObject minSpawn = Instantiate(locaton.minions[minIndex].minion, hit.point, Quaternion.identity);
+        minSpawn.SetActive(true);
 
-        Instantiate(locaton.minions[Random.Range(0, locaton.minions.Length)], hit.point, Quaternion.identity);
+        if (locaton.minions[minIndex].radomizeBattleSatats)
+        {
+            for (int i = 0; i < minSpawn.GetComponent<MinionWondering>().battleMinions.Length; i++)
+            {
+                MinionClass.MinionStats minionStats = minSpawn.GetComponent<MinionWondering>().battleMinions[i].stats;
+                if (locaton.minions[minIndex].minionsRndStats.ATK > 0)
+                    minionStats.ATK = Math.Abs(minionStats.ATK + Random.Range(-locaton.minions[minIndex].minionsRndStats.ATK, locaton.minions[minIndex].minionsRndStats.ATK));
+                if (locaton.minions[minIndex].minionsRndStats.AttackSpeed > 0)
+                    minionStats.AttackSpeed = MathF.Round(Math.Abs(minionStats.AttackSpeed + Random.Range(-locaton.minions[minIndex].minionsRndStats.AttackSpeed, locaton.minions[minIndex].minionsRndStats.AttackSpeed)) * 100) / 100;
+                if (locaton.minions[minIndex].minionsRndStats.HP > 0)
+                    minionStats.HP = Math.Abs(minionStats.HP + Random.Range(-locaton.minions[minIndex].minionsRndStats.HP - GameData.difficultyMultiplayer * 3, locaton.minions[minIndex].minionsRndStats.HP+GameData.difficultyMultiplayer*5));
+                if (locaton.minions[minIndex].minionsRndStats.Speed > 0)
+                    minionStats.Speed = MathF.Round(Math.Abs(minionStats.Speed + Random.Range(-locaton.minions[minIndex].minionsRndStats.Speed, locaton.minions[minIndex].minionsRndStats.Speed)) * 100) / 100;
+                if (locaton.minions[minIndex].minionsRndStats.Range > 0)
+                    minionStats.Range = MathF.Round(Math.Abs(minionStats.Range + Random.Range(-locaton.minions[minIndex].minionsRndStats.Range, locaton.minions[minIndex].minionsRndStats.Range)) * 100) / 100;
+                //if (locaton.minions[minIndex].minionsRndStats.Cost > 0)
+                //    minionStats.Cost = Math.Abs(minionStats.Cost + Random.Range(-locaton.minions[minIndex].minionsRndStats.Cost, locaton.minions[minIndex].minionsRndStats.Cost));
+            }
+
+        }
     }
 
     void Update()
@@ -101,7 +129,13 @@ public class RandomMinionSpawning : MonoBehaviour
         }
     }
 }
-
+[System.Serializable]
+public class minRndStats
+{
+    public GameObject minion;
+    public bool radomizeBattleSatats;
+    public MinionStats minionsRndStats;
+}
 [System.Serializable]
 public class RandSpawnLocations
 {
@@ -111,7 +145,12 @@ public class RandSpawnLocations
     public int cycleDelay; // how many cycles before spawn
     [NonSerialized] public int cycle; // amount of cycles left
     public Vector2Int spawnChance;
-    public GameObject[] minions;
+    
+    public minRndStats[] minions;
+    /*public GameObject[] minions;
+    [Header("Random Stats")]
+    public bool radomizeBattleSatats;
+    public MinionStats minionsRndStats;*/
 
 }
 

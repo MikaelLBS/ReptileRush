@@ -33,10 +33,11 @@ public class GenerationHandeler : MonoBehaviour, IDataPersitiens
             spawnChance = sp.spawnChance;
             recSize = new Vector2(sp.recSize.x, sp.recSize.y);
 
-            minions = new GameObject[sp.WildMinions.Length];
+            minions = new minRndStats[sp.WildMinions.Length];
             for (int i = 0; i < sp.WildMinions.Length; i++)
             {
-                minions[i] = EntityManager.SaveToWild(ref sp.WildMinions[i], false);
+                minions[i] = new();
+                minions[i].minion = EntityManager.SaveToWild(ref sp.WildMinions[i], false);
             }
         }
         public Vector2 recSize;

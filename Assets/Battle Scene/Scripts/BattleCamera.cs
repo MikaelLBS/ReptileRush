@@ -4,7 +4,6 @@ public class BattleCamera : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Camera cmr;
-    [SerializeField] float cmrsz = 5;
     [SerializeField] Transform groundTrans;
 
     Vector2 veloz = new Vector2(0, 0);
@@ -18,10 +17,12 @@ public class BattleCamera : MonoBehaviour
     [SerializeField] float zoomChangeAmount;
     float sizeLim;
     float widhLim;
-    float widh;
+    float cmrsz;
 
     private void Start()
     {
+        cmrsz = cmr.orthographicSize; // curent set to 5
+
         //deltaTime = Time.deltaTime; // BAD CODE: Time.deltaTime chances from one frame to the next
 
         sizeLim = groundTrans.lossyScale.x / 3.5556f;
@@ -32,7 +33,6 @@ public class BattleCamera : MonoBehaviour
     void Update()
     {
         accumulatedTime += Time.deltaTime;
-        widh = cmrsz * 1.8f;        
 
         GetInput();
 
@@ -75,7 +75,7 @@ public class BattleCamera : MonoBehaviour
 
             targetZoom = Mathf.Clamp(targetZoom, 1f, sizeLim);
 
-            cmrsz = Mathf.Lerp(cmrsz, targetZoom, Time.deltaTime * 200f);
+            cmrsz = Mathf.Lerp(cmrsz, targetZoom, Time.deltaTime);
 
             cmr.orthographicSize = cmrsz;
 
@@ -88,7 +88,7 @@ public class BattleCamera : MonoBehaviour
     {
         float boundaryOffset = widhLim - cmrsz * cmr.aspect;
 
-        veloz.x = (right ? 1 : 0) * 15 - (left ? 1 : 0) * 15;
+        veloz.x = (right ? 1 : 0) * 10 - (left ? 1 : 0) * 10;
         rb.velocity = veloz;
 
         float clampedX = Mathf.Clamp(transform.position.x, -boundaryOffset, boundaryOffset);

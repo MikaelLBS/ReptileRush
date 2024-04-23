@@ -75,6 +75,8 @@ public class GameData
     {
         if (difficultyMultiplayer == 0)
         {
+            Debug.Log("Trigger");
+            PlayerParty.Instance.sceneIndex = 3;
             difficultyMultiplayerLocal = 0;
             startSpawnForMinionsWorld1 = true;
         }

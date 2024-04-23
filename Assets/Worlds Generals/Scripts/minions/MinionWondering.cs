@@ -175,6 +175,9 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     }
     public void AddMinionDeck()
     {
+        if (MinionDeck.Instance == null)
+            MinionDeck.SetInstance();
+
         MinionDeck.Instance.basicBattleMinion = BasicBattleMinion;
         MinionDeck.Instance.minions = battleMinions;
     }

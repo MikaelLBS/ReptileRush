@@ -54,7 +54,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             yield return new WaitForFixedUpdate();
         }
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (GameData.difficultyMultiplayer == 2)
+        if (GameData.difficultyMultiplayer == 0)
             sceneIndex = 3;
 
         PlayerParty.Instance.sceneIndex = 3;

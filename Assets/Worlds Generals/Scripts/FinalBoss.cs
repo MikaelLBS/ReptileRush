@@ -30,6 +30,7 @@ public class FinalBoss : MonoBehaviour, IDataPersitiens
     }
     public void SaveData(ref GameData data)
     {
-        data.hasEnterFinalBoss = true;
+        if (isEnteringBattle)
+            data.hasEnterFinalBoss = true;
     }
 }

@@ -36543,7 +36543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 71222608602138419, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 288076688328880667, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36588,6 +36588,138 @@ PrefabInstance:
     - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
       propertyPath: isPresetSpawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].color.a
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].color.b
+      value: 0.43081754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].color.g
+      value: 0.95927775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].color.b
+      value: 0.3782484
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].color.g
+      value: 0.3782484
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].color.r
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.HP
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].stats.HP
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].stats.HP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.ATK
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].stats.ATK
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].stats.ATK
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].minionName
+      value: Fast Footed Hellbender
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.Cost
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].minionName
+      value: Hard Hiter Hellbender
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].stats.Cost
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].minionName
+      value: Tough Scale Hellbender
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].stats.Cost
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.Range
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].stats.Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].stats.Speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].stats.Range
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].stats.Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.AttackSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[1].stats.AttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 559b3b3a01c420b458c45a983791191c, type: 3}
+      propertyPath: battleMinions.Array.data[2].stats.AttackSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38145,7 +38277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 71222608602138419, guid: 71e66ecbf4eb9e4408c17f08196c1450, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 288076688328880667, guid: 71e66ecbf4eb9e4408c17f08196c1450, type: 3}
       propertyPath: m_LocalPosition.x

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    [SerializeField] MinionClass.MinionStats hellbenderStats;
+    [SerializeField] MinionClass.MinionStats turtuleStats;
+
     [Header("File Storage")]
     [SerializeField] string fileName;
 
@@ -40,7 +43,7 @@ public class DataPersistenceManager : MonoBehaviour
             PlayerParty.Instance.isGameOver = false;
             NewGameData();
             WriteSaveFile();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(1);
         }
 
         if (gameData == null)
@@ -86,6 +89,9 @@ public class DataPersistenceManager : MonoBehaviour
         {
             PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Hellbender"));
             PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Spear Turtle"));
+
+            PlayerParty.Instance.minions[0].stats = hellbenderStats;
+            PlayerParty.Instance.minions[1].stats = turtuleStats;
             return;
         }
         if (gameData.PartyMinions == null)

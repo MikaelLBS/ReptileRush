@@ -139,18 +139,31 @@ MonoBehaviour:
   randomTimer: {x: 5, y: 12}
   BasicBattleMinion: {fileID: 71222608602138419, guid: ce63d3d179fa56e4183f9efdc7f36ae4, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Speedy Snake
     stats:
-      ATK: 1
-      AttackSpeed: 2
-      HP: 30
-      Speed: 0.5
+      ATK: 13
+      AttackSpeed: 0.8
+      HP: 35
+      Speed: 1.2
       Range: 1
-      Cost: 50
+      Cost: 30
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
+    resetStats: 0
+  - minionName: Sharp Fang Snake
+    stats:
+      ATK: 20
+      AttackSpeed: 1.8
+      HP: 43
+      Speed: 0.9
+      Range: 1
+      Cost: 20
+    minion: {fileID: 0}
+    icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
+    animator: {fileID: 0}
+    color: {r: 0.35928458, g: 0.9622642, b: 0.33588454, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

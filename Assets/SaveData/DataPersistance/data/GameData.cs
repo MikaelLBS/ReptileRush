@@ -90,7 +90,7 @@ public class GameData
 
     public GameData()
     {
-
+        sceneIndex = 1;
         difficultyMultiplayer = 0;
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;
@@ -98,6 +98,7 @@ public class GameData
     }
     public GameData(float[] volumes)
     {
+        sceneIndex = 1;
         difficultyMultiplayer = 0;
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;

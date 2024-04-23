@@ -46,7 +46,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
                 }
 
                 phaseTimer += setPhaseTimer;
-                setPhaseTimer -= 0.005f;
+                setPhaseTimer -= 0.05f;
             }
 
             phaseTimer -= Time.fixedDeltaTime;
@@ -56,9 +56,10 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (GameData.difficultyMultiplayer == 0)
             sceneIndex = 3;
+
+        PlayerParty.Instance.sceneIndex = 3;
         DataPersistenceManager.Instance.NewLevelDataReset();
         DataPersistenceManager.Instance.WriteSaveFile();
-        PlayerParty.Instance.sceneIndex = 3;
         SceneManager.LoadScene(sceneIndex);
     }
     public void LoadData(GameData data)
@@ -218,7 +219,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         return instanceName;
     }
     // test things
-    /*[SerializeField] bool bossEndTrigger;
+    [SerializeField] bool bossEndTrigger;
     private void OnValidate()
     {
         if (bossEndTrigger)
@@ -226,5 +227,5 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             bossEndTrigger = false;
             StartCoroutine(bossEnd());
         }
-    }*/
+    }
 }

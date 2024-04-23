@@ -46132,6 +46132,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 9714d5887af1aaf43baa04ef787083d8, type: 3}
+      propertyPath: isBoss
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 9714d5887af1aaf43baa04ef787083d8, type: 3}
+      propertyPath: isPresetSpawn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -182829,6 +182837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions: []
+  bossEndTrigger: 0
 --- !u!4 &1445675455
 Transform:
   m_ObjectHideFlags: 0
@@ -183259,6 +183268,10 @@ PrefabInstance:
     - target: {fileID: 2244461760697630840, guid: 71e66ecbf4eb9e4408c17f08196c1450, type: 3}
       propertyPath: m_LocalPosition.y
       value: -5.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 71e66ecbf4eb9e4408c17f08196c1450, type: 3}
+      propertyPath: isPresetSpawn
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

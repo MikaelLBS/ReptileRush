@@ -141,9 +141,9 @@ MonoBehaviour:
   battleMinions:
   - minionName: Tough Scale Hellbender
     stats:
-      ATK: 5
-      AttackSpeed: 2
-      HP: 100
+      ATK: 14
+      AttackSpeed: 1.4
+      HP: 60
       Speed: 1
       Range: 0.7
       Cost: 40
@@ -170,7 +170,7 @@ MonoBehaviour:
       ATK: 10
       AttackSpeed: 0.4
       HP: 25
-      Speed: 2.5
+      Speed: 2
       Range: 0.7
       Cost: 45
     minion: {fileID: 0}

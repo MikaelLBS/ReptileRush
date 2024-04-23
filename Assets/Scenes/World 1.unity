@@ -36086,7 +36086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 71222608602138419, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 288076688328880667, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36131,6 +36131,34 @@ PrefabInstance:
     - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
       propertyPath: isPresetSpawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[1].color.b
+      value: 0.21152234
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[1].color.g
+      value: 0.9316909
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[1].color.r
+      value: 0.9748427
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.HP
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.ATK
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.Speed
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: 3e9cbfc6c3659c148bf21aeb0e5a14ed, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.AttackSpeed
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36464,6 +36492,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86695fb19ce8d2646aa84e32284d973e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hellbenderStats:
+    ATK: 13
+    AttackSpeed: 0.8
+    HP: 30
+    Speed: 1
+    Range: 1
+    Cost: 15
+  turtuleStats:
+    ATK: 20
+    AttackSpeed: 1.4
+    HP: 50
+    Speed: 1
+    Range: 2
+    Cost: 20
   fileName: ReptileRushSave
 --- !u!4 &423008742
 Transform:
@@ -37122,6 +37164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions: []
+  bossEndTrigger: 0
 --- !u!1 &689667464
 GameObject:
   m_ObjectHideFlags: 0
@@ -37168,7 +37211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 71222608602138419, guid: fe78329f86d051747ad5365de8368aed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 288076688328880667, guid: fe78329f86d051747ad5365de8368aed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37213,6 +37256,10 @@ PrefabInstance:
     - target: {fileID: 6946722060186340605, guid: fe78329f86d051747ad5365de8368aed, type: 3}
       propertyPath: isPresetSpawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946722060186340605, guid: fe78329f86d051747ad5365de8368aed, type: 3}
+      propertyPath: battleMinions.Array.data[0].stats.AttackSpeed
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38277,7 +38324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 71222608602138419, guid: 71e66ecbf4eb9e4408c17f08196c1450, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 288076688328880667, guid: 71e66ecbf4eb9e4408c17f08196c1450, type: 3}
       propertyPath: m_LocalPosition.x

@@ -203,6 +203,9 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             if (minionWonderingScript.battleMinions[j].animator != null)
                 save.battleMinions[j].animatorAssetPath = "Anime/" + minionWonderingScript.battleMinions[j].animator.name;
 
+            Color color = minionWonderingScript.battleMinions[j].color;
+            save.battleMinions[j].color = (color.r, color.g, color.b, color.a);
+
             save.battleMinions[j].minionSave = new MinionClass.GenericBattleMinion(minionWonderingScript.battleMinions[j]);
         }
         // Save the rest
@@ -211,6 +214,14 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         save.randomTimer = (minionWonderingScript.randomTimer.x, minionWonderingScript.randomTimer.y);
         save.hasEnterdBattle = minionWonderingScript.hasEnterdBattle;
         save.isBoss = true;
+
+        Color minionColor;
+        if (minion.GetComponent<SpriteRenderer>() == null)
+            minionColor = minion.GetComponentInChildren<SpriteRenderer>().color;
+        else
+            minionColor = minion.GetComponent<SpriteRenderer>().color;
+        save.color = (minionColor.r, minionColor.g, minionColor.b, minionColor.a);
+        save.size = (minion.transform.localScale.x, minion.transform.localScale.y);
     }
     public static string GetPrefabName(string instanceName)
     {

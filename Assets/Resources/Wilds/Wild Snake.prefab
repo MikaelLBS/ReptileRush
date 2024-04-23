@@ -141,12 +141,12 @@ MonoBehaviour:
   battleMinions:
   - minionName: Speedy Snake
     stats:
-      ATK: 7
-      AttackSpeed: 1
-      HP: 30
+      ATK: 13
+      AttackSpeed: 0.8
+      HP: 35
       Speed: 1.2
       Range: 1
-      Cost: 50
+      Cost: 30
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}
@@ -154,12 +154,12 @@ MonoBehaviour:
     resetStats: 0
   - minionName: Sharp Fang Snake
     stats:
-      ATK: 14
+      ATK: 20
       AttackSpeed: 1.8
       HP: 43
       Speed: 0.9
       Range: 1
-      Cost: 50
+      Cost: 20
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}

@@ -11764,7 +11764,7 @@ MonoBehaviour:
   manaFillBar: {fileID: 1404404161}
   manaText: {fileID: 2012133977}
   sekPerMana: 0.2
-  maxMana: 30
+  maxMana: 100
 --- !u!1 &2012133976
 GameObject:
   m_ObjectHideFlags: 0
@@ -12607,6 +12607,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 49728523567913302, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_Name
       value: PauseManager

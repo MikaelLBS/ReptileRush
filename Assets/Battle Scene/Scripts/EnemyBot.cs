@@ -20,6 +20,7 @@ public class EnemyBot : MonoBehaviour
         for (int i = 0; i < minions.Length; i++)
         {
             costs[i] = minions[i].GetComponent<MinionBattleBasic>().stats.Cost;
+            costs[i] = 5;
         }
     }
 

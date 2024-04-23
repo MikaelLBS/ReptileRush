@@ -11740,7 +11740,7 @@ MonoBehaviour:
   spawnPos: {fileID: 613608789}
   minions:
   - {fileID: 71222608602138419, guid: f00d9fe00d1ff5c44833d22ac753fd73, type: 3}
-  resetTimer: 0.2
+  resetTimer: 2
 --- !u!114 &1871414249
 MonoBehaviour:
   m_ObjectHideFlags: 0

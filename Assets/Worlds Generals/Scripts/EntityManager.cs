@@ -58,6 +58,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             sceneIndex = 3;
         DataPersistenceManager.Instance.NewLevelDataReset();
         DataPersistenceManager.Instance.WriteSaveFile();
+        PlayerParty.Instance.sceneIndex = 3;
         SceneManager.LoadScene(sceneIndex);
     }
     public void LoadData(GameData data)

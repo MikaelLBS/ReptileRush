@@ -11763,7 +11763,7 @@ MonoBehaviour:
   manaFillBar: {fileID: 1404404161}
   manaText: {fileID: 2012133977}
   sekPerMana: 0.2
-  maxMana: 30
+  maxMana: 100
 --- !u!1 &2012133976
 GameObject:
   m_ObjectHideFlags: 0

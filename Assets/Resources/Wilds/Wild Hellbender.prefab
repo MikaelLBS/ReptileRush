@@ -170,7 +170,7 @@ MonoBehaviour:
       ATK: 10
       AttackSpeed: 0.4
       HP: 25
-      Speed: 2.5
+      Speed: 2
       Range: 0.7
       Cost: 45
     minion: {fileID: 0}

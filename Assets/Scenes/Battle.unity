@@ -6801,6 +6801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions: []
+  bossEndTrigger: 0
 --- !u!4 &1097951056
 Transform:
   m_ObjectHideFlags: 0
@@ -12611,7 +12612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7595242045950990588, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_LocalPosition.x

@@ -36492,6 +36492,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86695fb19ce8d2646aa84e32284d973e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hellbenderStats:
+    ATK: 1
+    AttackSpeed: 1
+    HP: 1
+    Speed: 1
+    Range: 1
+    Cost: -1
+  turtuleStats:
+    ATK: -1
+    AttackSpeed: -1
+    HP: -1
+    Speed: -1
+    Range: -1
+    Cost: -1
   fileName: ReptileRushSave
 --- !u!4 &423008742
 Transform:
@@ -37150,6 +37164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions: []
+  bossEndTrigger: 0
 --- !u!1 &689667464
 GameObject:
   m_ObjectHideFlags: 0

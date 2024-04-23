@@ -75,7 +75,10 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
                 {
                     if (data.WildMinions[i].isBoss)
                     {
-                        StartCoroutine(bossEnd());
+                        if (data.hasEnterFinalBoss)
+                            victoryScreen.SetActive(true);
+                        else
+                            StartCoroutine(bossEnd());
                     }
                     continue;
                 }
@@ -218,6 +221,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
         }
         return instanceName;
     }
+    [SerializeField] GameObject victoryScreen;
     // test things
     [SerializeField] bool bossEndTrigger;
     private void OnValidate()

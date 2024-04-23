@@ -6801,6 +6801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minions: []
+  victoryScreen: {fileID: 0}
   bossEndTrigger: 0
 --- !u!4 &1097951056
 Transform:
@@ -12613,6 +12614,14 @@ PrefabInstance:
     - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634347130760207017, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634347130760207017, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7595242045950990588, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_LocalPosition.x

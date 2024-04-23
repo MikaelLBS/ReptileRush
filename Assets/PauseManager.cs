@@ -53,7 +53,8 @@ public class PauseManager : MonoBehaviour, IDataPersitiens
     }
     public void MainMenu()
     {
-        DataPersistenceManager.Instance.SaveGame();
+        if (DataPersistenceManager.Instance != null)
+            DataPersistenceManager.Instance.SaveGame();
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }

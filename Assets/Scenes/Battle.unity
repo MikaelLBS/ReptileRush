@@ -853,7 +853,7 @@ MonoBehaviour:
   isEnemy: 0
   ATK: 10
   AttackSpeed: 3
-  HP: 150
+  HP: 100
   Range: 8
   Attacks: 46
   attackbutton: {fileID: 607102670}
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   isEnemy: 1
   ATK: 10
   AttackSpeed: 1
-  HP: 150
+  HP: 100
   Range: 8
   Attacks: 0
   attackbutton: {fileID: 0}

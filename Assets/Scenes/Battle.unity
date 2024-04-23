@@ -12605,13 +12605,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 49728523567913302, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_Name
       value: PauseManager
       objectReference: {fileID: 0}
     - target: {fileID: 2595791687782539176, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7595242045950990588, guid: d016eca8dfe30ac4a932b6401984c783, type: 3}
       propertyPath: m_LocalPosition.x

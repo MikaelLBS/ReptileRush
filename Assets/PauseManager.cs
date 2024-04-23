@@ -13,9 +13,11 @@ public class PauseManager : MonoBehaviour, IDataPersitiens
     [SerializeField] GameObject doubleCheckResetRunWindo;
     public Canvas canvas;
     public Canvas canvas2;
+    public Canvas canvas3;
     private bool funFactor = false;
     private bool light = false;
     private bool isPaused = false;
+    [SerializeField] bool fynny_WARNING;
     void Start () {
         canvas.enabled = isPaused;
         canvas2.enabled = isPaused;
@@ -27,9 +29,10 @@ public class PauseManager : MonoBehaviour, IDataPersitiens
             else
                 PauseGame();
         }
-        if (isPaused && funFactor)
+        if (isPaused && funFactor && fynny_WARNING)
         {
             canvas2.enabled = light;
+            canvas3.enabled = !light;
             if (light)            
                 light = false;            
             else 
@@ -49,6 +52,7 @@ public class PauseManager : MonoBehaviour, IDataPersitiens
         isPaused = false;
         canvas.enabled = false;
         canvas2.enabled = false;
+        canvas3.enabled = false;
         funFactor = false;
     }
     public void MainMenu()

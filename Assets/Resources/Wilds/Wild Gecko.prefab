@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 448074919559293367}
   - component: {fileID: 8667493583266570299}
   m_Layer: 8
-  m_Name: Boss Gecko
+  m_Name: Wild Gecko
   m_TagString: PlayerMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

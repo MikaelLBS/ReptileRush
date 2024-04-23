@@ -73,7 +73,7 @@ public class GameData
     public int difficultyMultiplayerLocal;
     public void NewLevelDataReset()
     {
-        if (difficultyMultiplayer == 0)
+        if (difficultyMultiplayer == 4)
         {
             difficultyMultiplayerLocal = 0;
             hasEnterFinalBoss = false;

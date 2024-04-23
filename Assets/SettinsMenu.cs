@@ -10,4 +10,8 @@ public class SettinsMenu : MonoBehaviour
     {
         audioMixer.SetFloat("Volume", volume);
     }
+    public void SetLevels()
+    {
+
+    }
 }

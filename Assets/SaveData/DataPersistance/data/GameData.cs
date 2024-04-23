@@ -73,7 +73,7 @@ public class GameData
     public int difficultyMultiplayerLocal;
     public void NewLevelDataReset()
     {
-        if (difficultyMultiplayer == 0)
+        if (difficultyMultiplayer == 2)
         {
             difficultyMultiplayerLocal = 0;
             startSpawnForMinionsWorld1 = true;

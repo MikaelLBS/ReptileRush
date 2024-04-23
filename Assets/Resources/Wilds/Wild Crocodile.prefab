@@ -139,12 +139,12 @@ MonoBehaviour:
   randomTimer: {x: 5, y: 10}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 9285f2d505495a143b15d4ac3e9cb6ca, type: 3}
   battleMinions:
-  - minionName: Beef Crocodile
+  - minionName: Shap Tooth Crocodile
     stats:
-      ATK: 10
-      AttackSpeed: 2
-      HP: 20
-      Speed: 0.4
+      ATK: 35
+      AttackSpeed: 1.8
+      HP: 45
+      Speed: 1.4
       Range: 1
       Cost: 50
     minion: {fileID: 0}
@@ -152,18 +152,18 @@ MonoBehaviour:
     animator: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
-  - minionName: Beef Crocodile
+  - minionName: Tough Skin Crocodile
     stats:
-      ATK: 10
-      AttackSpeed: 2
-      HP: 20
-      Speed: 0.4
+      ATK: 20
+      AttackSpeed: 2.5
+      HP: 70
+      Speed: 0.7
       Range: 1
       Cost: 50
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
     animator: {fileID: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 0.26100624, b: 0.2634056, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

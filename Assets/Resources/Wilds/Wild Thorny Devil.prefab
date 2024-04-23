@@ -139,14 +139,27 @@ MonoBehaviour:
   randomTimer: {x: 4, y: 15}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 8d95de4cbeb9f384780365f1549563bc, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Fast Footed Thorny Devil
     stats:
-      ATK: 2
-      AttackSpeed: 2
+      ATK: 15
+      AttackSpeed: 0.5
       HP: 30
-      Speed: 2
+      Speed: 2.5
       Range: 0.7
-      Cost: 8
+      Cost: 30
+    minion: {fileID: 0}
+    icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
+    animator: {fileID: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    resetStats: 0
+  - minionName: Hard Spike Thorny Devil
+    stats:
+      ATK: 5
+      AttackSpeed: 1.2
+      HP: 50
+      Speed: 1.4
+      Range: 0.8
+      Cost: 30
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
     animator: {fileID: 0}

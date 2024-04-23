@@ -215,7 +215,16 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
             if (minion.resetStats)
             {
                 minion.resetStats = false;
-                minion.stats = BasicBattleMinion.GetComponent<MinionBattleBasic>().stats;
+
+                MinionBattleBasic minBattle;
+                if (minion.minion == null)
+                    minBattle = BasicBattleMinion.GetComponent<MinionBattleBasic>();
+                else
+                    minBattle = minion.minion.GetComponent<MinionBattleBasic>();
+
+                //minion.stats = BasicBattleMinion.GetComponent<MinionBattleBasic>().stats;
+
+                minion.stats = minBattle.stats;
             }
         }
     }

@@ -141,12 +141,12 @@ MonoBehaviour:
   battleMinions:
   - minionName: Tank
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 1
+      AttackSpeed: 0.4
+      HP: 40
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
     animator: {fileID: 0}

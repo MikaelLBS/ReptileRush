@@ -36493,19 +36493,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hellbenderStats:
-    ATK: 1
-    AttackSpeed: 1
-    HP: 1
+    ATK: 13
+    AttackSpeed: 0.8
+    HP: 30
     Speed: 1
     Range: 1
-    Cost: -1
+    Cost: 15
   turtuleStats:
-    ATK: -1
-    AttackSpeed: -1
-    HP: -1
-    Speed: -1
-    Range: -1
-    Cost: -1
+    ATK: 20
+    AttackSpeed: 1.4
+    HP: 50
+    Speed: 1
+    Range: 2
+    Cost: 20
   fileName: ReptileRushSave
 --- !u!4 &423008742
 Transform:

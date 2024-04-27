@@ -95,7 +95,7 @@ public class playerMovment : MonoBehaviour, IDataPersitiens
     public void LoadData(GameData data)
     {
         if (data.playerPosWasSaved)
-            transform.position = new Vector2(data.worldPos.x,data.worldPos.y);
+            transform.position = new Vector2(data.worldPos.x,data.worldPos.y+2.3f);//2.298948f
     }
     public void SaveData(ref GameData data)
     {

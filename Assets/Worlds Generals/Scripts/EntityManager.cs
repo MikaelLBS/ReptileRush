@@ -8,6 +8,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
 {
     static Color worldColor;
     public static EntityManager instance;
+    int amountOflevels;
     private void Awake()
     {
         if (instance == null)
@@ -25,7 +26,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
     {
         GenerationHandeler genHandeler = FindFirstObjectByType<GenerationHandeler>();
         Transform player = GameObject.Find("Player").transform;
-        float time = 5;
+        float time = 2;
         float phaseTimer = 0.15f;
         float setPhaseTimer = 0.15f;
         while (time > 0)
@@ -46,7 +47,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
                 }
 
                 phaseTimer += setPhaseTimer;
-                setPhaseTimer -= 0.05f;
+                setPhaseTimer -= 0.01f;
             }
 
             phaseTimer -= Time.fixedDeltaTime;
@@ -54,7 +55,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
             yield return new WaitForFixedUpdate();
         }
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (GameData.difficultyMultiplayer == 4)
+        if (GameData.difficultyMultiplayer == amountOflevels-1)
             sceneIndex = 3;
 
         PlayerParty.Instance.sceneIndex = 3;
@@ -64,6 +65,8 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
     }
     public void LoadData(GameData data)
     {
+        amountOflevels = data.amountOfLevels;
+
         if (data.WildMinions == null)
             return;
         for (int i = 0; i < data.WildMinions.Length; i++)

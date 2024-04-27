@@ -57,7 +57,9 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        SavePartyData();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            SavePartyData();
+
         foreach (IDataPersitiens dataPer in dataPersistenceObjcets)
             dataPer.SaveData(ref gameData);
 
@@ -112,11 +114,10 @@ public class DataPersistenceManager : MonoBehaviour
             PlayerParty.Instance.minions[i].color = new Color(color.r,color.g,color.b,color.a);
         }
     }
-     void SavePartyData()
+    public void SavePartyData()
     {
         if (PlayerParty.Instance == null)
             return;
-
         gameData.sceneIndex = PlayerParty.Instance.sceneIndex;
 
         gameData.PartyMinions = new MinionClass.MinionFileSave[PlayerParty.Instance.minions.Count];

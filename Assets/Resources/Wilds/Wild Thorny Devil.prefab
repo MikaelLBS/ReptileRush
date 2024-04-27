@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBoss: 0
   isPresetSpawn: 0
-  timeBeforeEnableBattle: 10
+  timeBeforeEnableBattle: 3
   jumpDelay: 0.3
   speed: 2
   randomTimer: {x: 4, y: 15}

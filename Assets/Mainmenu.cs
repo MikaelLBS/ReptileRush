@@ -8,6 +8,7 @@ public class Mainmenu : MonoBehaviour, IDataPersitiens
     int sceneIndex;
     public void PlayGame()
     {
+        DataPersistenceManager.Instance.SaveGame();
         SceneManager.LoadScene(sceneIndex);
     }
 
@@ -15,6 +16,15 @@ public class Mainmenu : MonoBehaviour, IDataPersitiens
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void NewRun()
+    {
+        DataPersistenceManager.Instance.NewGameData();
+        PlayerParty.Instance.minions.Clear();
+        DataPersistenceManager.Instance.SaveGame();
+        DataPersistenceManager.Instance.SavePartyData();
+        SceneManager.LoadScene(1);
     }
 
     public void LoadData(GameData data)

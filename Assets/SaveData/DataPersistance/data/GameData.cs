@@ -71,11 +71,20 @@ public class GameData
     // levels
     public static int difficultyMultiplayer;
     public int difficultyMultiplayerLocal;
+    public int amountOfLevels;
+    public int hiscore;
     public void NewLevelDataReset()
     {
-        if (difficultyMultiplayer == 4)
+        if (amountOfLevels == -1)
         {
-            difficultyMultiplayerLocal = 0;
+            difficultyMultiplayerLocal = difficultyMultiplayer + 1;
+
+            if (difficultyMultiplayerLocal > hiscore)
+                hiscore = difficultyMultiplayerLocal;
+        }
+        else if (difficultyMultiplayer == amountOfLevels-1)
+        {
+            difficultyMultiplayerLocal = difficultyMultiplayer + 1;
             hasEnterFinalBoss = false;
             startSpawnForMinionsWorld1 = true;
             sceneIndex = 3;
@@ -96,6 +105,7 @@ public class GameData
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;
         soundsVolume = new float[0];
+        amountOfLevels = 3;
     }
     public GameData(float[] volumes)
     {
@@ -104,5 +114,6 @@ public class GameData
         startSpawnForMinionsWorld1 = true;
         playerPosWasSaved = false;
         soundsVolume = volumes;
+        amountOfLevels = 3;
     }
 }

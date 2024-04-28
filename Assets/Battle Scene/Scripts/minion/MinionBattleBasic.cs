@@ -21,6 +21,8 @@ public class MinionBattleBasic : MonoBehaviour
     public float Cooldown;
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
+    [SerializeField] protected AudioClip[] biteSounds;
+    protected AudioSource audioSource;
 
     Animator animator;
     AnimationClip[] animeClips;
@@ -70,6 +72,8 @@ public class MinionBattleBasic : MonoBehaviour
                 attackCoolDown += stats.AttackSpeed;
                 animator.speed = 1;
                 attackCoolDown += stats.AttackSpeed;
+                if (biteSounds.Length != 0)
+                    SoundFunctions.PlaySoundDontOverrite(audioSource,biteSounds);
                 AttackForDamage();
             }
             else
@@ -153,6 +157,7 @@ public class MinionBattleBasic : MonoBehaviour
     }
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         MinionDeck.Instance.minionsAmount++;
 
         animator = GetComponent<Animator>();

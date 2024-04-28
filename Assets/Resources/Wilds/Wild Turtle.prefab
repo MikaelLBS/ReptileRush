@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3924613085238809393}
   - component: {fileID: 7813185584578829674}
   - component: {fileID: 443176330395850545}
+  - component: {fileID: -5893220616463919049}
   m_Layer: 8
   m_Name: Wild Turtle
   m_TagString: PlayerMinion
@@ -82,6 +83,45 @@ MonoBehaviour:
   isPresetSpawn: 0
   timeBeforeEnableBattle: 3
   jumpDelay: 0.3
+  walkingSound:
+  - {fileID: 8300000, guid: bb2c6abb12379fe4e8b4b9e3cc671d5f, type: 3}
+  - {fileID: 8300000, guid: 8a4e4c9fc6932b247ba6bdea2f8090a4, type: 3}
+  - {fileID: 8300000, guid: f0a79d7669cfd224eb3829c02a1f998a, type: 3}
+  - {fileID: 8300000, guid: b60b4c4dbb6f9d949b4c3d0473cded6a, type: 3}
+  - {fileID: 8300000, guid: 52cb49b86c5a1004f94b419bedf1d06c, type: 3}
+  - {fileID: 8300000, guid: 2056766eb4169b44da31dd8f7c5a7727, type: 3}
+  - {fileID: 8300000, guid: 631a197c69ab5eb47b137750d5666fe5, type: 3}
+  - {fileID: 8300000, guid: 03e25d4a8ab39e44fbe6b62e1af0a780, type: 3}
+  - {fileID: 8300000, guid: 0061d2055c3da6144a6a22b70640b415, type: 3}
+  - {fileID: 8300000, guid: b960a6cbebf74214f9ad67301b2f661a, type: 3}
+  - {fileID: 8300000, guid: d3c496a4c1b436c478ddc5ed99fc5518, type: 3}
+  - {fileID: 8300000, guid: 2b49fa7f57183ff4b80d9d050a2c31da, type: 3}
+  - {fileID: 8300000, guid: 4124d0a5a70376e4cb7917e3ca713335, type: 3}
+  - {fileID: 8300000, guid: ee0e3435da8cf9e43b729f4c0f9e5414, type: 3}
+  - {fileID: 8300000, guid: c2117d41449dbf147b68370c29942427, type: 3}
+  - {fileID: 8300000, guid: fc0579c9fc26a74489e00317d92f741d, type: 3}
+  - {fileID: 8300000, guid: 4c3b08c9085133441ace9badf93d9541, type: 3}
+  - {fileID: 8300000, guid: 741dc963a6552e2468ef2ea50b30f98f, type: 3}
+  - {fileID: 8300000, guid: 8c21272b1dffc8d4a9eff5723373c836, type: 3}
+  - {fileID: 8300000, guid: c83ab7d9954369e468b4cd6879684965, type: 3}
+  - {fileID: 8300000, guid: 38ff1cf941e5f7a4d98520fe11b2f9b6, type: 3}
+  - {fileID: 8300000, guid: 453210cc532513c4780ce3ede0a64558, type: 3}
+  - {fileID: 8300000, guid: 848ec9f168871ef48b5a8f0401eeef33, type: 3}
+  - {fileID: 8300000, guid: 91b93a195d627c942a18eea9b95ec8e2, type: 3}
+  - {fileID: 8300000, guid: bd29bcedd92bc294186e57fc00d0be42, type: 3}
+  - {fileID: 8300000, guid: ae5d43840c9b0e2499ad9332484170af, type: 3}
+  - {fileID: 8300000, guid: b8fa616aa19901a4aa8e3d2356c04526, type: 3}
+  - {fileID: 8300000, guid: 66219279be5127443bb82af18ea5c3f9, type: 3}
+  - {fileID: 8300000, guid: a7e63f1846f0bef48975d0a99c0f4712, type: 3}
+  - {fileID: 8300000, guid: 4ab022502225bf24d9085dad55da6fe5, type: 3}
+  - {fileID: 8300000, guid: 06a13f9448f9b524fa550494ed0c6dcd, type: 3}
+  - {fileID: 8300000, guid: 854154db0de8b3140b67d7c6698f9ad6, type: 3}
+  - {fileID: 8300000, guid: 37a474c9ee3181c4a97f3c71c3520151, type: 3}
+  randomSound:
+  - {fileID: 8300000, guid: a417a230962d8b34881a905d84ab9189, type: 3}
+  - {fileID: 8300000, guid: 78be7bd694da57e4cb1b1b7fcc712f5d, type: 3}
+  - {fileID: 8300000, guid: 3d0d9a48367275340a15e82b10dfb5c7, type: 3}
+  - {fileID: 8300000, guid: 33059838ca0c1fa4ba2fa4edf6662eb4, type: 3}
   speed: 0.5
   randomTimer: {x: 4, y: 20}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 6a78521299523ce4aadd6a2d6f05ae8b, type: 3}
@@ -285,6 +325,102 @@ PolygonCollider2D:
       - {x: 0.3184862, y: -0.4699609}
       - {x: 0.7087407, y: -0.024065323}
   m_UseDelaunayMesh: 0
+--- !u!82 &-5893220616463919049
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71222608602138419}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4613912141599438564, guid: f1d711b19d1f761438d5312cab2511a5, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1.3
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.5
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1434185922847809245
 GameObject:
   m_ObjectHideFlags: 0

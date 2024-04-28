@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357238640376996665}
-  - component: {fileID: -2168446918420305466}
   - component: {fileID: 6231078367401797218}
+  - component: {fileID: 6467007588472141391}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -27,28 +27,12 @@ Transform:
   m_GameObject: {fileID: 1261747328090700163}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 786.1486, y: 487.35733, z: -1.7730579}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2168446918420305466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261747328090700163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27697cb33eefe914db464009479a59e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  music: []
-  musicLow: []
-  audioSource: {fileID: 0}
-  soundSliders: []
 --- !u!82 &6231078367401797218
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 1261747328090700163}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3764317088669873452, guid: f1d711b19d1f761438d5312cab2511a5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -145,3 +129,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6467007588472141391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261747328090700163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81f97e9cd03df74a9b008f3f697543f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPlayOptions: 0
+  extraDelayBetweenAudioClips: 0
+  audioClips: []

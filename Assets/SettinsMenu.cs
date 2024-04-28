@@ -16,6 +16,8 @@ public class SettinsMenu : MonoBehaviour, IDataPersitiens
     {
         audioMixer.SetFloat("Volume", MathF.Log10(volume) * 25);
     }
+    public void SetMusicVolume(float volume)
+    { audioMixer.SetFloat("Music", MathF.Log10(volume) * 25); }
     public void SetLevels(float value)
     {
         if ((int)value == levels.maxValue)

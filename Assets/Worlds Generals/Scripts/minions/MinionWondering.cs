@@ -17,6 +17,9 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     [SerializeField] bool isPresetSpawn; // if placing a wild minion by hand turn on this bool. This bool makes it so this GameObject is destoryed on the secound load and forth.
     [SerializeField] float timeBeforeEnableBattle;
     [SerializeField] float jumpDelay;
+    [SerializeField] AudioClip[] walkingSound;
+    [SerializeField] AudioClip[] randomSound;
+    AudioSource audioSource;
     float jumpTimer;
     Rigidbody2D rbody;
     public float speed;
@@ -30,6 +33,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(StartBattleCountDown());
         animator = GetComponent<Animator>();
         if (animator == null )
@@ -89,6 +93,8 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
             {
                 rbody.velocity = new Vector2(rbody.velocity.x + speed*3f, rbody.velocity.y);
             }
+            if (walkingSound.Length != 0)
+                SoundFunctions.PlaySoundDontOverrite(audioSource, walkingSound);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -96,7 +102,8 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     float rot = 0;
     void Flip()
     {
-
+        if (randomSound.Length != 0 && Random.Range(0,4) == 0)
+            SoundFunctions.PlaySound(audioSource,randomSound);
         rot = Mathf.Abs(rot - 180);
 
         transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
@@ -158,6 +165,11 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         else
             timer -= Time.fixedDeltaTime;
         animator.SetBool("IsAttacking",!isMoving);
+        if (isMoving)
+        {
+            if (walkingSound.Length != 0)
+                SoundFunctions.PlaySoundDontOverrite(audioSource, walkingSound);
+        }
         // --Movement--
         if (isMoving && Mathf.Abs(rbody.velocity.x) > Mathf.Abs(speed))
         {

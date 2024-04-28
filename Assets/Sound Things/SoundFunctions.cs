@@ -17,6 +17,7 @@ public class SoundFunctions : MonoBehaviour
     {
         if (audioSource.isPlaying)
             return 0;
+
         return PlaySound(audioSource,audioClips);
     }
     // Player from Camera

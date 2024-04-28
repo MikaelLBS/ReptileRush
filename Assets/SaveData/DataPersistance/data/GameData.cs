@@ -66,7 +66,7 @@ public class GameData
     public bool hasEnterFinalBoss;
 
     // music
-    public float[] soundsVolume;
+    public float[] soundsVolume = {1,1 };
 
     // levels
     public static int difficultyMultiplayer;

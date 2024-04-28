@@ -17,6 +17,8 @@ public class BaseBasic : MonoBehaviour
     [SerializeField] protected float Range;
     [SerializeField] protected int Attacks;
     [SerializeField] Button attackbutton;
+    [SerializeField] AudioClip[] damagedSounds;
+    AudioSource audioSource;
     public Sprite icon; // the display icon in the UI        
     protected string enamyTag; // the tag for enemy minions
     protected LayerMask teamLayerMask; // the Layermask for allays
@@ -30,6 +32,7 @@ public class BaseBasic : MonoBehaviour
     {
         if (HP!=0 && !PlayerParty.Instance.battleHasEnded)
         {
+            StartCoroutine(PlayDamageSound());
             HP -= damge;
             if (HP <= 0) {
                 gameOverScreen.SetActive(true);
@@ -37,6 +40,11 @@ public class BaseBasic : MonoBehaviour
                 PlayerParty.Instance.battleHasEnded = true;
             }
         }
+    }
+    IEnumerator PlayDamageSound()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SoundFunctions.PlaySoundDontOverrite(audioSource,damagedSounds);
     }
 
     // --ATTACK--
@@ -69,6 +77,7 @@ public class BaseBasic : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         if (isEnemy)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);

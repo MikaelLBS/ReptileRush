@@ -82,6 +82,8 @@ public class PauseManager : MonoBehaviour, IDataPersitiens
     { audioMixer.SetFloat(mixerName, MathF.Log10(volume) * 25); }
     public void ChangeMainVolume(float value)
     { ChangeVolume("Volume", value); }
+    public void ChangeMusicVolume(float value)
+    { ChangeVolume("Music", value); }
 
     public void LoadData(GameData data)
     {

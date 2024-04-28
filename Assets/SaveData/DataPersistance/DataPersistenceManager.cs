@@ -37,6 +37,12 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         this.gameData = DataHandler.Load();
+        if (gameData == null)
+        {
+            NewGameData();
+            Debug.Log("created savefile at: " + Application.persistentDataPath + "/" + fileName);
+        }
+
         GameData.difficultyMultiplayer = gameData.difficultyMultiplayerLocal;
         if (PlayerParty.Instance.isGameOver)
         {
@@ -44,12 +50,6 @@ public class DataPersistenceManager : MonoBehaviour
             NewGameData();
             WriteSaveFile();
             SceneManager.LoadScene(1);
-        }
-
-        if (gameData == null)
-        {
-            NewGameData();
-            Debug.Log("created savefile at: "+ Application.persistentDataPath+"/"+fileName);
         }
 
         foreach (IDataPersitiens dataPer in dataPersistenceObjcets)

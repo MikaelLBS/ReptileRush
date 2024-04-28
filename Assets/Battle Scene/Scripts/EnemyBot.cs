@@ -20,7 +20,7 @@ public class EnemyBot : MonoBehaviour
         for (int i = 0; i < minions.Length; i++)
         {
             costs[i] = minions[i].GetComponent<MinionBattleBasic>().stats.Cost;
-            costs[i] = 5;
+            costs[i] = 5+GameData.difficultyMultiplayer*3;
         }
     }
 
@@ -38,8 +38,9 @@ public class EnemyBot : MonoBehaviour
     }
     void TrySummon()
     {
-        int index = Random.Range(0, minions.Length);
-
+        int index = Random.Range(0, minions.Length+2);
+        if (index >= minions.Length)
+            return;
         if (costs[index] <= mana)
         {
             mana -= costs[index];

@@ -44,6 +44,7 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
 
         if (!isPresetSpawn && EntityManager.instance != null)
             EntityManager.instance.AddMinion(gameObject);
+        StartCoroutine(EnableRbSim());
     }
     IEnumerator StartBattleCountDown()
     {
@@ -192,6 +193,13 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
 
         MinionDeck.Instance.basicBattleMinion = BasicBattleMinion;
         MinionDeck.Instance.minions = battleMinions;
+
+        if (isBoss)
+        {
+            PlayerParty.Instance.isBoss = true;
+            foreach (MinionClass.BattleMinion bMinion in MinionDeck.Instance.minions)
+                bMinion.stats.ATK *= 2;
+        }
     }
     void EnteringBattle()
     {
@@ -254,6 +262,13 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         }
         else
             Destroy(gameObject);
+    }
+    IEnumerator EnableRbSim()
+    {
+        for (int i = 0; i < 20; i++)
+            yield return new WaitForFixedUpdate();
+
+        rbody.simulated = true;
     }
     public void SaveData(ref GameData data)
     {

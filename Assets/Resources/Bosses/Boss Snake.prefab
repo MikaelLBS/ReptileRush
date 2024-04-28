@@ -102,7 +102,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71222608602138419}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -170,36 +170,39 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 06a13f9448f9b524fa550494ed0c6dcd, type: 3}
   - {fileID: 8300000, guid: 854154db0de8b3140b67d7c6698f9ad6, type: 3}
   - {fileID: 8300000, guid: 37a474c9ee3181c4a97f3c71c3520151, type: 3}
-  randomSound: []
+  randomSound:
+  - {fileID: 8300000, guid: 66b47d4a308140247949abdb75d28c4f, type: 3}
+  - {fileID: 8300000, guid: 9da93842af9101b4e933e58169e57409, type: 3}
+  - {fileID: 8300000, guid: 71d8c46ad5fedc142902708c2d981818, type: 3}
   speed: 0.3
   randomTimer: {x: 5, y: 12}
   BasicBattleMinion: {fileID: 71222608602138419, guid: ce63d3d179fa56e4183f9efdc7f36ae4, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Lightning Snake
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 13
+      AttackSpeed: 0.8
+      HP: 35
+      Speed: 1.44
+      Range: 1
+      Cost: 30
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
-  - minionName: Damge
+  - minionName: Cleaving Fang Snake
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 25
+      AttackSpeed: 1.8
+      HP: 43
+      Speed: 0.9
+      Range: 1
+      Cost: 20
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 881f2440eb6211c4d831a0d14f3a0033, type: 3}
     animator: {fileID: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0.35928458, g: 0.9622642, b: 0.33588454, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

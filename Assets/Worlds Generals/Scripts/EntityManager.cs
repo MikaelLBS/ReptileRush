@@ -65,6 +65,7 @@ public class EntityManager : MonoBehaviour, IDataPersitiens
     }
     public void LoadData(GameData data)
     {
+        PlayerParty.Instance.isBoss = false;
         amountOflevels = data.amountOfLevels;
 
         if (data.WildMinions == null)

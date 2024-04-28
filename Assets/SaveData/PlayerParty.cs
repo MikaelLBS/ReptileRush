@@ -23,6 +23,7 @@ public class PlayerParty : ScriptableObject, IDataPersitiens
     [NonSerialized] public bool wonBattle;
     [NonSerialized] public bool isGameOver;
     [NonSerialized] public bool isExitingBattle;
+    [NonSerialized] public bool isBoss;
 
     [NonSerialized] public bool battleHasEnded;
 

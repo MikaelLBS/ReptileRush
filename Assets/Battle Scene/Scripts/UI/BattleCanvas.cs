@@ -135,7 +135,7 @@ public class BattleCanvas : MonoBehaviour
             if (timer <= 0)
             {
                 timer += sekPerMana;
-                ChangeMana(1);
+                ChangeMana(1+GameData.difficultyMultiplayer);
                 CheckCosts();
             }
             else

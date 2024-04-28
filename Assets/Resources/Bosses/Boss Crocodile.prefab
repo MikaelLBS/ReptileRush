@@ -102,7 +102,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71222608602138419}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -170,36 +170,37 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 06a13f9448f9b524fa550494ed0c6dcd, type: 3}
   - {fileID: 8300000, guid: 854154db0de8b3140b67d7c6698f9ad6, type: 3}
   - {fileID: 8300000, guid: 37a474c9ee3181c4a97f3c71c3520151, type: 3}
-  randomSound: []
-  speed: 0.3
+  randomSound:
+  - {fileID: 8300000, guid: 68ba3052b1454854585510f1ca12e551, type: 3}
+  speed: 0.4
   randomTimer: {x: 5, y: 10}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 9285f2d505495a143b15d4ac3e9cb6ca, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Shap Dagger Crocodile
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 40
+      AttackSpeed: 1.8
+      HP: 45
+      Speed: 1.4
+      Range: 1
+      Cost: 50
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
     animator: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
-  - minionName: Damge
+  - minionName: Tough Armored Crocodile
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 20
+      AttackSpeed: 2.5
+      HP: 80
+      Speed: 0.7
+      Range: 1
+      Cost: 50
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: a43c9cf73c3c2e64ba11af60d4f92a86, type: 3}
     animator: {fileID: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 0.26100624, b: 0.2634056, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

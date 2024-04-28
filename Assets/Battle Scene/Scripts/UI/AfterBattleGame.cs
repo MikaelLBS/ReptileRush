@@ -71,6 +71,8 @@ public class AfterBattleGame : MonoBehaviour
         
         GameObject rewMinion = bot.minions[Random.Range(0,bot.minions.Length)];
         MinionBattleBasic rewMinionData = rewMinion.GetComponent<MinionBattleBasic>();
+        if (PlayerParty.Instance.isBoss)
+            rewMinionData.stats.ATK /= 2;
         PlayerParty.Instance.AddMinion(rewMinion);
         rewardMinionButton.transform.SetParent(transform);
         rewardMinionButton.GetComponent<Image>().sprite = rewMinionData.icon;

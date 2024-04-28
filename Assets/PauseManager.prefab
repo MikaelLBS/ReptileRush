@@ -860,7 +860,7 @@ MonoBehaviour:
   canvas: {fileID: 1174021513215186651}
   canvas2: {fileID: 9165593815818760026}
   canvas3: {fileID: 7381908655052694470}
-  fynny_WARNING: 1
+  fynny_WARNING: 0
 --- !u!1 &2752051578984206118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2315,7 +2315,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5819093717092240008}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: ChangeMainVolume
+        m_MethodName: ChangeMusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

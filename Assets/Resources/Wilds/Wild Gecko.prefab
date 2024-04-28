@@ -103,7 +103,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71222608602138419}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -176,31 +176,70 @@ MonoBehaviour:
   randomTimer: {x: 3, y: 10}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Crock
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
-    minion: {fileID: 0}
-    icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
+      ATK: 10
+      AttackSpeed: 1.8
+      HP: 30
+      Speed: 0.4
+      Range: 1
+      Cost: 50
+    minion: {fileID: 71222608602138419, guid: 9285f2d505495a143b15d4ac3e9cb6ca, type: 3}
+    icon: {fileID: 0}
     animator: {fileID: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 0.89140534, b: 0, a: 1}
     resetStats: 0
-  - minionName: Damge
+  - minionName: Hellbender
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
-    minion: {fileID: 0}
-    icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
+      ATK: 2
+      AttackSpeed: 0.4
+      HP: 60
+      Speed: 1.5
+      Range: 0.7
+      Cost: 30
+    minion: {fileID: 71222608602138419, guid: 9285f2d505495a143b15d4ac3e9cb6ca, type: 3}
+    icon: {fileID: 0}
     animator: {fileID: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 0.89140534, b: 0, a: 1}
+    resetStats: 0
+  - minionName: Snake
+    stats:
+      ATK: 3
+      AttackSpeed: 1.5
+      HP: 30
+      Speed: 0.5
+      Range: 1
+      Cost: 50
+    minion: {fileID: 71222608602138419, guid: ce63d3d179fa56e4183f9efdc7f36ae4, type: 3}
+    icon: {fileID: 0}
+    animator: {fileID: 0}
+    color: {r: 1, g: 0.89140534, b: 0, a: 1}
+    resetStats: 0
+  - minionName: Thorny
+    stats:
+      ATK: 6
+      AttackSpeed: 1.5
+      HP: 30
+      Speed: 2
+      Range: 0.7
+      Cost: 8
+    minion: {fileID: 71222608602138419, guid: 8d95de4cbeb9f384780365f1549563bc, type: 3}
+    icon: {fileID: 0}
+    animator: {fileID: 0}
+    color: {r: 1, g: 0.89140534, b: 0, a: 1}
+    resetStats: 0
+  - minionName: Turtle
+    stats:
+      ATK: 2
+      AttackSpeed: 1.5
+      HP: 100
+      Speed: 0.41
+      Range: 1
+      Cost: 10
+    minion: {fileID: 71222608602138419, guid: 6a78521299523ce4aadd6a2d6f05ae8b, type: 3}
+    icon: {fileID: 0}
+    animator: {fileID: 0}
+    color: {r: 1, g: 0.89140534, b: 0, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

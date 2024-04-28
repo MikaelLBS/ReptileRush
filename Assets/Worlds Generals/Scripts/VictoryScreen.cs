@@ -7,7 +7,12 @@ public class VictoryScreen : MonoBehaviour, IDataPersitiens
 {
     // Start is called before the first frame update
     [SerializeField] float delay;
+    [SerializeField] AudioClip VictoryMusic;
     float[] volumes;
+    private void Start()
+    {
+        GameObject.Find("Music").GetComponent<AudioSource>().clip = VictoryMusic;
+    }
     void Update()
     {
         if (Input.anyKeyDown)
@@ -21,7 +26,7 @@ public class VictoryScreen : MonoBehaviour, IDataPersitiens
             Time.timeScale = 1;
             new FileDataHandler(Application.persistentDataPath, "ReptileRushSave").Save(new(volumes));
             PlayerParty.Instance.minions.Clear();
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
         else
             delay -= Time.deltaTime;

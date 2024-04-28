@@ -102,7 +102,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71222608602138419}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -171,35 +171,35 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 854154db0de8b3140b67d7c6698f9ad6, type: 3}
   - {fileID: 8300000, guid: 37a474c9ee3181c4a97f3c71c3520151, type: 3}
   randomSound:
-  - {fileID: 8300000, guid: f4186b88e1bff2f46b958dda70c22c6b, type: 3}
-  - {fileID: 8300000, guid: 61ac92349385a624daadb6db6dea1c48, type: 3}
-  - {fileID: 8300000, guid: 38c9678e1fe296841a7397235f44478d, type: 3}
-  - {fileID: 8300000, guid: ca84f335219bea943930b816c5e4eb3d, type: 3}
-  speed: 0.8
+  - {fileID: 8300000, guid: 17033f23739f7434ab933dd3ef48da5c, type: 3}
+  - {fileID: 8300000, guid: a9eb299930e2b894ab43bcbdd0a403c3, type: 3}
+  - {fileID: 8300000, guid: 5dfe712856cc871488cfc4064e572212, type: 3}
+  - {fileID: 8300000, guid: 12e1f9917035f224c82486997272fa67, type: 3}
+  speed: 1
   randomTimer: {x: 4, y: 15}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 8d95de4cbeb9f384780365f1549563bc, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Lighting Speed Thorny Devil
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 12
+      AttackSpeed: 0.7
+      HP: 30
+      Speed: 2.75
+      Range: 0.7
+      Cost: 20
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
     animator: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
-  - minionName: Damge
+  - minionName: Diamond Spike Thorny Devil
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 7
+      AttackSpeed: 1.2
+      HP: 55
+      Speed: 1.4
+      Range: 0.8
+      Cost: 20
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 82f0d31eaf6b5614588a3c221099089d, type: 3}
     animator: {fileID: 0}

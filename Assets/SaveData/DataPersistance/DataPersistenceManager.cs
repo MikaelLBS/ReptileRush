@@ -83,11 +83,10 @@ public class DataPersistenceManager : MonoBehaviour
     // Player Party
     public void LoadPartyData()
     {
-        if (PlayerParty.Instance == null || PlayerParty.Instance.isExitingBattle == true)
+        // return checks
+        if (PlayerParty.Instance == null)
             return;
-        PlayerParty.Instance.sceneIndex = gameData.sceneIndex;
-
-        if (PlayerParty.Instance.minions == null || PlayerParty.Instance.minions.Count == 0)
+        else if (PlayerParty.Instance.minions == null || PlayerParty.Instance.minions.Count == 0)
         {
             PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Hellbender"));
             PlayerParty.Instance.AddMinion(Resources.Load<GameObject>("Battles/Battle Spear Turtle"));
@@ -96,6 +95,12 @@ public class DataPersistenceManager : MonoBehaviour
             PlayerParty.Instance.minions[1].stats = turtuleStats;
             return;
         }
+        else if (PlayerParty.Instance.isExitingBattle == true)
+            return;
+
+        // loading data
+        PlayerParty.Instance.sceneIndex = gameData.sceneIndex;
+
         if (gameData.PartyMinions == null)
             return;
         PlayerParty.Instance.minions.Clear();

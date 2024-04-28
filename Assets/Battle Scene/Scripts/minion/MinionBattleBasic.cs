@@ -80,9 +80,12 @@ public class MinionBattleBasic : MonoBehaviour
             {
                 if (attackAnimeTime >= attackCoolDown && !startedAttackAnime)
                 {
-                    if (animeClips[0].length > attackCoolDown)
-                        animator.speed = 1+attackCoolDown / animeClips[0].length;
+                    /*if (animeClips[0].length > attackCoolDown)
+                        animator.speed = attackCoolDown / animeClips[0].length;
+                    else
+                        animator.speed = 1;*/
                     //Debug.Log("attackSPeed: "+ animator.speed+ " L: "+ animeClips[0].length+ " C: "+ attackCoolDown);
+                    animator.speed = attackAnimeSpeed;
                     animator.SetTrigger("Attack");
 
                     startedAttackAnime = true;
@@ -174,8 +177,9 @@ public class MinionBattleBasic : MonoBehaviour
 
         if (stats.AttackSpeed < attackAnimeTime)
         {
-            attackAnimeSpeed = attackAnimeTime/ attackCoolDown;
-            stats.AttackSpeed /= attackAnimeSpeed;
+            attackAnimeSpeed = attackAnimeTime / attackCoolDown;
+
+            //stats.AttackSpeed /= attackAnimeSpeed;
         }
         else attackAnimeSpeed = 1;
 

@@ -36494,8 +36494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hellbenderStats:
     ATK: 13
-    AttackSpeed: 0.8
-    HP: 30
+    AttackSpeed: 1.4
+    HP: 40
     Speed: 1
     Range: 1
     Cost: 15
@@ -37949,7 +37949,7 @@ MonoBehaviour:
         Range: -1
         Cost: -1
     recSize: {x: 15, y: 10}
-  mainPathLength: 300
+  mainPathLength: 200
   tilemap: {fileID: 610075518}
   stairsTilemap: {fileID: 25737984}
   wallTiles:

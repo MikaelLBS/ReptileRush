@@ -102,7 +102,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71222608602138419}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -171,35 +171,48 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 854154db0de8b3140b67d7c6698f9ad6, type: 3}
   - {fileID: 8300000, guid: 37a474c9ee3181c4a97f3c71c3520151, type: 3}
   randomSound: []
-  speed: 0.3
+  speed: 0.4
   randomTimer: {x: 3, y: 10}
   BasicBattleMinion: {fileID: 71222608602138419, guid: 287a097d649699449b35f78b550b528d, type: 3}
   battleMinions:
-  - minionName: Tank
+  - minionName: Steel Scaled Hellbender
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 14
+      AttackSpeed: 1.4
+      HP: 70
+      Speed: 1
+      Range: 0.7
+      Cost: 40
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
     animator: {fileID: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     resetStats: 0
-  - minionName: Damge
+  - minionName: Hard Breaker Hellbender
     stats:
-      ATK: -1
-      AttackSpeed: -1
-      HP: -1
-      Speed: -1
-      Range: -1
-      Cost: -1
+      ATK: 25
+      AttackSpeed: 0.8
+      HP: 40
+      Speed: 1
+      Range: 1
+      Cost: 50
     minion: {fileID: 0}
     icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
     animator: {fileID: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0.9622642, g: 0.3782484, b: 0.3782484, a: 1}
+    resetStats: 0
+  - minionName: Lighting Speed Hellbender
+    stats:
+      ATK: 10
+      AttackSpeed: 0.4
+      HP: 25
+      Speed: 2.44
+      Range: 0.7
+      Cost: 45
+    minion: {fileID: 0}
+    icon: {fileID: 21300000, guid: 19e5dd0245bfaff49b62674a8beb86ae, type: 3}
+    animator: {fileID: 0}
+    color: {r: 1, g: 0.9159678, b: 0, a: 1}
     resetStats: 0
 --- !u!70 &1694540852665351599
 CapsuleCollider2D:

@@ -11,7 +11,9 @@ public class VictoryScreen : MonoBehaviour, IDataPersitiens
     float[] volumes;
     private void Start()
     {
-        GameObject.Find("Music").GetComponent<AudioSource>().clip = VictoryMusic;
+        AudioSource audioSource = GameObject.Find("Music").GetComponent<AudioSource>();
+        audioSource.clip = VictoryMusic;
+        audioSource.Play();
     }
     void Update()
     {

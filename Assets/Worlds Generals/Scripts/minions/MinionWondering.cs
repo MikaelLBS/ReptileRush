@@ -206,9 +206,11 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
         if (timeBeforeEnableBattle != 0)
             return;
 
+        hasEnterdBattle = true;
+        if (isFinalBoss)
+        { DataPersistenceManager.Instance.HasEnterdFinal(); }
         AddMinionDeck();
         PlayerParty.Instance.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        hasEnterdBattle = true;
         DataPersistenceManager.Instance.SaveGame();
         SceneManager.LoadScene("Battle");
     }
@@ -274,4 +276,6 @@ public class MinionWondering : MonoBehaviour, IDataPersitiens
     {
         data.startSpawnForMinionsWorld1 = false;
     }
+    // test var
+    protected bool isFinalBoss;
 }

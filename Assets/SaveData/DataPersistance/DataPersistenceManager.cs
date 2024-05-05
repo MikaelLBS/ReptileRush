@@ -69,6 +69,10 @@ public class DataPersistenceManager : MonoBehaviour
     { DataHandler.Save(gameData); }
     public void NewLevelDataReset()
     { gameData.NewLevelDataReset(); }
+    public void HasEnterdFinal()
+    {
+        gameData.hasEnterFinalBoss = true;
+    }
     private void OnApplicationQuit()
     {
         SaveGame();
@@ -122,7 +126,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void SavePartyData()
     {
         if (PlayerParty.Instance == null)
-            return;
+            PlayerParty.SetInstance();
         gameData.sceneIndex = PlayerParty.Instance.sceneIndex;
 
         gameData.PartyMinions = new MinionClass.MinionFileSave[PlayerParty.Instance.minions.Count];
